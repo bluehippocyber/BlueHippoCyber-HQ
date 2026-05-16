@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BlueHippoCyber — Defensive Architects</title>
+<title>BlueHippoCyber — AI Automation for Service Businesses</title>
 <link rel="stylesheet" href="styles.css" />
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -15,7 +15,6 @@
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="components.jsx"></script>
 <script type="text/babel" src="chat-and-solutions.jsx"></script>
-<script type="text/babel" src="vault.jsx"></script>
 
 <script type="text/babel">
 const { useState, useEffect } = React;
@@ -34,11 +33,7 @@ function App() {
   const [route, setRoute] = useState('home');
   const [chatOpen, setChatOpen] = useState(false);
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const setTweaks = (patch) => {
-    Object.entries(patch).forEach(([k, v]) => setTweak(k, v));
-  };
 
-  // Apply CSS vars from tweaks
   useEffect(() => {
     const root = document.documentElement;
     root.style.setProperty('--neon', `oklch(0.85 0.15 ${tweaks.accentHue})`);
@@ -48,14 +43,11 @@ function App() {
     root.style.setProperty('--scan-strength', String(tweaks.scanlineStrength));
   }, [tweaks]);
 
-  // Hash-based deep links and /vault
   useEffect(() => {
     const handleHash = () => {
       const h = (window.location.hash || '').replace('#', '');
-      if (h === 'vault') { setRoute('vault'); return; }
-      if (h === 'solutions') { setRoute('solutions'); return; }
-      if (h === 'home') { setRoute('home'); return; }
-      // section anchors are handled by navigate()
+      if (h === 'services' || h === 'solutions') { setRoute('solutions'); return; }
+      if (h === 'home' || h === '') { setRoute('home'); return; }
     };
     handleHash();
     window.addEventListener('hashchange', handleHash);
@@ -63,11 +55,8 @@ function App() {
   }, []);
 
   const navigate = (target, anchor) => {
-    if (target === 'vault') {
-      window.location.hash = '#vault';
-      setRoute('vault');
-    } else if (target === 'solutions') {
-      window.location.hash = '#solutions';
+    if (target === 'solutions') {
+      window.location.hash = '#services';
       setRoute('solutions');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -96,45 +85,43 @@ function App() {
   return (
     <>
       <SentinelBar active={tweaks.sentinelActive} bridge={tweaks.bridgeOnline} />
-      {route !== 'vault' && <Nav route={route} navigate={navigate} />}
+      <Nav route={route} navigate={navigate} />
 
       {/* HOME */}
       <div className={`page ${route === 'home' ? 'active' : ''}`} data-screen-label="home">
         <Hero
           onSpeak={() => setChatOpen(true)}
-          onScroll={() => navigate('home', 'hippo')}
+          onScroll={() => navigate('home', 'how')}
         />
-        <HippoFramework />
-        <Vault featuredOverride={tweaks.featuredTier} />
+        <BuiltFor />
+        <WhatWeDo />
+        <HowItWorks onSpeak={() => navigate('home', 'contact')} />
+        <GrowthEngine />
+        <Pricing featuredOverride={tweaks.featuredTier} />
         <Stories />
+        <Insights />
+        <FinalCTA onSpeak={() => navigate('home', 'contact')} />
         <Marquee />
         <Contact />
         <Footer />
       </div>
 
-      {/* SOLUTIONS */}
-      <div className={`page ${route === 'solutions' ? 'active' : ''}`} data-screen-label="solutions">
-        <SolutionsPage />
+      {/* SERVICES */}
+      <div className={`page ${route === 'solutions' ? 'active' : ''}`} data-screen-label="services">
+        <SolutionsPage navigate={navigate} />
         <Marquee />
         <Footer />
       </div>
 
-      {/* VAULT */}
-      <div className={`page ${route === 'vault' ? 'active' : ''}`} data-screen-label="vault">
-        <VaultPage tweaks={tweaks} setTweaks={setTweaks} />
-      </div>
-
-      {/* Chat available everywhere except vault */}
-      {route !== 'vault' && (
-        <HippoChat open={chatOpen} setOpen={setChatOpen} navigate={navigate} />
-      )}
+      {/* Chat */}
+      <HippoChat open={chatOpen} setOpen={setChatOpen} navigate={navigate} />
 
       {/* Scanlines overlay */}
       {!tweaks.reducedMotion && tweaks.scanlineStrength > 0 && <div className="scanlines"></div>}
 
       {/* Tweaks panel */}
       <TweaksPanel title="Tweaks">
-        <TweakSection label="Aesthetic" />
+        <TweakSection label="Look" />
         <TweakSlider label="Accent hue" value={tweaks.accentHue}
           min={180} max={260} step={2} unit="°"
           onChange={(v) => setTweak('accentHue', v)} />
@@ -145,28 +132,26 @@ function App() {
           min={0} max={0.06} step={0.005}
           onChange={(v) => setTweak('scanlineStrength', v)} />
 
-        <TweakSection label="Vault" />
+        <TweakSection label="Pricing" />
         <TweakRadio label="Featured tier" value={tweaks.featuredTier}
           options={[
             { value: 0, label: 'Ghost' },
             { value: 1, label: 'Sentinel' },
             { value: 2, label: 'Architect' },
-            { value: 3, label: 'Light' },
           ]}
           onChange={(v) => setTweak('featuredTier', v)} />
 
-        <TweakSection label="Sentinel" />
-        <TweakToggle label="Sentinel active" value={tweaks.sentinelActive}
+        <TweakSection label="Status bar" />
+        <TweakToggle label="Systems online" value={tweaks.sentinelActive}
           onChange={(v) => setTweak('sentinelActive', v)} />
-        <TweakToggle label="Bridge online" value={tweaks.bridgeOnline}
+        <TweakToggle label="Automations running" value={tweaks.bridgeOnline}
           onChange={(v) => setTweak('bridgeOnline', v)} />
         <TweakToggle label="Reduced motion" value={tweaks.reducedMotion}
           onChange={(v) => setTweak('reducedMotion', v)} />
 
         <TweakSection label="Quick nav" />
         <TweakButton label="→ Home"      onClick={() => navigate('home')} />
-        <TweakButton label="→ Solutions" onClick={() => navigate('solutions')} />
-        <TweakButton label="→ /Vault"    onClick={() => navigate('vault')} />
+        <TweakButton label="→ Services"  onClick={() => navigate('solutions')} />
         <TweakButton label="Open chat"   onClick={() => setChatOpen(true)} />
       </TweaksPanel>
     </>

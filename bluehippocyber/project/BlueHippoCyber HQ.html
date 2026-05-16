@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BlueHippoCyber — AI Automation for Service Businesses</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="chat-and-solutions.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentHue": 220,
+  "videoOpacity": 0.4,
+  "scanlineStrength": 0.015,
+  "featuredTier": 1,
+  "sentinelActive": true,
+  "bridgeOnline": true,
+  "reducedMotion": false
+}/*EDITMODE-END*/;
+
+function App() {
+  const [route, setRoute] = useState('home');
+  const [chatOpen, setChatOpen] = useState(false);
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--neon', `oklch(0.85 0.15 ${tweaks.accentHue})`);
+    root.style.setProperty('--neon-2', `oklch(0.78 0.18 ${tweaks.accentHue - 5})`);
+    root.style.setProperty('--neon-deep', `oklch(0.55 0.18 ${tweaks.accentHue})`);
+    root.style.setProperty('--video-opacity', String(tweaks.videoOpacity));
+    root.style.setProperty('--scan-strength', String(tweaks.scanlineStrength));
+  }, [tweaks]);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const h = (window.location.hash || '').replace('#', '');
+      if (h === 'services' || h === 'solutions') { setRoute('solutions'); return; }
+      if (h === 'home' || h === '') { setRoute('home'); return; }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const navigate = (target, anchor) => {
+    if (target === 'solutions') {
+      window.location.hash = '#services';
+      setRoute('solutions');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      if (route !== 'home') {
+        window.location.hash = '#home';
+        setRoute('home');
+        if (anchor) {
+          setTimeout(() => {
+            const el = document.getElementById(anchor);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        if (anchor) {
+          const el = document.getElementById(anchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  return (
+    <>
+      <SentinelBar active={tweaks.sentinelActive} bridge={tweaks.bridgeOnline} />
+      <Nav route={route} navigate={navigate} />
+
+      {/* HOME */}
+      <div className={`page ${route === 'home' ? 'active' : ''}`} data-screen-label="home">
+        <Hero
+          onSpeak={() => setChatOpen(true)}
+          onScroll={() => navigate('home', 'how')}
+        />
+        <BuiltFor />
+        <WhatWeDo />
+        <HowItWorks onSpeak={() => navigate('home', 'contact')} />
+        <GrowthEngine />
+        <Pricing featuredOverride={tweaks.featuredTier} />
+        <Stories />
+        <Insights />
+        <FinalCTA onSpeak={() => navigate('home', 'contact')} />
+        <Marquee />
+        <Contact />
+        <Footer />
+      </div>
+
+      {/* SERVICES */}
+      <div className={`page ${route === 'solutions' ? 'active' : ''}`} data-screen-label="services">
+        <SolutionsPage navigate={navigate} />
+        <Marquee />
+        <Footer />
+      </div>
+
+      {/* Chat */}
+      <HippoChat open={chatOpen} setOpen={setChatOpen} navigate={navigate} />
+
+      {/* Scanlines overlay */}
+      {!tweaks.reducedMotion && tweaks.scanlineStrength > 0 && <div className="scanlines"></div>}
+
+      {/* Tweaks panel */}
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Look" />
+        <TweakSlider label="Accent hue" value={tweaks.accentHue}
+          min={180} max={260} step={2} unit="°"
+          onChange={(v) => setTweak('accentHue', v)} />
+        <TweakSlider label="Video opacity" value={tweaks.videoOpacity}
+          min={0} max={1} step={0.05}
+          onChange={(v) => setTweak('videoOpacity', v)} />
+        <TweakSlider label="Scanline strength" value={tweaks.scanlineStrength}
+          min={0} max={0.06} step={0.005}
+          onChange={(v) => setTweak('scanlineStrength', v)} />
+
+        <TweakSection label="Pricing" />
+        <TweakRadio label="Featured tier" value={tweaks.featuredTier}
+          options={[
+            { value: 0, label: 'Ghost' },
+            { value: 1, label: 'Sentinel' },
+            { value: 2, label: 'Architect' },
+          ]}
+          onChange={(v) => setTweak('featuredTier', v)} />
+
+        <TweakSection label="Status bar" />
+        <TweakToggle label="Systems online" value={tweaks.sentinelActive}
+          onChange={(v) => setTweak('sentinelActive', v)} />
+        <TweakToggle label="Automations running" value={tweaks.bridgeOnline}
+          onChange={(v) => setTweak('bridgeOnline', v)} />
+        <TweakToggle label="Reduced motion" value={tweaks.reducedMotion}
+          onChange={(v) => setTweak('reducedMotion', v)} />
+
+        <TweakSection label="Quick nav" />
+        <TweakButton label="→ Home"      onClick={() => navigate('home')} />
+        <TweakButton label="→ Services"  onClick={() => navigate('solutions')} />
+        <TweakButton label="Open chat"   onClick={() => setChatOpen(true)} />
+      </TweaksPanel>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>

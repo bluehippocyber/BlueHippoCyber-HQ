@@ -2,7 +2,7 @@
 const { useState, useEffect, useRef, useCallback } = React;
 
 /* ============================================================
-   Sentinel status bar (top)
+   Top status bar — operational telemetry strip
    ============================================================ */
 function SentinelBar({ active, bridge }) {
   const [time, setTime] = useState('--:--:--');
@@ -10,7 +10,7 @@ function SentinelBar({ active, bridge }) {
     const tick = () => {
       const d = new Date();
       const z = (n) => String(n).padStart(2, '0');
-      setTime(`${z(d.getUTCHours())}:${z(d.getUTCMinutes())}:${z(d.getUTCSeconds())}`);
+      setTime(`${z(d.getHours())}:${z(d.getMinutes())}:${z(d.getSeconds())}`);
     };
     tick();
     const id = setInterval(tick, 1000);
@@ -20,16 +20,16 @@ function SentinelBar({ active, bridge }) {
     <div className="sentinel-bar">
       <div className="left">
         {active ? <span className="dot"></span> : null}
-        <span>Sentinel Systems: <span className="span-neon">{active ? 'ACTIVE' : 'STANDBY'}</span></span>
+        <span>Lead Engine: <span className="span-neon">{active ? 'LIVE' : 'STANDBY'}</span></span>
         <span className="sep">/</span>
-        <span>Bridge: <span className="span-neon">{bridge ? 'ONLINE' : 'OFFLINE'}</span></span>
+        <span>Campaigns: <span className="span-neon">{bridge ? 'OPTIMIZING' : 'PAUSED'}</span></span>
         <span className="sep">/</span>
-        <span>Local AI: <span className="span-neon">OLLAMA · MISTRAL-7B</span></span>
+        <span>Intake: <span className="span-neon">24 / 7</span></span>
       </div>
       <div className="right">
-        <span>NODE&nbsp;BHC-001</span>
+        <span>BHC · LAKELAND, FL</span>
         <span className="sep">/</span>
-        <span>UTC&nbsp;{time}</span>
+        <span>{time}</span>
       </div>
     </div>
   );
@@ -39,20 +39,26 @@ function SentinelBar({ active, bridge }) {
    Top nav
    ============================================================ */
 function Nav({ route, navigate }) {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
   return (
-    <nav className="nav">
-      <a className="brand" href="#" onClick={(e) => { e.preventDefault(); navigate('home'); }}>
+    <nav className={`nav ${open ? 'nav-open' : ''}`}>
+      <a className="brand" href="#" onClick={(e) => { e.preventDefault(); navigate('home'); close(); }}>
         <span className="mark"></span>
         <span className="word">Blue<em>Hippo</em>Cyber</span>
       </a>
+      <button className="nav-burger" onClick={() => setOpen(o => !o)} aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
       <div className="links">
-        <a href="#" className={route === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('home'); }}>Home</a>
-        <a href="#" className={route === 'solutions' ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('solutions'); }}>Solutions</a>
-        <a href="#hippo" onClick={(e) => { e.preventDefault(); navigate('home', 'hippo'); }}>HIPPO Framework</a>
-        <a href="#vault" onClick={(e) => { e.preventDefault(); navigate('home', 'vault-section'); }}>The Vault</a>
-        <a href="#contact" onClick={(e) => { e.preventDefault(); navigate('home', 'contact'); }}>Contact</a>
+        <a href="#" className={route === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('home'); close(); }}>Home</a>
+        <a href="#how" onClick={(e) => { e.preventDefault(); navigate('home', 'how'); close(); }}>How It Works</a>
+        <a href="#pricing" onClick={(e) => { e.preventDefault(); navigate('home', 'pricing'); close(); }}>Pricing</a>
+        <a href="#insights" onClick={(e) => { e.preventDefault(); navigate('home', 'insights'); close(); }}>Insights</a>
+        <a href="#" className={route === 'solutions' ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('solutions'); close(); }}>Services</a>
+        <a href="#contact" onClick={(e) => { e.preventDefault(); navigate('home', 'contact'); close(); }}>Contact</a>
       </div>
-      <button className="cta-mini" onClick={() => navigate('home', 'contact')}>Speak to Architect →</button>
+      <button className="cta-mini" onClick={() => { navigate('home', 'contact'); close(); }}>Book a Call →</button>
     </nav>
   );
 }
@@ -67,30 +73,31 @@ function Hero({ onSpeak, onScroll }) {
       <div className="hero-grid"></div>
       <div className="hero-scrim"></div>
       <div className="hero-content">
-        <div className="tagline-mono">[ Defensive Architects · Est. 2024 · Private-First ]</div>
+        <div className="tagline-mono">[ AI Infrastructure for Security Installers & Service Businesses ]</div>
         <h1>
-          Building <span className="neon">Unshakeable</span><br/>
-          Digital Fortresses.
+          The growth system<br/>
+          built for <span className="neon">installers.</span>
         </h1>
         <p className="slogan">
-          Deploying Private AI Infrastructure for Small Businesses Across the USA.
-          Hardened SQL, local-first AI, autonomous sentinels — deployed inside walls
-          we architect for you, around the data only you should ever see.
+          We build the lead-generation engine, AI infrastructure, and operational workflow
+          that powers modern security camera installers, low-voltage contractors, and service businesses.
+          More qualified leads. Faster response. Scalable growth — without hiring.
         </p>
         <div className="trust-line">
           <span className="trust-flag">◆</span>
-          <span><b>Florida-Based. Nationally-Trusted.</b></span>
+          <span><b>Specialists in CCTV & low-voltage.</b></span>
           <span className="trust-sep">·</span>
-          <span>Direct Support from Keenan McGriff:</span>
+          <span>Open to service businesses USA-wide.</span>
+          <span className="trust-sep">·</span>
           <a href="tel:8634404145" className="trust-phone">863-440-4145</a>
         </div>
         <div className="cta-row">
           <button className="cta-primary" onClick={onSpeak}>
-            Speak to the Architect
+            Book a 15-min Call
             <span className="arrow"></span>
           </button>
           <button className="cta-ghost" onClick={onScroll}>
-            Read the HIPPO Doctrine
+            See the System
           </button>
         </div>
       </div>
@@ -103,114 +110,80 @@ function Hero({ onSpeak, onScroll }) {
 }
 
 /* ============================================================
-   HIPPO pillars (scroll-reveal)
+   Built For — niche specificity band
    ============================================================ */
-const HIPPO_DATA = [
-  {
-    letter: 'H', num: '01',
-    name: 'Hardening',
-    lead: 'We don\'t patch — we re-architect. Platform-specific reinforcement, hardened SQL with row-level encryption, and surface reduction on every endpoint we touch.',
-    tools: ['DesktopScanner', 'macOS CIS L2', 'Win11 STIG', 'Hardened-SQL', 'AppArmor profiles'],
-    statLabel: 'Avg Surface Reduction',
-    statNum: '74%',
-    statSub: 'across 12 onboarded clients',
-    ascii: '▓▓▓▓▓▓▓▓▓░░░  74'
-  },
-  {
-    letter: 'I', num: '02',
-    name: 'Intelligence',
-    lead: 'OSINTOrchestrator runs deep reconnaissance across 40+ sources before threats reach you. Private AI orchestration — Claude, Gemini, Ollama — keeps your queries off public infrastructure.',
-    tools: ['OSINTOrchestrator', 'PcapAnalyzer', 'Ollama / Mistral', 'MITRE ATT&CK', 'Maltego'],
-    statLabel: 'OSINT Sources Indexed',
-    statNum: '42',
-    statSub: 'continuous · 18 dark-web feeds',
-    ascii: '◢◤◢◤◢◤◢◤◢◤◢◤'
-  },
-  {
-    letter: 'P', num: '03',
-    name: 'Privacy',
-    lead: 'Metadata stripped at the byte level. Footprint cleanup that actually reaches takedown. 100% data sovereignty — your AI inference runs on your hardware, your queries never leave your perimeter.',
-    tools: ['ExifTool', 'YeOldeCleanser', 'Local-first AI', 'GDPR/CCPA', 'Removal pipelines'],
-    statLabel: 'Records Removed',
-    statNum: '11.4K',
-    statSub: 'broker takedowns · last 90d',
-    ascii: '⌬ ⌬ ⌬ ⌬ ⌬ ⌬'
-  },
-  {
-    letter: 'P', num: '04',
-    name: 'Protection',
-    lead: 'Real-time sentinels watch the wire. Telegram and Gmail alerts in under 60 seconds. Web3 contract audits before deploy — because once it\'s on-chain, it\'s permanent.',
-    tools: ['Sentinel-Bridge', 'Telegram alerts', 'OWASP Top-10', 'SolidityParser', 'DeFiHackLabsDB'],
-    statLabel: 'Median Alert Latency',
-    statNum: '38s',
-    statSub: 'breach signal → human eyes',
-    ascii: '◉───◯───◉───◯'
-  },
-  {
-    letter: 'O', num: '05',
-    name: 'Orchestration',
-    lead: 'AgenticCore plans, executes, validates — autonomously. n8n pipelines collapse manual ops. Speed-to-lead under 60 seconds, hands free, 24/7. The architect sleeps. The fortress doesn\'t.',
-    tools: ['AgenticCore', 'n8n', 'Vapi voice', 'Claude Code', 'Sentinel-Bot'],
-    statLabel: 'Speed-to-Lead',
-    statNum: '< 60s',
-    statSub: 'autonomous · 99.4% uptime',
-    ascii: '⟶⟶⟶ AUTO ⟶⟶⟶'
-  },
-];
-
-function HippoFramework() {
-  const refs = useRef([]);
-  const [active, setActive] = useState(new Set());
-  useEffect(() => {
-    const obs = new IntersectionObserver((entries) => {
-      setActive(prev => {
-        const next = new Set(prev);
-        entries.forEach(en => {
-          const idx = Number(en.target.dataset.idx);
-          if (en.isIntersecting) next.add(idx);
-          else if (en.intersectionRatio === 0) next.delete(idx);
-        });
-        return next;
-      });
-    }, { threshold: 0.35, rootMargin: '-15% 0px -15% 0px' });
-    refs.current.forEach(el => el && obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-
+function BuiltFor() {
+  const verticals = [
+    'CCTV Installers',
+    'Low-Voltage Contractors',
+    'Surveillance Companies',
+    'Access Control',
+    'Residential Security',
+    'Commercial Integrators',
+    'Field-Service Trades',
+    'Local Contractors',
+  ];
   return (
-    <section className="section hippo-frame" id="hippo">
-      <div className="section-header">
-        <div>
-          <div className="eyebrow">// 02 · Doctrine</div>
-          <h2>The HIPPO Framework.</h2>
-        </div>
-        <div className="meta">
-          5 PILLARS · 1 DOCTRINE<br/>
-          <b>{active.size}/5</b> illuminated
+    <section className="built-for-band" id="built-for">
+      <div className="bf-inner">
+        <div className="bf-label">// Specialty Verticals · Built around their operations</div>
+        <div className="bf-list">
+          {verticals.map(v => (
+            <div className="bf-chip" key={v}>
+              <span className="bf-glyph">◆</span>
+              <span>{v}</span>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="hippo-pillars">
-        {HIPPO_DATA.map((p, i) => (
-          <div
-            key={i}
-            ref={(el) => refs.current[i] = el}
-            data-idx={i}
-            className={`pillar ${active.has(i) ? 'in-view' : ''}`}
-          >
-            <div className="letter" data-num={p.num}>{p.letter}</div>
-            <div className="body">
-              <h3>{p.name}</h3>
-              <p className="lead">{p.lead}</p>
-              <div className="tools">
-                {p.tools.map(t => <span key={t} className="tool">{t}</span>)}
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="label">{p.statLabel}</div>
-              <div className="stat-num">{p.statNum}</div>
-              <div className="stat-sub">{p.statSub}</div>
-              <div className="ascii">{p.ascii}</div>
-            </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   What We Do — 4 outcome / infrastructure cards
+   ============================================================ */
+function WhatWeDo() {
+  const items = [
+    {
+      num: '01',
+      title: 'Lead Generation Engine',
+      body: 'We build and operate the systems that produce qualified leads — paid campaigns, local search infrastructure, capture flows. Volume becomes predictable.',
+    },
+    {
+      num: '02',
+      title: 'AI Response Infrastructure',
+      body: 'Inbound calls, texts, forms, and DMs are answered within seconds by infrastructure tuned to your trade. No lead waits. No lead is forgotten.',
+    },
+    {
+      num: '03',
+      title: 'Operational Workflow',
+      body: 'Quotes, scheduling, dispatch, intake, follow-up — wired together as one operations layer. Your tools stop fighting; your team stops re-typing.',
+    },
+    {
+      num: '04',
+      title: 'Growth Monitoring',
+      body: 'Every install is monitored, tuned, and reported. Your campaigns get better month over month — and you can see exactly what each dollar produced.',
+    },
+  ];
+  return (
+    <section className="section what-we-do" id="what">
+      <div className="section-header">
+        <div>
+          <div className="eyebrow">// 01 · What We Build</div>
+          <h2>Four systems.<br/>One <span className="neon">growth infrastructure.</span></h2>
+        </div>
+        <div className="meta">
+          INSTALLED · MONITORED · OWNED<br/>
+          <b>Built for trade businesses.</b>
+        </div>
+      </div>
+      <div className="what-grid">
+        {items.map((it) => (
+          <div className="what-card" key={it.num}>
+            <div className="what-num">{it.num}</div>
+            <h3>{it.title}</h3>
+            <p>{it.body}</p>
           </div>
         ))}
       </div>
@@ -219,231 +192,317 @@ function HippoFramework() {
 }
 
 /* ============================================================
-   Vault tiers
+   How It Works — 3-step
    ============================================================ */
-const TIER_DATA = [
-  {
-    num: '01', name: 'The Ghost', focus: 'Pre-Infiltration & Privacy',
-    plain: 'Remove your personal info from the web. Stop junk mail and spam.',
-    setup: '$997', monthly: '$497',
-    features: [
-      { txt: 'Digital Footprint Cleanup (OSINTOrchestrator)' },
-      { txt: 'Metadata Stripping (ExifTool pipeline)' },
-      { txt: 'DM/Email Inbox Triage (CyberAgent Base)' },
-      { txt: 'Social Media Privacy Audit' },
-      { txt: 'Secure SQL Database Management' },
-      { txt: 'Basic Private AI Chatbot (Ollama/Gemini)' },
-    ],
-  },
-  {
-    num: '02', name: 'The Sentinel', focus: 'Active Defense & Growth',
-    plain: '24/7 Website Security. Never miss a customer inquiry again.',
-    setup: '$2,497', monthly: '$1,497',
-    features: [
-      { txt: 'Everything in The Ghost', inherit: true },
-      { txt: 'Impersonator / Clone Audits' },
-      { txt: 'Weekly OWASP Top-10 WebScans' },
-      { txt: 'Real-time Telegram + Gmail Alerts' },
-      { txt: 'Custom Secure Website + Hosting' },
-      { txt: 'AI Lead Capture Automation' },
-    ],
-    featured: true,
-    badge: 'Recommended Growth Driver',
-  },
-  {
-    num: '03', name: 'The Architect', focus: 'Sovereign Build · Total Ownership',
-    plain: '$12,500 One-Time. Own your data — no cloud, no monthly bills.',
-    setup: '$12,500', monthly: '$0',
-    sovereign: true,
-    features: [
-      { txt: 'Custom Local AI PC — on-prem hardware', inherit: true },
-      { txt: '100% on-site data privacy · zero cloud egress' },
-      { txt: 'Full company standards + marketing integration' },
-      { txt: 'Custom Vapi Voice Assistant + AgenticCore' },
-      { txt: 'Speed-to-Lead < 60 seconds, autonomous' },
-      { txt: 'Monthly MITRE ATT&CK PDF Reports' },
-      { txt: 'On-Call Service & Maintenance — no subscription' },
-    ],
-  },
-  {
-    num: '04', name: 'Sentinel Light', focus: 'À La Carte · Mix & Match',
-    plain: 'Buy what you need. Own your assets. Add managed monitoring monthly.',
-    splitSections: {
-      assets: {
-        title: 'One-Time Assets · Ownership',
-        badge: 'Buy once, own forever',
-        items: [
-          { name: 'Private AI Server Build', price: '$15,000' },
-          { name: 'Phone Answering Bot',     price: '$750' },
-          { name: 'Lead-Gen Site',           price: '$900' },
-          { name: 'Text-Back Automation',    price: '$500' },
-        ],
-      },
-      managed: {
-        title: 'Managed Services · Monthly',
-        badge: 'Recurring · cancel anytime',
-        items: [
-          { name: 'Deep Web Monitoring',  price: '$150', unit: '/mo' },
-          { name: 'Vulnerability Scanning', price: '$300', unit: '/mo' },
-          { name: 'Inbox Triage',         price: '$200', unit: '/mo' },
-        ],
-      },
+function HowItWorks({ onSpeak }) {
+  const steps = [
+    {
+      num: '01',
+      title: 'We architect the system',
+      body: 'A focused discovery call, then we design your full lead engine, AI response layer, and operational workflow. We architect what fits your trade — not a template.',
+      stat: '5–10 days', statLabel: 'install timeline',
     },
-  },
-];
-
-function Vault({ featuredOverride }) {
+    {
+      num: '02',
+      title: 'Campaigns + AI go live',
+      body: 'Lead-generation campaigns launch with a controlled, performance-tuned budget. AI infrastructure goes live across calls, text, forms, and CRM. Leads start arriving.',
+      stat: '< 60 sec', statLabel: 'lead response time',
+    },
+    {
+      num: '03',
+      title: 'We run, tune, and scale',
+      body: 'Monthly retainer covers monitoring, ad management, automation upkeep, and reporting. Campaigns are optimized continuously. Scale ad budget any time.',
+      stat: '24 / 7', statLabel: 'monitored & optimized',
+    },
+  ];
   return (
-    <section className="section vault" id="vault-section">
+    <section className="section how" id="how">
       <div className="section-header">
         <div>
-          <div className="eyebrow">// 03 · The Vault</div>
-          <h2>Architected by Tier.</h2>
+          <div className="eyebrow">// 02 · How It Works</div>
+          <h2>Architect.<br/><span className="neon">Operate.</span> Scale.</h2>
         </div>
         <div className="meta">
-          SETUP + MONTHLY · MONTH-TO-MONTH<br/>
-          <b>No annual lock-in.</b> Remote onboarding · all 50 states.
+          DONE-FOR-YOU<br/>
+          <b>End-to-end ownership.</b>
         </div>
       </div>
-      <div className="tier-grid">
-        {TIER_DATA.map((t, i) => {
-          const isFeatured = featuredOverride != null ? featuredOverride === i : t.featured;
-          const isFlat = !!t.flatItems;
-          const isSplit = !!t.splitSections;
-          return (
-            <div key={t.num} className={`tier ${isFeatured ? 'featured' : ''} ${isFlat || isSplit ? 'tier-flat' : ''} ${t.sovereign ? 'sovereign-tier' : ''} ${isSplit ? 'tier-split' : ''}`}>
-              {isFeatured && <div className="badge">{t.badge || 'Selected'}</div>}
-              <div className="tier-num">TIER · {t.num}</div>
-              <div className="tier-name">{t.name}</div>
-              <div className="tier-focus">{t.focus}</div>
-              {t.plain && <div className="tier-plain">{t.plain}</div>}
-              {isSplit ? (
-                <>
-                  <div className="split-block">
-                    <div className="split-head">
-                      <span className="split-title">{t.splitSections.assets.title}</span>
-                      <span className="split-badge split-badge-own">◆ {t.splitSections.assets.badge}</span>
-                    </div>
-                    <div className="flat-list">
-                      {t.splitSections.assets.items.map((item, j) => (
-                        <div className="flat-row" key={j}>
-                          <span className="flat-name">{item.name}</span>
-                          <span className="flat-price">{item.price}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="split-block">
-                    <div className="split-head">
-                      <span className="split-title">{t.splitSections.managed.title}</span>
-                      <span className="split-badge split-badge-rec">↻ {t.splitSections.managed.badge}</span>
-                    </div>
-                    <div className="flat-list">
-                      {t.splitSections.managed.items.map((item, j) => (
-                        <div className="flat-row" key={j}>
-                          <span className="flat-name">{item.name}</span>
-                          <span className="flat-price">{item.price}<span className="flat-unit">{item.unit}</span></span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <button className="tier-cta">Build Your Stack →</button>
-                </>
-              ) : isFlat ? (
-                <>
-                  <div className="flat-list">
-                    {t.flatItems.map((item, j) => (
-                      <div className="flat-row" key={j}>
-                        <span className="flat-name">{item.name}</span>
-                        <span className="flat-price">{item.price}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flat-note">{t.flatNote}</div>
-                  <button className="tier-cta">Build Your Stack →</button>
-                </>
-              ) : (
-                <>
-                  <div className={`price price-setup-first ${t.sovereign ? 'price-sovereign' : ''}`}>
-                    {t.sovereign ? (
-                      <>
-                        <div className="setup-label">One-Time Build · Total Ownership</div>
-                        <div className="setup-prominent">{t.setup}</div>
-                        <div className="monthly-after sovereign-after"><b>$0/mo</b><span className="month"> · On-call service & maintenance</span></div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="setup-label">Setup Fee · One-time</div>
-                        <div className="setup-prominent">{t.setup}</div>
-                        <div className="monthly-after">then <b>{t.monthly}</b><span className="month">/mo</span></div>
-                      </>
-                    )}
-                  </div>
-                  <ul className="features">
-                    {t.features.map((f, j) => (
-                      <li key={j} className={f.inherit ? 'inherit' : ''}>{f.txt}</li>
-                    ))}
-                  </ul>
-                  <button className="tier-cta">{t.sovereign ? `Commission ${t.name} →` : `Deploy ${t.name} →`}</button>
-                </>
-              )}
+      <div className="how-grid">
+        {steps.map((s, i) => (
+          <div className="how-card" key={s.num}>
+            <div className="how-step">STEP · {s.num}</div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            <div className="how-stat">
+              <div className="hs-num">{s.stat}</div>
+              <div className="hs-lbl">{s.statLabel}</div>
             </div>
-          );
-        })}
+            {i < steps.length - 1 && <div className="how-arrow">→</div>}
+          </div>
+        ))}
+      </div>
+      <div className="how-cta">
+        <button className="cta-primary" onClick={onSpeak}>
+          Architect My System
+          <span className="arrow"></span>
+        </button>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   Stories carousel
+   Growth Engine — ad management positioning band
+   ============================================================ */
+function GrowthEngine() {
+  const includes = [
+    { name: 'Targeted Campaigns', body: 'Meta, Google, and local channels. Pre-tested creative tuned to your service area.' },
+    { name: 'Continuous Optimization', body: 'Audiences, creatives, and bidding refined weekly against measurable ROI.' },
+    { name: 'Performance Reporting', body: 'A monthly snapshot of leads generated, cost per qualified lead, and revenue impact.' },
+    { name: 'Scale on Demand', body: 'Ramp budget up when you can take more work. Pull back any month. You stay in control.' },
+  ];
+  return (
+    <section className="section growth-engine" id="growth-engine">
+      <div className="ge-frame">
+        <div className="ge-head">
+          <div className="ge-eyebrow">// 03 · Growth Engine</div>
+          <h2>Managed lead generation<br/>built for <span className="neon">measurable ROI.</span></h2>
+          <p>
+            We don't just install software and hand you a login. We launch and manage targeted
+            lead-generation campaigns designed to produce real, attributable revenue —
+            then refine them every month against the numbers.
+          </p>
+        </div>
+        <div className="ge-grid">
+          {includes.map(it => (
+            <div className="ge-cell" key={it.name}>
+              <div className="ge-name">{it.name}</div>
+              <div className="ge-body">{it.body}</div>
+            </div>
+          ))}
+        </div>
+        <div className="ge-foot">
+          <span className="ge-mono">// Campaigns scale with your business · Budget control stays with you · Every dollar is reportable</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Pricing — 3 tiers with explicit monthly retainer breakdown
+   ============================================================ */
+const TIER_DATA = [
+  {
+    num: '01', name: 'Ghost', focus: 'Foundation Lead Engine',
+    plain: 'For operators who lose leads to slow response. We install the capture and routing layer.',
+    setup: '$299', monthly: '$497',
+    features: [
+      { txt: 'Lead capture across site, social, and forms' },
+      { txt: 'Missed-call text-back automation' },
+      { txt: 'AI auto-replies, tuned to your trade' },
+      { txt: 'CRM connection & lead routing' },
+      { txt: 'Live in 5–7 business days' },
+    ],
+    monthlyIncludes: [
+      'Lead response monitoring',
+      'Automation upkeep & tuning',
+      'CRM syncing',
+      'Monthly performance report',
+      'Technical support',
+    ],
+  },
+  {
+    num: '02', name: 'Sentinel', focus: 'Operations + Growth System',
+    plain: 'The full operations layer plus managed lead-generation campaigns. Most installers start here.',
+    setup: '$597', monthly: '$997 – $1,497',
+    features: [
+      { txt: 'Everything in Ghost', inherit: true },
+      { txt: 'Full follow-up sequences (text + email)' },
+      { txt: 'Calendar booking + dispatch routing' },
+      { txt: 'CRM integration & contact enrichment' },
+      { txt: 'Real-time alerts & dashboards' },
+      { txt: 'Managed lead-generation campaigns' },
+    ],
+    monthlyIncludes: [
+      'AI system monitoring',
+      'Lead response management',
+      'Automation upkeep',
+      'Ad campaign management',
+      'Campaign optimization',
+      'CRM syncing & enrichment',
+      'Workflow maintenance',
+      'AI tuning & updates',
+      'Monthly reporting & strategy',
+      'Priority technical support',
+    ],
+    featured: true,
+    badge: 'Most Popular · Recommended',
+  },
+  {
+    num: '03', name: 'Architect', focus: 'Full Business Infrastructure',
+    plain: 'A complete AI-powered growth engine. Dedicated architect, full ad mgmt, voice AI, multi-channel.',
+    setup: '$1,500', monthly: '$2,500 – $4,500',
+    features: [
+      { txt: 'Everything in Sentinel', inherit: true },
+      { txt: 'AI voice assistant for inbound calls' },
+      { txt: 'Outbound multi-channel campaigns (SMS, email, voice)' },
+      { txt: 'Custom workflow builds on request' },
+      { txt: 'Dedicated growth architect' },
+      { txt: 'Quarterly strategy review' },
+    ],
+    monthlyIncludes: [
+      'Dedicated growth architect',
+      'Full lead-gen + ad management',
+      'Multi-channel campaign mgmt',
+      'AI voice agent operations',
+      'Advanced analytics & attribution',
+      'Continuous AI tuning',
+      'Custom workflow upkeep',
+      'Same-day technical support',
+      'Quarterly strategy sessions',
+      'On-demand growth experiments',
+    ],
+  },
+];
+
+function Pricing({ featuredOverride }) {
+  return (
+    <section className="section pricing" id="pricing">
+      <div className="section-header">
+        <div>
+          <div className="eyebrow">// 04 · Pricing</div>
+          <h2>The infrastructure tier<br/>that fits <span className="neon">where you are.</span></h2>
+        </div>
+        <div className="meta">
+          MONTH-TO-MONTH<br/>
+          <b>No long-term lock-in.</b> Scale up or pause anytime.
+        </div>
+      </div>
+      <div className="tier-grid tier-grid-3">
+        {TIER_DATA.map((t, i) => {
+          const isFeatured = featuredOverride != null ? featuredOverride === i : t.featured;
+          return (
+            <div key={t.num} className={`tier ${isFeatured ? 'featured' : ''}`}>
+              {isFeatured && <div className="badge">{t.badge || 'Recommended'}</div>}
+              <div className="tier-num">TIER · {t.num}</div>
+              <div className="tier-name">{t.name}</div>
+              <div className="tier-focus">{t.focus}</div>
+              {t.plain && <div className="tier-plain">{t.plain}</div>}
+              <div className="price price-setup-first">
+                <div className="setup-label">Setup · One-time</div>
+                <div className="setup-prominent">{t.setup}</div>
+                <div className="monthly-after">then <b>{t.monthly}</b><span className="month">/mo</span></div>
+              </div>
+              <ul className="features">
+                {t.features.map((f, j) => (
+                  <li key={j} className={f.inherit ? 'inherit' : ''}>{f.txt}</li>
+                ))}
+              </ul>
+
+              <div className="monthly-includes">
+                <div className="mi-label">// Monthly retainer includes</div>
+                <ul className="mi-list">
+                  {t.monthlyIncludes.map((m, k) => (
+                    <li key={k}>{m}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <button className="tier-cta">Architect with {t.name} →</button>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="retainer-note">
+        <span className="rn-mono">// Monthly retainer is ongoing business growth infrastructure — not software hosting.</span>
+      </div>
+
+      <ALaCarte />
+    </section>
+  );
+}
+
+/* ============================================================
+   À la carte add-ons
+   ============================================================ */
+function ALaCarte() {
+  const items = [
+    { name: 'System Audit', body: 'A full audit of your current operations and lead flow. We identify the highest-leverage installs first.' },
+    { name: 'Growth Monitoring', body: 'Ongoing monitoring of your existing lead engine and operational systems. Catches breaks before they cost you.' },
+    { name: 'Standalone Lead Capture', body: 'Drop a single AI lead-capture surface onto an existing site or social profile, tuned to your trade.' },
+    { name: 'Website Hardening', body: 'Practical safeguards on your site so it stays fast, online, and trustworthy under campaign traffic.' },
+    { name: 'Local Search Build', body: 'Optimize and own your Google Business profile so local searches actually find and call your trade.' },
+  ];
+  return (
+    <div className="alacarte">
+      <div className="alacarte-head">
+        <div className="eyebrow">// Add-ons</div>
+        <h3>Standalone systems.</h3>
+        <p>Run any of these on their own, or stack them onto a tier.</p>
+      </div>
+      <div className="alacarte-grid">
+        {items.map((it) => (
+          <div className="alacarte-card" key={it.name}>
+            <div className="ac-name">{it.name}</div>
+            <div className="ac-body">{it.body}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   Stories
    ============================================================ */
 const STORIES = [
   {
-    tag: 'Case 01 · Italian Deli, NYC',
-    title: 'A 75-year-old deli walks into the metaverse — and walks out hardened.',
-    body: 'We built a 3D walkthrough demo for the front-of-house, hardened the lead-capture pipeline, and stripped 1,200+ PII records from data brokers. Foot traffic up. Footprint down.',
+    tag: 'Case 01 · CCTV Installer · Tampa Bay',
+    title: 'A 6-tech surveillance install company stopped losing leads — and added a third van.',
+    body: 'We built their lead engine and operational workflow: managed campaigns, instant response across phone and form, dispatch routing into their CRM. Booked-job rate climbed inside 60 days.',
     stats: [
-      { num: '+38%', lbl: 'Lead capture' },
-      { num: '1.2K', lbl: 'Records removed' },
-      { num: '<1s', lbl: 'TTFB hardened' },
+      { num: '+62%', lbl: 'Booked installs' },
+      { num: '< 60s', lbl: 'Lead response' },
+      { num: '3rd', lbl: 'Service van added' },
     ],
     mock: (
       <div className="story-mock">
         <div className="mock-header">
           <span></span><span></span><span></span>
-          <span className="url">deli3d.bluehippo.io</span>
+          <span className="url">installer-ops · live</span>
         </div>
-        <div style={{ color: 'var(--neon)', marginBottom: 6 }}>$ npm run deploy:deli</div>
-        <div>{'>'} hardening front-of-house lead form...</div>
-        <div>{'>'} CSP + HSTS + SameSite=Strict — <span style={{ color: 'var(--ok)' }}>OK</span></div>
-        <div>{'>'} OSINT sweep · 1,247 records flagged</div>
-        <div>{'>'} broker takedowns scheduled · 18 sources</div>
-        <div style={{ color: 'var(--neon)', marginTop: 6 }}>FORTRESS ONLINE ✓</div>
+        <div style={{ color: 'var(--neon)', marginBottom: 6 }}>// inbound lead · 8:47 PM</div>
+        <div style={{ color: 'var(--ink-2)' }}>"Need 8 cameras for warehouse"</div>
+        <div style={{ color: 'var(--neon)', marginTop: 6 }}>↳ AI: qualified + site survey booked Tue 9am</div>
+        <div style={{ color: 'var(--ink-2)', marginTop: 4 }}>{'>'} CRM updated · tech notified</div>
+        <div style={{ color: 'var(--ink-2)' }}>{'>'} estimate template prepped</div>
+        <div style={{ color: 'var(--ok)', marginTop: 8 }}>BOOKED · est. $11,400</div>
       </div>
     ),
   },
   {
-    tag: 'Case 02 · Florida Treehouse',
-    title: 'Boutique vacation rental gets a Sentinel — and a 6-figure booking quarter.',
-    body: 'Local-SEO tuned site, Hippo-Chat handling 80% of FAQs unattended, speed-to-lead under 40s. The treehouse runs itself now. The owner hasn\'t answered a "do you have wifi?" email in 7 months.',
+    tag: 'Case 02 · Low-Voltage Contractor · GA',
+    title: 'A two-truck low-voltage shop became a 9-job-a-week operation.',
+    body: 'Managed lead-generation campaigns produced 4–7 qualified inquiries per day. AI response handled qualification and dispatch routing. The owner stopped quoting at 11pm.',
     stats: [
-      { num: '40s', lbl: 'Speed-to-lead' },
-      { num: '80%', lbl: 'FAQ deflection' },
-      { num: '6×', lbl: 'Booking velocity' },
+      { num: '4–7/d', lbl: 'Qualified leads' },
+      { num: '9', lbl: 'Jobs/week' },
+      { num: '0', lbl: 'Evenings spent quoting' },
     ],
     mock: (
       <div className="story-mock">
         <div className="mock-header">
           <span></span><span></span><span></span>
-          <span className="url">treehouse-fl.io</span>
+          <span className="url">growth-dashboard · live</span>
         </div>
-        <div style={{ color: 'var(--neon)', marginBottom: 6 }}>HIPPO-CHAT &gt; visitor#492</div>
-        <div style={{ color: 'var(--ink-2)' }}>"are pets allowed?"</div>
-        <div style={{ color: 'var(--neon)', marginTop: 4 }}>↳ bot: dogs welcome, $50 fee</div>
-        <div style={{ color: 'var(--ink-2)' }}>"book mar 14-18"</div>
-        <div style={{ color: 'var(--neon)', marginTop: 4 }}>↳ bot: holding · payment link sent</div>
-        <div style={{ color: 'var(--ok)', marginTop: 8 }}>BOOKING #4827 · $1,840</div>
+        <div style={{ color: 'var(--neon)', marginBottom: 6 }}>// 30-day campaign snapshot</div>
+        <div style={{ color: 'var(--ink-2)' }}>Leads generated · <span style={{ color: 'var(--neon)' }}>142</span></div>
+        <div style={{ color: 'var(--ink-2)' }}>Qualified · <span style={{ color: 'var(--neon)' }}>97</span></div>
+        <div style={{ color: 'var(--ink-2)' }}>Booked installs · <span style={{ color: 'var(--neon)' }}>36</span></div>
+        <div style={{ color: 'var(--ink-2)' }}>Cost / qualified · <span style={{ color: 'var(--neon)' }}>$38</span></div>
+        <div style={{ color: 'var(--ok)', marginTop: 8 }}>PIPELINE · $148K</div>
       </div>
     ),
   },
@@ -456,8 +515,8 @@ function Stories() {
     <section className="section stories" id="stories">
       <div className="section-header">
         <div>
-          <div className="eyebrow">// 04 · Field Reports</div>
-          <h2>Fortresses, Built.</h2>
+          <div className="eyebrow">// 05 · Field Results</div>
+          <h2>Real installers.<br/>Real <span className="neon">growth.</span></h2>
         </div>
         <div className="meta">
           {String(idx + 1).padStart(2,'0')} / {String(STORIES.length).padStart(2,'0')}
@@ -497,19 +556,223 @@ function Stories() {
 }
 
 /* ============================================================
-   Marquee
+   Insights — operational intelligence blog section
+   ============================================================ */
+const CATEGORIES = [
+  'AI for Security Installers',
+  'Business Automation',
+  'Lead Generation',
+  'Operations & Workflow',
+  'AI News · Blue-Collar',
+  'Surveillance Tech Trends',
+  'Local Business Growth',
+];
+
+const TEASERS = [
+  {
+    cat: 'Lead Generation',
+    title: 'The 4 automations every CCTV installer should run before adding a salesperson',
+    blurb: 'Salespeople are expensive. Most missed-revenue problems on the install side aren\'t a sales problem — they\'re a response problem. Here\'s what to wire up first.',
+    read: '6 min read',
+  },
+  {
+    cat: 'Operations & Workflow',
+    title: 'Why missed-call text-back is the highest-ROI install you\'ll ever do',
+    blurb: 'For trades that get most of their work by phone, a 30-second automation often outperforms thousands in ad spend. A practical breakdown of why — and how to implement it well.',
+    read: '4 min read',
+  },
+  {
+    cat: 'Local Business Growth',
+    title: 'Local SEO in 2026: what actually still works for low-voltage trades',
+    blurb: 'Google\'s search results look nothing like they did 18 months ago. Here\'s the short list of things that still consistently produce booked jobs for local installers.',
+    read: '7 min read',
+  },
+];
+
+function Insights() {
+  const [activeCat, setActiveCat] = useState('All');
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const subscribe = (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubscribed(true);
+    setEmail('');
+  };
+
+  return (
+    <section className="section insights" id="insights">
+      <div className="section-header">
+        <div>
+          <div className="eyebrow">// 06 · Insights</div>
+          <h2>Automation Intel.</h2>
+        </div>
+        <div className="meta">
+          OPERATIONAL INTELLIGENCE<br/>
+          <b>For installers & service ops.</b>
+        </div>
+      </div>
+
+      {/* Featured article */}
+      <article className="insights-featured">
+        <div className="if-meta">
+          <span className="if-cat">// AI for Security Installers</span>
+          <span className="if-date">FEATURED · 9 min read</span>
+        </div>
+        <h3 className="if-title">
+          Why Your Security Cameras Should Be<br/>
+          Your <span className="neon-italic">Best Employee</span> in 2026.
+        </h3>
+        <div className="if-sub">
+          How AI-powered surveillance systems are becoming operational tools —
+          not just passive recording devices.
+        </div>
+        <div className="if-body">
+          <p>
+            For decades, security cameras have been treated as forensic tools. You check
+            the tape after something goes wrong, and the rest of the time the system sits
+            quiet — a sunk cost waiting to prove its worth. That model is being quietly
+            dismantled.
+          </p>
+          <p>
+            AI-equipped systems now identify operational events as they happen. A vehicle
+            blocking a loading dock. A customer standing unattended at a counter for too
+            long. A door propped open in an off-hours zone. Instead of producing a 24-hour
+            recording for someone to scrub through later, the camera sends the right
+            notification to the right person — usually before a human would have even
+            noticed.
+          </p>
+          <p>
+            For an installation business, this isn't a feature upgrade. It's a positioning
+            shift. The cameras you sell are no longer passive insurance. They're an
+            always-on operations layer that your customers will pay a premium for —
+            when you know how to package and explain it.
+          </p>
+          <ul className="if-bullets">
+            <li>Smart alerts that route by zone, time of day, and severity — without manual review.</li>
+            <li>Object and behavior recognition that reduces false-alarm fatigue by an order of magnitude.</li>
+            <li>Integrations with operational tools (POS, dispatch, access control) so events become workflow.</li>
+            <li>Faster response when something actually matters — measured in seconds, not minutes.</li>
+            <li>A clean upsell path from "we install cameras" to "we install operational awareness."</li>
+          </ul>
+          <p>
+            The installers winning right now aren't competing on hardware specs or per-camera
+            pricing. They're competing on what the system <em>does</em> after the install —
+            and they're charging accordingly.
+          </p>
+        </div>
+        <div className="if-foot">
+          <a href="#contact" className="if-cta">Read the full breakdown →</a>
+        </div>
+      </article>
+
+      {/* Categories */}
+      <div className="insights-cats">
+        <button
+          className={`cat-chip ${activeCat === 'All' ? 'active' : ''}`}
+          onClick={() => setActiveCat('All')}
+        >All</button>
+        {CATEGORIES.map(c => (
+          <button
+            key={c}
+            className={`cat-chip ${activeCat === c ? 'active' : ''}`}
+            onClick={() => setActiveCat(c)}
+          >{c}</button>
+        ))}
+      </div>
+
+      {/* Teaser grid */}
+      <div className="insights-grid">
+        {TEASERS.map(t => (
+          <article className="insight-card" key={t.title}>
+            <div className="ic-cat">{t.cat}</div>
+            <h4>{t.title}</h4>
+            <p>{t.blurb}</p>
+            <div className="ic-foot">
+              <span className="ic-read">{t.read}</span>
+              <span className="ic-arrow">→</span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Email capture */}
+      <div className="insights-capture">
+        <div className="ic-left">
+          <div className="ic-eyebrow">// Subscribe · One insight per week</div>
+          <h3>Operational intel for installers,<br/><span className="neon-italic">delivered weekly.</span></h3>
+          <p>Practical breakdowns of automation, lead generation, and AI-tools for trade businesses. No fluff, no roundups — one tight piece per week.</p>
+        </div>
+        <form className="ic-form" onSubmit={subscribe}>
+          {!subscribed ? (
+            <>
+              <div className="ic-input-wrap">
+                <span className="ic-prompt">▸</span>
+                <input
+                  type="email"
+                  required
+                  placeholder="you@yourbusiness.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <button type="submit">Subscribe →</button>
+            </>
+          ) : (
+            <div className="ic-thanks">
+              <span className="ic-check">✓</span>
+              <span>Subscribed. First insight lands within a week.</span>
+            </div>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Final CTA band
+   ============================================================ */
+function FinalCTA({ onSpeak }) {
+  return (
+    <section className="section final-cta" id="final-cta">
+      <div className="fc-inner">
+        <div className="fc-eyebrow">// 07 · Next Step</div>
+        <h2>Architect your <span className="neon">growth engine.</span></h2>
+        <p>
+          Book a 15-minute call. We'll map your current operations, identify the
+          three highest-leverage systems to install first, and send back a scoped
+          build plan within 24 hours — no pitch, no obligation.
+        </p>
+        <div className="cta-row">
+          <button className="cta-primary" onClick={onSpeak}>
+            Book a 15-min Call
+            <span className="arrow"></span>
+          </button>
+          <a className="cta-ghost" href="tel:8634404145">
+            Or call 863-440-4145
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Marquee — infrastructure language
    ============================================================ */
 function Marquee() {
-  const tools = [
-    'WebScanner', 'PcapAnalyzer', 'OSINTOrchestrator',
-    'MITRE ATT&CK Mapping', 'SolidityParser', 'DeFiHackLabsDB',
-    'AgenticCore', 'Sentinel-Bridge', 'Hardened-SQL',
-    'ExifTool Pipeline', 'Vapi Voice', 'n8n Orchestrator',
+  const words = [
+    'Lead Generation Engine', 'AI Response Infrastructure', 'Managed Ad Campaigns',
+    'Operational Workflow', 'CRM Syncing', 'Calendar & Dispatch',
+    'Missed-Call Text-Back', 'Voice AI', 'Multi-Channel Outreach',
+    'Local Search Authority', 'Performance Reporting', '24/7 Monitoring',
   ];
-  const all = [...tools, ...tools];
+  const all = [...words, ...words];
   return (
     <section className="marquee-section">
-      <div className="label">// Engineered Toolchain · 12 modules · Continuously Audited</div>
+      <div className="label">// What we architect · End-to-end growth infrastructure</div>
       <div className="marquee">
         {all.map((t, i) => (
           <div className="item" key={i}>
@@ -523,40 +786,36 @@ function Marquee() {
 }
 
 /* ============================================================
-   Contact (terminal-styled)
+   Contact
    ============================================================ */
 function Contact() {
   const [tier, setTier] = useState('sentinel');
-  const [severity, setSeverity] = useState('medium');
-  const sevColor = {
-    low: 'var(--ok)', medium: 'oklch(0.78 0.16 220)',
-    high: 'var(--warn)', critical: 'var(--crit)',
-  }[severity];
-  const sevLabel = {
-    low: 'just exploring',
-    medium: 'planning a deployment',
-    high: 'active threat / urgent',
-    critical: 'breach in progress',
-  }[severity];
+  const [stage, setStage] = useState('exploring');
+  const [trade, setTrade] = useState('cctv');
+  const stageLabel = {
+    exploring: 'just exploring',
+    planning: 'planning to install soon',
+    urgent: 'need this set up ASAP',
+  }[stage];
 
   return (
     <section className="section contact" id="contact">
       <div className="section-header">
         <div>
-          <div className="eyebrow">// 06 · Channel</div>
-          <h2>Contact Form.</h2>
+          <div className="eyebrow">// 08 · Get Started</div>
+          <h2>Book a call.</h2>
         </div>
         <div className="meta">
-          ENCRYPTED INTAKE · TLS 1.3<br/>
-          <b>Ack within 4h.</b> Always.
+          REPLY WITHIN 4 HOURS<br/>
+          <b>Real human, no funnel.</b>
         </div>
       </div>
       <div className="contact-grid">
         <div className="contact-info">
-          <h3>Speak architect-to-architect.</h3>
+          <h3>Talk to a real architect.</h3>
           <p>
-            Skip the sales funnel. Tell us what you're defending and we'll send back a
-            scoped recommendation within 4 hours — signed by the Sentinel that will own your account.
+            Tell us about your business and what you're trying to scale. We'll send back
+            a scoped recommendation within 4 hours — no slides, no upsell, no pressure.
           </p>
           <div className="channels">
             <div className="channel">
@@ -572,47 +831,57 @@ function Contact() {
           </div>
         </div>
 
-        <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('Intake encrypted and forwarded to Sentinel-Bridge.'); }}>
+        <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('Got it — we\'ll reply within 4 hours.'); }}>
           <div className="term-header">
             <div className="dots"><span></span><span></span><span></span></div>
-            <span className="path">~ /intake/new</span>
+            <span className="path">~ /book-call</span>
           </div>
           <div className="field">
-            <label>handle <span className="req">*</span></label>
-            <input type="text" required placeholder="ada@yourcompany.io" />
+            <label>your email <span className="req">*</span></label>
+            <input type="email" required placeholder="you@yourcompany.com" />
           </div>
           <div className="field">
-            <label>org / domain</label>
-            <input type="text" placeholder="yourcompany.io" />
+            <label>business name</label>
+            <input type="text" placeholder="Your company" />
           </div>
           <div className="field">
-            <label>tier of interest</label>
-            <select value={tier} onChange={(e) => setTier(e.target.value)}>
-              <option value="ghost">Tier 1 — The Ghost</option>
-              <option value="sentinel">Tier 2 — The Sentinel</option>
-              <option value="architect">Tier 3 — The Architect</option>
-              <option value="light">Tier 4 — Sentinel Light</option>
-              <option value="alacarte">À la carte</option>
+            <label>your trade</label>
+            <select value={trade} onChange={(e) => setTrade(e.target.value)}>
+              <option value="cctv">CCTV / surveillance installer</option>
+              <option value="lowvolt">Low-voltage contractor</option>
+              <option value="access">Access control / integrator</option>
+              <option value="residential">Residential security</option>
+              <option value="field">Other field-service trade</option>
+              <option value="local">Other local service business</option>
             </select>
           </div>
           <div className="field">
-            <label>severity</label>
-            <select value={severity} onChange={(e) => setSeverity(e.target.value)}>
-              <option value="low">low — exploring</option>
-              <option value="medium">medium — planning</option>
-              <option value="high">high — urgent</option>
-              <option value="critical">critical — breach in progress</option>
+            <label>which tier interests you?</label>
+            <select value={tier} onChange={(e) => setTier(e.target.value)}>
+              <option value="ghost">Ghost — Foundation Lead Engine</option>
+              <option value="sentinel">Sentinel — Operations + Growth</option>
+              <option value="architect">Architect — Full Infrastructure</option>
+              <option value="alacarte">Just an add-on</option>
+              <option value="unsure">Not sure — help me pick</option>
+            </select>
+          </div>
+          <div className="field">
+            <label>where are you?</label>
+            <select value={stage} onChange={(e) => setStage(e.target.value)}>
+              <option value="exploring">just exploring</option>
+              <option value="planning">planning to install soon</option>
+              <option value="urgent">need this set up ASAP</option>
             </select>
           </div>
           <div className="severity-note">
-            <span className="sev-dot" style={{ background: sevColor, boxShadow: `0 0 6px ${sevColor}` }}></span>
-            <span>severity: <span style={{ color: sevColor }}>{severity.toUpperCase()}</span> · {sevLabel}</span>
+            <span className="sev-dot"></span>
+            <span>status: <b>{stageLabel}</b></span>
           </div>
           <div className="field">
-            <label>brief</label>
-            <textarea placeholder="What can we help you with?"></textarea>
+            <label>what do you want the system to do?</label>
+            <textarea placeholder="e.g. We're losing inbound calls after hours and our follow-up is inconsistent across the crew…"></textarea>
           </div>
-          <button type="submit">▸ Send Message</button>
+          <button type="submit">▸ Send & Book My Call</button>
         </form>
       </div>
     </section>
@@ -630,37 +899,38 @@ function Footer() {
         <div className="col">
           <h4>// BlueHippoCyber</h4>
           <p style={{ color: 'var(--ink)', fontSize: 14, lineHeight: 1.6, maxWidth: 360 }}>
-            Defensive Architects. Building unshakeable digital fortresses, one hardened endpoint at a time.
+            AI growth infrastructure for security installers, low-voltage contractors,
+            and service businesses. Lead generation, response systems, and operational
+            workflow — installed, managed, owned.
           </p>
           <p style={{ color: 'var(--ink-3)', fontSize: 12, marginTop: 12, fontFamily: 'var(--font-mono)' }}>
-            EST. 2024 · Private-First · Local-AI Native
+            Lakeland, FL · USA-wide remote install
           </p>
         </div>
         <div className="col">
-          <h4>Doctrine</h4>
-          <a href="#hippo">HIPPO Framework</a>
-          <a href="#vault-section">The Vault</a>
-          <a href="#stories">Field Reports</a>
+          <h4>Site</h4>
+          <a href="#how">How It Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#stories">Field Results</a>
+          <a href="#insights">Insights</a>
         </div>
         <div className="col">
-          <h4>Toolchain</h4>
-          <a href="#">OSINTOrchestrator</a>
-          <a href="#">Sentinel-Bridge</a>
-          <a href="#">AgenticCore</a>
-          <a href="#">Hippo-Chat</a>
+          <h4>Tiers</h4>
+          <a href="#pricing">Ghost</a>
+          <a href="#pricing">Sentinel</a>
+          <a href="#pricing">Architect</a>
         </div>
         <div className="col">
-          <h4>Channel</h4>
-          <a href="#contact">bluehippo.cyber@gmail.com</a>
-          <a href="#contact">@BlueHippoCyber_Sentinel_bot</a>
-          <a href="#vault">/vault (admin)</a>
+          <h4>Get in touch</h4>
+          <a href="tel:8634404145">863-440-4145</a>
+          <a href="mailto:bluehippo.cyber@gmail.com">bluehippo.cyber@gmail.com</a>
+          <a href="#contact">Book a 15-min call</a>
         </div>
       </div>
       <div className="footer-bottom">
-        <div>© 2026 BlueHippoCyber · All transmissions encrypted</div>
+        <div>© 2026 BlueHippoCyber · AI Growth Infrastructure</div>
         <div className="socials">
           <a title="LinkedIn">in</a>
-          <a title="Gumroad">G</a>
           <a title="Instagram">ig</a>
           <a title="YouTube">yt</a>
           <a title="Facebook">fb</a>
@@ -671,5 +941,6 @@ function Footer() {
 }
 
 Object.assign(window, {
-  SentinelBar, Nav, Hero, HippoFramework, Vault, Stories, Marquee, Contact, Footer,
+  SentinelBar, Nav, Hero, BuiltFor, WhatWeDo, HowItWorks, GrowthEngine,
+  Pricing, Stories, Insights, FinalCTA, Marquee, Contact, Footer,
 });
