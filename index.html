@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BlueHippoCyber — AI Automation for Service Businesses</title>
+<title>BlueHippoCyber — Automated Lead Systems for Service Businesses</title>
 <link rel="stylesheet" href="styles.css" />
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -23,7 +23,6 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accentHue": 220,
   "videoOpacity": 0.4,
   "scanlineStrength": 0.015,
-  "featuredTier": 1,
   "sentinelActive": true,
   "bridgeOnline": true,
   "reducedMotion": false
@@ -97,7 +96,7 @@ function App() {
         <WhatWeDo />
         <HowItWorks onSpeak={() => navigate('home', 'contact')} />
         <GrowthEngine />
-        <Pricing featuredOverride={tweaks.featuredTier} />
+        <Pricing />
         <Stories />
         <Insights />
         <FinalCTA onSpeak={() => navigate('home', 'contact')} />
@@ -131,15 +130,6 @@ function App() {
         <TweakSlider label="Scanline strength" value={tweaks.scanlineStrength}
           min={0} max={0.06} step={0.005}
           onChange={(v) => setTweak('scanlineStrength', v)} />
-
-        <TweakSection label="Pricing" />
-        <TweakRadio label="Featured tier" value={tweaks.featuredTier}
-          options={[
-            { value: 0, label: 'Ghost' },
-            { value: 1, label: 'Sentinel' },
-            { value: 2, label: 'Architect' },
-          ]}
-          onChange={(v) => setTweak('featuredTier', v)} />
 
         <TweakSection label="Status bar" />
         <TweakToggle label="Systems online" value={tweaks.sentinelActive}

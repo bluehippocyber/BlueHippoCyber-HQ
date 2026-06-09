@@ -1,4 +1,4 @@
-=== COPYING DESIGN FILES FROM bluehippocyber/project/ TO ROOT === 
+=== COPYING NEW DESIGN FROM bluehippocyber/project/ === 
         1 file(s) copied.
         1 file(s) copied.
         1 file(s) copied.
@@ -17,19 +17,17 @@ Your branch is up to date with 'origin/main'.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
+	modified:   chat-and-solutions.jsx
+	modified:   components.jsx
 	modified:   git_push_log.txt
+	modified:   index.html
+	modified:   styles.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	deploy_log.txt
+	deploy_new_design.bat
 
 no changes added to commit (use "git add" and/or "git commit -a")
  
 === GIT ADD === 
-warning: in the working copy of 'git_push_log.txt', LF will be replaced by CRLF the next time Git touches it
- 
-=== GIT COMMIT === 
-[main c88a5a2] Implement BlueHippoCyber HQ redesign ΓÇö new hero, pricing, and messaging
- 1 file changed, 1 deletion(-)
- 
-=== GIT PUSH === 
-To https://github.com/bluehippocyber/BlueHippoCyber-HQ.git
-   ca827d7..c88a5a2  main -> main
- 
-=== DONE === 

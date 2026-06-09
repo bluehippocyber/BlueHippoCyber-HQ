@@ -4,44 +4,44 @@ const { useState: useStateChat, useEffect: useEffectChat, useRef: useRefChat } =
 /* ============================================================
    Hippo — AI infrastructure concierge
    ============================================================ */
-const SYSTEM_PROMPT = `You are Hippo, the AI concierge for BlueHippoCyber.
+const SYSTEM_PROMPT = `You are Hippo, the smart assistant for BlueHippoCyber.
 
-WHAT WE DO: BlueHippoCyber architects AI growth infrastructure for security camera installers, low-voltage contractors, and service businesses. We build and operate lead-generation engines, AI response infrastructure, and operational workflow systems — done-for-you. We also manage paid lead-generation campaigns (Meta, Google, local channels) tuned for measurable ROI.
+WHAT WE DO: BlueHippoCyber builds automated systems for service businesses that help them capture more leads, follow up automatically, and never miss a job — even after hours. We build the website, the lead capture, the follow-up, the booking, the reminders, the reviews — connected and running on their own.
 
-PRIMARY NICHE: CCTV installers, low-voltage contractors, surveillance system companies, residential & commercial security integrators, access control. SECONDARY: open to other field-service trades and local service businesses.
+WHO WE WORK WITH: security camera installers, TV mount & AV installers, and cybersecurity consultants. Also open to other service businesses.
 
-THE FOUNDER: BlueHippoCyber is founded and operated by Keenan McGriff in Lakeland, Florida. Direct support, no corporate runaround.
+THE OWNER: BlueHippoCyber is founded and run by Keenan McGriff, an automation engineer based in Florida. Direct support, no corporate runaround.
 
-DEPLOYMENT TIMELINE: Most installs go live in 5–10 business days.
+PRICING MODEL: Everything is a ONE-TIME SETUP. No subscriptions, no monthly retainer. The owner picks what they need, starts with one, and adds more when they're ready. Every business gets a FREE Business Growth Audit first — we look at how they get leads, how they follow up, and where they're losing money, then tell them exactly what to fix.
 
-VOCABULARY (use these): systems, infrastructure, operations, lead engine, workflow automation, business systems, growth infrastructure, AI response layer, managed campaigns.
+POPULAR SETUPS (one-time prices):
+  · Professional Website + Smart Chat Assistant — $560
+  · Missed-Call Text-Back — $297
+  · Booking & Scheduling Setup — $347
+  · Lead Capture Setup — $397
+  · Follow-Up Automation — $397
+  · Review Request Automation — $297
+  · Google Business Profile Setup — $297
+  · Local Search Build — $397
+  · Ad Campaign Setup — $597
+  · Full Lead Engine Build (capture + follow-up + booking + reminders, all connected) — $1,500
+There are 20+ individual services plus packages tailored to camera installers, AV installers, and cybersecurity consultants. Point people to the pricing section for the full list.
 
-VOCABULARY (AVOID): "chatbot," "automation agency," "bot," "AI chatbot." We are NOT a chatbot agency — we are an AI growth infrastructure company.
+PERSONALITY: Direct and plain. Talk like you're texting a busy business owner who's on a job site. Short sentences. One idea per sentence. Outcome-first — say what a service DOES for them, not what it is. No corporate language, no jargon ("synergy," "leverage," "holistic").
 
-PERSONALITY: Confident, performance-driven, ROI-focused. Plain English but premium. No marketing fluff, no buzzword soup. Talk like a senior architect who has installed dozens of these systems and knows what works.
+CRITICAL RULE: NEVER use the word "AI." Frame everything as "automated," "a system that...," or "smart" where needed (e.g. "smart chat assistant"). Never say "chatbot" or "bot" either.
 
-THE GOAL: Help installers and service businesses generate more qualified leads, respond faster, automate ops, and scale without hiring. Every answer ties back to revenue impact.
-
-THREE TIERS:
-  · Ghost — Foundation Lead Engine. $299 setup, $497/mo. Capture + routing + AI auto-replies + CRM connection. Monthly retainer covers monitoring, automation upkeep, CRM syncing, reporting, support.
-  · Sentinel — Operations + Growth System. $597 setup, $997–$1,497/mo. Full ops layer + managed lead-gen campaigns. MOST POPULAR. Monthly covers system monitoring, lead response mgmt, ad campaign management, optimization, CRM syncing, AI tuning, reporting, priority support.
-  · Architect — Full Business Infrastructure. $1,500 setup, $2,500–$4,500/mo. Voice AI, multi-channel outbound, custom workflows, dedicated growth architect. Monthly covers full lead-gen + ad management, multi-channel campaigns, AI voice ops, advanced analytics, custom workflow upkeep, same-day support, quarterly strategy.
-
-THE MONTHLY RETAINER IS ONGOING GROWTH INFRASTRUCTURE — not software hosting. When asked, explain WHAT'S IN IT.
-
-Add-ons: System Audit, Growth Monitoring, Standalone Lead Capture, Website Hardening, Local Search Build.
-
-AD MANAGEMENT: We launch and manage targeted lead-generation campaigns designed for measurable ROI. Clients can scale ad budget up or down any time. Campaigns are optimized continuously. NEVER disclose internal budget tactics — just speak to performance, ROI, and continuous optimization.
+THE GOAL: Help service businesses stop losing jobs to whoever answers faster — capture every lead, follow up on every quote, book more jobs without hiring. Steer people toward booking their free audit.
 
 NAVIGATION: If they ask to see pricing, how it works, results, services, or insights — respond briefly AND end your message with ONE token on its own line:
 [NAV:how]   [NAV:pricing]   [NAV:stories]   [NAV:insights]   [NAV:contact]   [NAV:services]   [NAV:home]
 
-Keep responses tight — 2–4 sentences. No markdown, no headers. Sound like an architect.`;
+Keep responses tight — 2–4 sentences. No markdown, no headers. Plain and direct.`;
 
 function HippoChat({ open, setOpen, navigate }) {
   const [messages, setMessages] = useStateChat([
     { role: 'system', text: 'Connected to BlueHippoCyber. You\'re chatting with Hippo.' },
-    { role: 'bot', text: 'Hey — I\'m Hippo. I help installers and service operators figure out which growth systems to install first. What does your business look like? Or ask me anything — pricing, how the system works, real results.' },
+    { role: 'bot', text: 'Hey — I\'m Hippo. I help service businesses figure out which systems to set up first so they stop losing jobs. What kind of business do you run? Or ask me anything — pricing, how it works, real results.' },
   ]);
   const [input, setInput] = useStateChat('');
   const [thinking, setThinking] = useStateChat(false);
@@ -100,31 +100,32 @@ function HippoChat({ open, setOpen, navigate }) {
   };
 
   const scripted = {
-    pricing: 'Three tiers. Ghost ($299 setup, $497/mo) — foundation lead engine. Sentinel ($597 setup, $997–$1,497/mo) — full ops + managed lead-gen, our most popular. Architect ($1,500 setup, $2,500–$4,500/mo) — full infrastructure with voice AI and multi-channel outbound. Monthly retainers cover monitoring, ad management, AI tuning, reporting — ongoing growth infrastructure, not hosting.',
-    how: 'Three steps. We architect your system, then go live in 5–10 days with campaigns and AI response running, then we monitor and optimize monthly. Want the walkthrough?',
-    results: 'A Tampa CCTV installer added a third service van inside 60 days — 62% more booked installs, sub-60-second lead response. A Georgia low-voltage contractor moved to 9 jobs/week with 4–7 qualified leads per day. Want me to pull up the full case studies?',
-    insights: 'We publish operational intelligence for installers and trade businesses weekly — AI for security installers, lead generation tactics, surveillance trends. Want to see the latest piece?',
-    contact: 'Call or text Keenan direct: 863-440-4145. Email: bluehippo.cyber@gmail.com. We reply within 4 hours.',
-    ad: 'We launch and manage targeted lead-generation campaigns across Meta, Google, and local channels. Campaigns are tuned for measurable ROI and continuously optimized. You scale the budget up or down any time — full control stays with you.',
-    default: 'I can walk you through pricing, how the install works, real installer results, insights we publish for the trade, or just connect you with Keenan. What do you want to start with?',
+    pricing: 'Everything is a one-time setup — no subscriptions. Most owners start with a Website + Smart Chat Assistant ($560), Missed-Call Text-Back ($297), or Follow-Up Automation ($397). Want the whole system connected? The Full Lead Engine Build is $1,500. And the Business Growth Audit is always free.',
+    how: 'Three steps. We start with a free audit and find where you\'re losing money, then we build the systems you need, then leads get captured, followed up, and booked automatically. Want the walkthrough?',
+    results: 'A Tampa camera installer stopped losing after-hours leads and added a second crew — 62% more booked jobs with sub-60-second replies. A Georgia AV installer went from chasing quotes to booked 3 weeks out. Want the details?',
+    insights: 'We publish short, plain tips for service businesses every week — follow-up, lead capture, local search, reviews. Want to see the latest one?',
+    contact: 'Easiest way is to grab Keenan directly. Call or text (863) 209-7940, or email keenan@bluehippocyber.com. He replies within 4 hours.',
+    services: 'We build the website, the lead capture, the follow-up, the booking, the reminders, and the review requests — connected and running on their own. Pick one or build the whole engine. Want to see everything?',
+    default: 'I can walk you through pricing, how it works, real results, the free audit, or just connect you with Keenan. What do you want to start with?',
   };
 
   function scriptedFallback(t) {
     const q = t.toLowerCase();
-    if (/(price|pricing|cost|tier|plan|how much)/.test(q)) return scripted.pricing + '\n[NAV:pricing]';
-    if (/(ad|advertis|campaign|google|facebook|meta|lead gen)/.test(q)) return scripted.ad + '\n[NAV:pricing]';
-    if (/(how|work|install|process|step)/.test(q)) return scripted.how + '\n[NAV:how]';
-    if (/(result|case|story|example|proof|client|installer)/.test(q)) return scripted.results + '\n[NAV:stories]';
-    if (/(insight|blog|article|read|intel)/.test(q)) return scripted.insights + '\n[NAV:insights]';
-    if (/(contact|email|call|reach|book)/.test(q)) return scripted.contact + '\n[NAV:contact]';
+    if (/(price|pricing|cost|how much|setup|fee)/.test(q)) return scripted.pricing + '\n[NAV:pricing]';
+    if (/(ad|advertis|campaign|google|facebook|meta)/.test(q)) return scripted.services + '\n[NAV:services]';
+    if (/(how|work|process|step|build)/.test(q)) return scripted.how + '\n[NAV:how]';
+    if (/(result|case|story|example|proof|client)/.test(q)) return scripted.results + '\n[NAV:stories]';
+    if (/(service|build|system|what do you)/.test(q)) return scripted.services + '\n[NAV:services]';
+    if (/(insight|blog|article|read|tip)/.test(q)) return scripted.insights + '\n[NAV:insights]';
+    if (/(contact|email|call|reach|book|audit)/.test(q)) return scripted.contact + '\n[NAV:contact]';
     return scripted.default;
   }
 
   const quickActions = [
     { label: 'see pricing', prompt: 'Show me pricing.' },
     { label: 'how it works', prompt: 'How does this work?' },
-    { label: 'ad management', prompt: 'How does ad management work?' },
-    { label: 'book a call', prompt: 'I want to book a call.' },
+    { label: 'what you build', prompt: 'What do you build?' },
+    { label: 'free audit', prompt: 'I want my free audit.' },
   ];
 
   return (
@@ -139,7 +140,7 @@ function HippoChat({ open, setOpen, navigate }) {
         <div className="chat-header">
           <div className="mark"></div>
           <div className="title-block">
-            <div className="title">HIPPO · AI ARCHITECT</div>
+            <div className="title">HIPPO · SMART ASSISTANT</div>
             <div className="sub">online · reply in seconds</div>
           </div>
           <button className="close" onClick={() => setOpen(false)} title="Close">×</button>
@@ -193,74 +194,74 @@ function SolutionsPage({ navigate }) {
   const services = [
     {
       num: '01',
-      name: 'Lead Generation Engine',
-      tag: 'The growth flywheel',
-      body: 'Managed paid campaigns plus the capture infrastructure that converts the click. Built for installer trades — service-area targeting, intent-matched creative, and continuous optimization against booked-job rate.',
-      bullets: [
-        'Meta + Google + local channel campaigns',
-        'Service-area + intent targeting',
-        'On-site lead capture & qualification',
-        'Continuous performance optimization',
-        'Cost-per-qualified-lead reporting',
-      ],
-      stats: [
-        { num: '$30–60', lbl: 'cost / qualified' },
-        { num: '4–7 / day', lbl: 'lead pace' },
-        { num: '+62%', lbl: 'booked installs' },
-      ],
-    },
-    {
-      num: '02',
-      name: 'AI Response Infrastructure',
+      name: 'Capture & Respond',
       tag: 'No lead waits',
-      body: 'Inbound calls, missed calls, texts, forms, and DMs answered within seconds — by infrastructure tuned to your trade and your service area. Qualifies, books, routes to the right tech automatically.',
+      body: 'Every call, form, text, and message gets captured the second it lands — and answered in seconds, even after hours. Miss a call and the caller gets an instant text back. You stop losing work to whoever picked up first.',
       bullets: [
-        'AI response across phone, SMS, and forms',
+        'Lead capture across site, forms, and social',
         'Missed-call text-back automation',
-        'Trade-specific qualification logic',
-        'Auto-routing to the right tech or queue',
-        'Human handoff when context demands it',
+        'Instant quote-request auto-reply',
+        'Smart chat assistant on your website',
+        'Everything saved in one place',
       ],
       stats: [
         { num: '< 60s', lbl: 'response time' },
         { num: '24 / 7', lbl: 'always-on' },
-        { num: '80%', lbl: 'auto-handled' },
+        { num: '0', lbl: 'leads missed' },
+      ],
+    },
+    {
+      num: '02',
+      name: 'Automatic Follow-Up',
+      tag: 'No quote goes cold',
+      body: 'Texts and emails go out to every lead until they book or say no. Quotes stop slipping because you got busy. Old customers get pulled back for new work and upgrades — all on its own.',
+      bullets: [
+        'Follow-up sequences (text + email)',
+        'Estimate & quote follow-up',
+        'Customer reactivation campaigns',
+        'Referral requests to happy customers',
+        'Invoice & payment reminders',
+      ],
+      stats: [
+        { num: 'auto', lbl: 'every lead' },
+        { num: '0', lbl: 'cold quotes' },
+        { num: '+repeat', lbl: 'business' },
       ],
     },
     {
       num: '03',
-      name: 'Operational Workflow',
-      tag: 'Your tools, one nervous system',
-      body: 'Quotes, dispatch, scheduling, intake, follow-up — wired into one operations layer. CRM updates flow automatically. The crew stops re-typing customer info between five different apps.',
+      name: 'Booking & Scheduling',
+      tag: 'Fill the calendar',
+      body: 'Customers pick a time and book themselves straight into your calendar — no phone tag. Automatic reminders cut no-shows, and missed appointments get rescheduled on their own.',
       bullets: [
-        'CRM integration + contact enrichment',
-        'Calendar booking & crew dispatch',
-        'Quote / estimate workflow automation',
-        'Follow-up sequences (text + email)',
-        'Real-time alerts & dashboards',
+        'Online self-booking into your calendar',
+        'Appointment reminders',
+        'No-show recovery',
+        'New client welcome messages',
+        'Consultation booking for consultants',
       ],
       stats: [
-        { num: '12+', lbl: 'tools connected' },
-        { num: '0', lbl: 'manual re-entry' },
-        { num: '24 / 7', lbl: 'always synced' },
+        { num: 'self', lbl: 'booking' },
+        { num: 'fewer', lbl: 'no-shows' },
+        { num: '24 / 7', lbl: 'open to book' },
       ],
     },
     {
       num: '04',
-      name: 'AI Voice & Multi-Channel',
-      tag: 'For Architect-tier installs',
-      body: 'A custom AI voice agent answers your phone in your brand voice — qualifies callers, books, dispatches. Outbound campaigns re-engage cold pipeline across SMS, email, and voice. At scale.',
+      name: 'Get Found & Reviewed',
+      tag: 'More leads, better reputation',
+      body: 'Show up when people nearby are searching, and turn every finished job into a 5-star review. The better you look online, the more the phone rings — and it all runs in the background.',
       bullets: [
-        'Custom AI voice agent for inbound',
-        'Outbound SMS, email, and voice',
-        'Multi-channel campaign orchestration',
-        'Quarterly strategy reviews',
-        'Dedicated growth architect',
+        'Google Business Profile setup',
+        'Local search & Google Maps ranking',
+        'Review request automation',
+        'Reputation monitoring',
+        'Social media auto-posting',
       ],
       stats: [
-        { num: '100%', lbl: 'inbound answered' },
-        { num: '24 / 7', lbl: 'live coverage' },
-        { num: 'your', lbl: 'brand voice' },
+        { num: 'top', lbl: 'local search' },
+        { num: '5★', lbl: 'reviews' },
+        { num: 'always', lbl: 'active' },
       ],
     },
   ];
@@ -272,20 +273,21 @@ function SolutionsPage({ navigate }) {
       <div className="solutions-bg-watermark"></div>
 
       <section className="solutions-hero" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="eyebrow">// Services · End-to-end growth infrastructure</div>
-        <h1>Every system we install,<br/><span style={{ color: 'var(--neon)', fontStyle: 'italic' }}>under one roof.</span></h1>
+        <div className="eyebrow">// Services · Everything we build</div>
+        <h1>Every system we build,<br/><span style={{ color: 'var(--neon)', fontStyle: 'italic' }}>under one roof.</span></h1>
         <p className="lead">
-          Four core systems — installed together as a tier, or run individually. Built around how
-          security installers, low-voltage contractors, and field-service trades actually operate.
-          We architect, install, and continuously operate the infrastructure for you.
+          Capture, follow-up, booking, reviews — the systems that keep service businesses
+          from losing jobs. Built for security camera installers, TV mount & AV techs, and
+          cybersecurity consultants. Pick one, or build the whole engine. Every service is
+          a one-time setup.
         </p>
         <div className="cta-row" style={{ marginTop: 28 }}>
           <button className="cta-primary" onClick={() => navigate('home', 'contact')}>
-            Book a 15-min Call
+            Get Your Free Audit
             <span className="arrow"></span>
           </button>
           <button className="cta-ghost" onClick={() => navigate('home', 'pricing')}>
-            See Tiers & Pricing
+            See What It Costs
           </button>
         </div>
       </section>
