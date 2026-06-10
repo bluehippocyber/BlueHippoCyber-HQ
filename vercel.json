@@ -3,5 +3,6 @@
   "buildCommand": "",
   "outputDirectory": ".",
   "installCommand": "",
-  "devCommand": ""
+  "devCommand": "",
+  "cleanUrls": true
 }
