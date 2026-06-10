@@ -58,7 +58,7 @@ function Nav({ route, navigate }) {
         <a href="#" className={route === 'solutions' ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('solutions'); close(); }}>Services</a>
         <a href="#contact" onClick={(e) => { e.preventDefault(); navigate('home', 'contact'); close(); }}>Contact</a>
       </div>
-      <button className="cta-mini" onClick={() => { navigate('home', 'contact'); close(); }}>Free Audit →</button>
+      <button className="cta-mini" onClick={() => { window.location.href = '/free-audit'; }}>Free Audit →</button>
     </nav>
   );
 }
