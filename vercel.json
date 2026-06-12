@@ -4,5 +4,13 @@
   "outputDirectory": ".",
   "installCommand": "",
   "devCommand": "",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/zeroadmin/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
 }
