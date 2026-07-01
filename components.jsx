@@ -433,30 +433,197 @@ function Pricing() {
 
 /* ============================================================
    Galaxy Panels — every business runs its own AI Operating
-   System. Scroll sideways through examples. Blue = BHC itself;
-   the others are deliberately unlabeled — different businesses,
-   never named here.
+   System. Scroll sideways through examples. One color per
+   industry. Every panel is generic education, never a named
+   real client — priced against what that business type loses
+   by not having one.
    ============================================================ */
 const GALAXIES = [
   {
     id: 'blue',
     img: 'assets/galaxy-blue.jpg',
     label: 'AIOS · BlueHippoCyber',
-    body: 'This one is ours — the system running this exact site, this exact chat.',
+    intro: 'This one’s real — it’s the exact system running this site, right now.',
+    bullets: [
+      'Every visitor gets a live chat that qualifies them and can book the call, automatically.',
+      'A missed lead triggers an instant alert and same-day follow-up — nobody’s checking a form by hand.',
+      'Every deal and every touch lives in one system: one CRM, one calendar, one dashboard.',
+      'Content, outreach, and reporting run on a fixed daily rhythm without someone driving it manually.',
+    ],
   },
-  { id: 'red', img: 'assets/galaxy-red.jpg', label: null, body: null },
-  { id: 'yellow', img: 'assets/galaxy-yellow.jpg', label: null, body: null },
+  {
+    id: 'red',
+    img: 'assets/galaxy-red.jpg',
+    label: 'AIOS · Cybersecurity',
+    intro: 'Imagine a security consulting firm running its own AIOS.',
+    bullets: [
+      'New leads get triaged and routed the second they hit the inbox.',
+      'Incident intake runs on autopilot, so nothing sits overnight.',
+      'Follow-up keeps going even when a ransomware-worried prospect goes quiet for a week.',
+      'Priced against what one breached client would have cost them.',
+    ],
+  },
+  {
+    id: 'yellow',
+    img: 'assets/galaxy-yellow.jpg',
+    label: 'AIOS · Jewelry',
+    intro: 'Imagine a jewelry business running its own AIOS.',
+    bullets: [
+      'Custom orders tracked automatically from deposit to delivery.',
+      'A text goes out the moment a piece is ready for pickup.',
+      'Reviews requested right after the customer walks out with it.',
+      'Priced against what one missed high-ticket order costs.',
+    ],
+  },
+  {
+    id: 'pink',
+    img: 'assets/galaxy-pink.jpg',
+    label: 'AIOS · Beauty',
+    intro: 'Imagine a salon running its own AIOS.',
+    bullets: [
+      'No-show reminders fire on their own — no receptionist required.',
+      'Rebooking texts go out the week a client’s due back.',
+      'Reviews requested automatically right after checkout.',
+      'Priced against what one empty chair costs per hour.',
+    ],
+  },
+  {
+    id: 'green',
+    img: 'assets/galaxy-green.jpg',
+    label: 'AIOS · Construction & Landscaping',
+    intro: 'Imagine a landscaping crew running its own AIOS.',
+    bullets: [
+      'Quote requests answered in minutes, not days.',
+      'Jobs scheduled automatically the moment a quote’s accepted.',
+      'Follow-up sent before the competitor even calls back.',
+      'Priced against what one lost bid costs.',
+    ],
+  },
+  {
+    id: 'neonblue',
+    img: 'assets/galaxy-neonblue.jpg',
+    label: 'AIOS · Medical',
+    intro: 'Imagine a medical practice running its own AIOS.',
+    bullets: [
+      'Appointment reminders that actually cut no-shows.',
+      'Intake forms sent automatically before the visit.',
+      'Follow-up care texts triggered without staff lifting a finger.',
+      'Priced against what one missed appointment costs the schedule.',
+    ],
+  },
+  {
+    id: 'white',
+    img: 'assets/galaxy-white.jpg',
+    label: 'AIOS · Smart Home & Electrical',
+    intro: 'Imagine an electrician running its own AIOS.',
+    bullets: [
+      'After-hours calls get answered instead of missed.',
+      'Quotes sent same-day, before the homeowner calls someone else.',
+      'Install reminders keep the calendar full automatically.',
+      'Priced against what one missed emergency call costs.',
+    ],
+  },
+  {
+    id: 'purple',
+    img: 'assets/galaxy-purple.jpg',
+    label: 'AIOS · Restaurants & Hospitality',
+    intro: 'Imagine a restaurant running its own AIOS.',
+    bullets: [
+      'Reservations booked automatically, even after close.',
+      'No-shows cut with an automatic reminder text.',
+      'Reviews requested right after a great table turn.',
+      'Priced against what one empty table costs on a Friday night.',
+    ],
+  },
 ];
+
+function GalaxyParticles() {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let raf;
+
+    const resize = () => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      const count = Math.floor((canvas.width * canvas.height) / 16000);
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+        size: Math.random() * 1.3 + 0.4,
+        opacity: Math.random() * 0.5 + 0.15,
+      }));
+    };
+
+    const tick = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    resize();
+    tick();
+    window.addEventListener('resize', resize);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
+  }, []);
+  return <canvas className="galaxies-particles" ref={canvasRef}></canvas>;
+}
+
+function GalaxyPanel({ g }) {
+  const panelRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { root: el.closest('.galaxies-track'), threshold: 0.6 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="galaxy-panel" ref={panelRef} style={{ backgroundImage: `url(${g.img})` }}>
+      <div className={`galaxy-caption ${visible ? 'visible' : ''}`}>
+        <div className="galaxy-label">{g.label}</div>
+        <p className="galaxy-intro">{g.intro}</p>
+        <ul className="galaxy-bullets">
+          {g.bullets.map((b, i) => <li key={i}>{b}</li>)}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function GalaxyPanels() {
   const trackRef = useRef(null);
   const [active, setActive] = useState(0);
+  const [hintShown, setHintShown] = useState(true);
 
   const scrollToIndex = (i) => {
     const track = trackRef.current;
     if (!track) return;
     const clamped = Math.max(0, Math.min(GALAXIES.length - 1, i));
     track.scrollTo({ left: clamped * track.clientWidth, behavior: 'smooth' });
+    setHintShown(false);
   };
 
   const onWheel = (e) => {
@@ -466,32 +633,30 @@ function GalaxyPanels() {
       e.preventDefault();
       track.scrollLeft += e.deltaY;
     }
+    setHintShown(false);
   };
 
   const onScroll = () => {
     const track = trackRef.current;
     if (!track) return;
     setActive(Math.round(track.scrollLeft / track.clientWidth));
+    setHintShown(false);
   };
 
   return (
     <section className="galaxies" id="galaxies">
+      <GalaxyParticles />
       <div className="galaxies-head">
         <div className="eyebrow">// 06 · Different Businesses, Different Galaxies</div>
         <h2>Every business runs<br/>its own <span className="neon">AI Operating System.</span></h2>
         <p>Scroll sideways. Each galaxy is a different business wired its own way — same idea, never the same system twice.</p>
       </div>
-      <div className="galaxies-track" ref={trackRef} onWheel={onWheel} onScroll={onScroll}>
-        {GALAXIES.map((g) => (
-          <div className="galaxy-panel" key={g.id} style={{ backgroundImage: `url(${g.img})` }}>
-            {g.label && (
-              <div className="galaxy-caption">
-                <div className="galaxy-label">{g.label}</div>
-                <p>{g.body}</p>
-              </div>
-            )}
-          </div>
-        ))}
+      <div className="galaxies-track" ref={trackRef} onWheel={onWheel} onScroll={onScroll} onTouchMove={() => setHintShown(false)}>
+        {GALAXIES.map((g) => <GalaxyPanel g={g} key={g.id} />)}
+      </div>
+      <div className={`galaxy-scroll-hint ${hintShown ? '' : 'hidden'}`}>
+        <span>scroll sideways</span>
+        <span className="arrow">→</span>
       </div>
       <div className="story-nav galaxies-nav">
         <div className="dots">
