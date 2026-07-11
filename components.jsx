@@ -791,8 +791,8 @@ function FinalCTA({ onSpeak }) {
         </p>
         <div className="cta-row">
           <InlineAudit label="Book Your Free Audit" />
-          <a className="cta-ghost" href="tel:8632097940">
-            Or call/text (863) 209-7940 · (863) 825-2215
+          <a className="cta-ghost" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">
+            Or book a time directly →
           </a>
         </div>
       </div>
@@ -833,11 +833,30 @@ function Contact() {
   const [tier, setTier] = useState('audit');
   const [stage, setStage] = useState('exploring');
   const [trade, setTrade] = useState('cyber');
+  const [sent, setSent] = useState(false);
   const stageLabel = {
     exploring: 'just exploring',
     planning: 'planning to set this up soon',
     urgent: 'need this running ASAP',
   }[stage];
+
+  const submit = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const payload = {
+      email: f.email.value.trim(),
+      business: f.business.value.trim(),
+      trade, tier, stage,
+      notes: f.notes.value.trim(),
+      page: 'contact-form',
+    };
+    setSent(true);
+    fetch('https://n8n-jtbg.srv1669998.hstgr.cloud/webhook/bhc-website-lead', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(() => {}); // ponytail: fire-and-forget, UI already confirmed
+  };
 
   return (
     <section className="section contact" id="contact">
@@ -878,18 +897,31 @@ function Contact() {
           </div>
         </div>
 
-        <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('Got it — we\'ll reply within 4 hours.'); }}>
+        {sent ? (
+          <div className="contact-form">
+            <div className="term-header">
+              <div className="dots"><span></span><span></span><span></span></div>
+              <span className="path">~ /free-audit</span>
+            </div>
+            <p style={{ padding: 20 }}>✓ Got it — we'll reply within 4 hours. Want to skip the wait?{' '}
+              <a href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style={{ color: 'var(--neon, #00A3FF)' }}>
+                Book a time on Keenan's calendar →
+              </a>
+            </p>
+          </div>
+        ) : (
+        <form className="contact-form" onSubmit={submit}>
           <div className="term-header">
             <div className="dots"><span></span><span></span><span></span></div>
             <span className="path">~ /free-audit</span>
           </div>
           <div className="field">
             <label>your email <span className="req">*</span></label>
-            <input type="email" required placeholder="you@yourcompany.com" />
+            <input type="email" name="email" required placeholder="you@yourcompany.com" />
           </div>
           <div className="field">
             <label>business name</label>
-            <input type="text" placeholder="Your company" />
+            <input type="text" name="business" placeholder="Your company" />
           </div>
           <div className="field">
             <label>what kind of business?</label>
@@ -925,10 +957,11 @@ function Contact() {
           </div>
           <div className="field">
             <label>what do you want the system to do?</label>
-            <textarea placeholder="e.g. We keep missing calls when we're on a job, and our follow-up is all over the place…"></textarea>
+            <textarea name="notes" placeholder="e.g. We keep missing calls when we're on a job, and our follow-up is all over the place…"></textarea>
           </div>
           <button type="submit">▸ Send & Book My Free Audit</button>
         </form>
+        )}
       </div>
     </section>
   );
