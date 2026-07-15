@@ -134,15 +134,34 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 /* Madison — the real chat widget, bottom-right, distinct from the brain */
 .madison-fab{position:absolute;bottom:26px;right:26px;z-index:7;display:flex;flex-direction:column;
   align-items:center;gap:4px;cursor:pointer;}
-.madison-orb{width:78px;height:78px;border-radius:50%;position:relative;
+.madison-orb{width:78px;height:78px;border-radius:50%;position:relative;overflow:hidden;
   background:radial-gradient(circle at 50% 55%, rgba(0,194,255,0.28), rgba(4,16,31,0) 70%);
-  animation:mpulse 2.6s ease-in-out infinite;display:flex;align-items:center;justify-content:center;}
-.madison-orb img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(0,194,255,0.65));}
+  animation:mpulse 2.6s ease-in-out infinite;box-shadow:0 0 18px rgba(0,194,255,0.65);}
+.madison-orb img{width:100%;height:100%;object-fit:cover;}
 .madison-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
   border:1px solid rgba(0,194,255,0.4);animation:mring 2.6s ease-in-out infinite;}
 @keyframes mpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
 @keyframes mring{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.35);opacity:0;}}
 .madison-fab-label{font-size:10.5px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,0.8);font-weight:600;}
+.madison-bubble{position:absolute;bottom:90px;right:0;max-width:220px;background:rgba(9,14,28,0.92);
+  border:1px solid var(--glass-border);border-radius:14px 14px 4px 14px;padding:10px 13px;
+  font-size:12px;line-height:1.4;color:var(--ink);opacity:0;transform:translateY(6px);
+  transition:opacity .3s, transform .3s;pointer-events:none;}
+.madison-bubble.show{opacity:1;transform:translateY(0);}
+
+/* live chat interface */
+.chat-window{display:flex;flex-direction:column;height:min(60vh,520px);width:min(360px,88vw);}
+.chat-log{flex:1;overflow-y:auto;padding:4px 2px 10px;display:flex;flex-direction:column;gap:10px;}
+.chat-msg{max-width:85%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;border-radius:14px 14px 4px 14px;}
+.chat-msg.assistant{align-self:flex-start;background:rgba(255,255,255,0.06);color:#dce8fb;border-radius:14px 14px 14px 4px;}
+.chat-msg.typing{font-style:italic;color:var(--dim);}
+.chat-input-row{display:flex;gap:8px;margin-top:8px;}
+.chat-input-row input{flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);
+  border-radius:10px;padding:10px 12px;color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:13px;}
+.chat-input-row input:focus{outline:none;border-color:var(--cyan);}
+.chat-input-row button{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;border:none;
+  border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer;font-family:"Share Tech Mono",monospace;}
 
 /* bottom-left footer strip */
 .bottombar{position:absolute;bottom:26px;left:26px;z-index:6;font-size:10.5px;color:var(--dim);
@@ -188,7 +207,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
   </div>
 
   <div class="madison-fab" id="madisonFab">
-    <div class="madison-orb"><img src="assets/origin-mascot-transparent.png" alt="Madison — Origin One AI assistant" /></div>
+    <div class="madison-bubble" id="madisonBubble"></div>
+    <div class="madison-orb"><img src="assets/madison-head.jpg" alt="Madison — BlueHippoCyber AI assistant" /></div>
     <div class="madison-fab-label">Talk to Madison</div>
   </div>
 
@@ -235,19 +255,6 @@ const PANELS = {
       <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="display:block;text-align:center;margin-bottom:8px;">Open My Calendar</a>
       <a class="btn btn-ghost" href="mailto:keenan@bluehippocyber.com" style="display:block;text-align:center;">Email Instead</a>`
   },
-  madison: {
-    title: "Madison",
-    sub: "Your AI front desk, live 24/7",
-    body: `<p>Madison is BlueHippoCyber's live AI voice receptionist — answers every call, qualifies the lead, and books the audit automatically, day or night.</p>
-      <ul>
-        <li><b>What Madison knows:</b> BHC builds AI Operating Systems — automated lead capture, follow-up, and booking — for cybersecurity consultants and service businesses, nationwide.</li>
-        <li><b>Pricing she'll quote:</b> Landing page + lead capture from $360. Full site + booking + follow-up from $560. Optional hosting $100–150/mo, never required.</li>
-        <li><b>Service area:</b> All 50 states, remote-first.</li>
-        <li><b>Who built her:</b> Keenan McGriff, founder — (863) 440-4145 / keenan@bluehippocyber.com.</li>
-      </ul>
-      <a class="btn btn-primary" href="tel:+18553073995" style="display:block;text-align:center;margin-bottom:8px;">Call Madison — (855) 307-3995</a>
-      <a class="btn btn-ghost" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="display:block;text-align:center;">Book a Call Instead</a>`
-  }
 };
 
 function openPanel(key){
@@ -263,9 +270,100 @@ function closePanel(){
   document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
 }
 document.querySelectorAll('.tile').forEach(t => t.addEventListener('click', () => openPanel(t.dataset.panel)));
-document.getElementById('madisonFab').addEventListener('click', () => openPanel('madison'));
 document.getElementById('panelBackdrop').addEventListener('click', function(e){ if(e.target === this) closePanel(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closePanel(); });
+
+/* ===== Madison — live chat, calls /api/chat, auto-greets, navigates via [NAV:key] ===== */
+const chatHistory = [];
+let chatOpen = false;
+
+function renderChatShell(){
+  document.getElementById('panelBody').innerHTML = `
+    <div class="close" onclick="closePanel()">✕</div>
+    <h2>Madison</h2>
+    <div class="panel-sub">Your AI front desk — ask me anything about BHC</div>
+    <div class="chat-window">
+      <div class="chat-log" id="chatLog"></div>
+      <div class="chat-input-row">
+        <input id="chatInput" type="text" placeholder="Type a message…" />
+        <button onclick="sendChat()">Send</button>
+      </div>
+    </div>`;
+  document.getElementById('chatInput').addEventListener('keydown', e => { if(e.key === 'Enter') sendChat(); });
+  chatHistory.forEach(m => appendChatBubble(m.role, m.content));
+}
+
+function appendChatBubble(role, text){
+  const log = document.getElementById('chatLog');
+  if(!log) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  div.textContent = text;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+  return div;
+}
+
+function openMadisonChat(){
+  document.getElementById('madisonBubble').classList.remove('show');
+  document.getElementById('panelBackdrop').classList.add('open');
+  chatOpen = true;
+  renderChatShell();
+  if(chatHistory.length === 0) greetVisitor();
+}
+
+async function greetVisitor(){
+  const bubble = appendChatBubble('assistant', "Hey — I'm Madison. Welcome to BlueHippoCyber! What kind of business are you running, and what brought you by today?");
+  chatHistory.push({ role: 'assistant', content: bubble.textContent });
+}
+
+async function sendChat(){
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  appendChatBubble('user', text);
+  chatHistory.push({ role: 'user', content: text });
+
+  const typing = appendChatBubble('assistant typing', 'Madison is typing…');
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory })
+    });
+    const data = await res.json();
+    typing.remove();
+    if(!res.ok || data.error){
+      appendChatBubble('assistant', "Sorry — I'm offline right now. Call (855) 307-3995 or book a call directly.");
+      return;
+    }
+    let reply = data.reply || '';
+    const navMatch = reply.match(/\[NAV:(\w+)\]/);
+    reply = reply.replace(/\[NAV:\w+\]/, '').trim();
+    appendChatBubble('assistant', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+    if(navMatch && PANELS[navMatch[1]]){
+      setTimeout(() => openPanel(navMatch[1]), 900);
+    }
+  } catch(e){
+    typing.remove();
+    appendChatBubble('assistant', "Sorry — I'm offline right now. Call (855) 307-3995 or book a call directly.");
+  }
+}
+
+document.getElementById('madisonFab').addEventListener('click', openMadisonChat);
+
+/* auto-greet bubble a few seconds after page load — invites the click, doesn't block */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if(chatOpen) return;
+    const b = document.getElementById('madisonBubble');
+    b.textContent = "Hi! I'm Madison — click me and I'll help you find what you need.";
+    b.classList.add('show');
+    setTimeout(() => b.classList.remove('show'), 8000);
+  }, 2500);
+});
 </script>
 </body>
 </html>
