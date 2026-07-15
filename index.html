@@ -72,7 +72,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .brain-globe-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:#05070d;pointer-events:none;}
 .brain-globe-spin{position:absolute;inset:0;animation:brainGlobeSpin 90s linear infinite, brainGlobePulse 6s ease-in-out infinite;}
 .brain-globe-spin img{position:absolute;top:50%;left:50%;width:min(90vw,90vh);height:min(90vw,90vh);
-  transform:translate(-50%,-50%);object-fit:cover;border-radius:50%;opacity:0.55;}
+  transform:translate(-50%,-50%);object-fit:cover;border-radius:50%;opacity:0.85;
+  box-shadow:0 0 140px 40px rgba(0,150,255,0.25);}
 @keyframes brainGlobeSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 @keyframes brainGlobePulse{0%,100%{filter:brightness(1) saturate(1);}50%{filter:brightness(1.15) saturate(1.2);}}
 .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
