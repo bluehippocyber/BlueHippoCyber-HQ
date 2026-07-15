@@ -3,202 +3,269 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BlueHippoCyber — Automated Lead Systems for Service Businesses</title>
-<meta name="description" content="BlueHippoCyber builds automated lead capture, follow-up, and booking systems for cybersecurity consultants and local service businesses. One-time setup, no subscriptions. Free Business Growth Audit." />
+<title>BlueHippoCyber — AI Operating Systems for Cybersecurity Consultants</title>
+<meta name="description" content="BlueHippoCyber builds AI Operating Systems that capture leads, follow up, and book jobs automatically — for cybersecurity consultants and service businesses across the United States. Talk to Madison, our AI agent, and book a free audit." />
 <link rel="canonical" href="https://bluehippocyber.com/" />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#06080c" />
+<meta name="theme-color" content="#05070d" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BlueHippoCyber" />
-<meta property="og:title" content="BlueHippoCyber — Automated Lead Systems for Service Businesses" />
-<meta property="og:description" content="Stop losing jobs to whoever answers first. Automated lead capture, follow-up, and booking — built for cybersecurity consultants and local service businesses. One-time setup, no subscriptions." />
+<meta property="og:title" content="BlueHippoCyber — AI Operating Systems for Cybersecurity Consultants" />
+<meta property="og:description" content="One system. Every lead answered, followed up, and booked automatically. Talk to Madison, book your free audit." />
 <meta property="og:url" content="https://bluehippocyber.com/" />
-<meta property="og:image" content="https://bluehippocyber.com/assets/hero-poster.jpg" />
+<meta property="og:image" content="https://bluehippocyber.com/assets/brain-globe.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="BlueHippoCyber — Automated Lead Systems for Service Businesses" />
-<meta name="twitter:description" content="Stop losing jobs to whoever answers first. Automated lead capture, follow-up, and booking — one-time setup, no subscriptions." />
-<meta name="twitter:image" content="https://bluehippocyber.com/assets/hero-poster.jpg" />
+<meta name="twitter:title" content="BlueHippoCyber — AI Operating Systems for Cybersecurity Consultants" />
+<meta name="twitter:description" content="One system. Every lead answered, followed up, and booked automatically." />
+<meta name="twitter:image" content="https://bluehippocyber.com/assets/brain-globe.png" />
 
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "BlueHippoCyber",
-  "description": "Automated lead capture, follow-up, and booking systems for cybersecurity consultants and local service businesses.",
+  "description": "AI Operating Systems — automated lead capture, follow-up, and booking — for cybersecurity consultants and service businesses.",
   "url": "https://bluehippocyber.com/",
-  "telephone": "+18632097940",
+  "telephone": "+18634404145",
   "email": "keenan@bluehippocyber.com",
-  "areaServed": "US",
+  "areaServed": { "@type": "Country", "name": "United States" },
   "address": { "@type": "PostalAddress", "addressRegion": "FL", "addressCountry": "US" },
-  "sameAs": ["https://github.com/keenan371", "https://www.linkedin.com/in/keenanmcgriff"]
+  "sameAs": ["https://github.com/keenan371", "https://www.linkedin.com/in/keenanmcgriff", "https://www.upwork.com/freelancers/keenanm"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is an AI Operating System (AIOS)?","acceptedAnswer":{"@type":"Answer","text":"An AIOS is a unified system that captures every lead, follows up automatically, and books jobs onto your calendar — replacing scattered tools and manual follow-up with one automated pipeline."}},
+    {"@type":"Question","name":"Does BlueHippoCyber work with businesses outside Florida?","acceptedAnswer":{"@type":"Answer","text":"Yes. BlueHippoCyber builds and deploys AI Operating Systems for cybersecurity consultants and service businesses across the entire United States."}},
+    {"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Book a free Business Growth Audit directly on Keenan's calendar. No subscription required to start — one-time setup builds."}}
+  ]
 }
 </script>
 
-<link rel="stylesheet" href="styles.css?v=20260701i" />
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+:root{
+  --bg:#05070d; --ink:#eaf2ff; --dim:#8fa3c9; --cyan:#00c2ff; --glass:rgba(14,20,38,0.55);
+  --glass-border:rgba(0,194,255,0.25);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+  font-family:"JetBrains Mono",monospace;}
+.brand,.headline,.tile-value,.panel h2,.eyebrow,.tile-label,.book-pill,.pill{font-family:"Share Tech Mono",monospace;}
+.headline,.eyebrow,.brand{text-shadow:0 0 12px rgba(0,194,255,0.55);}
+#stage{position:fixed;inset:0;overflow:hidden;}
+
+/* Obsidian Brain — EXACT copy of the proven SecurityPracticeOS BrainGlobe.tsx pattern.
+   Same image, same math, same numbers. Not reinterpreted: fixed inset:0 wrapper,
+   circular image centered at min(90vw,90vh), opacity 0.55, rotate 90s + pulse 6s.
+   No crop tricks, no oversized scale, no "eclipse" artifacts. */
+.brain-globe-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:#05070d;pointer-events:none;}
+.brain-globe-spin{position:absolute;inset:0;animation:brainGlobeSpin 90s linear infinite, brainGlobePulse 6s ease-in-out infinite;}
+.brain-globe-spin img{position:absolute;top:50%;left:50%;width:min(90vw,90vh);height:min(90vw,90vh);
+  transform:translate(-50%,-50%);object-fit:cover;border-radius:50%;opacity:0.55;}
+@keyframes brainGlobeSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes brainGlobePulse{0%,100%{filter:brightness(1) saturate(1);}50%{filter:brightness(1.15) saturate(1.2);}}
+.vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(ellipse at center, rgba(5,7,13,0.05) 0%, rgba(5,7,13,0.28) 60%, rgba(5,7,13,0.82) 100%);}
+
+/* top bar */
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;
+  justify-content:space-between;padding:22px 34px;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:0.02em;font-size:15px;}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);}
+.topbar nav{display:flex;gap:22px;font-size:13px;color:var(--dim);}
+.topbar nav a{color:var(--dim);text-decoration:none;transition:color .2s;}
+.topbar nav a:hover{color:var(--ink);}
+.book-pill{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
+  padding:9px 18px;border-radius:999px;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;
+  box-shadow:0 0 20px rgba(0,194,255,0.15);transition:all .2s;}
+.book-pill:hover{box-shadow:0 0 28px rgba(0,194,255,0.35);border-color:var(--cyan);}
+
+/* headline sits above the globe, doesn't cover it */
+.headline-zone{position:absolute;top:96px;left:0;right:0;z-index:6;text-align:center;pointer-events:none;}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+.headline{font-size:clamp(22px,3.6vw,34px);font-weight:700;line-height:1.15;
+  text-shadow:0 4px 30px rgba(0,0,0,0.6);}
+.sub{color:var(--dim);font-size:14px;margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,0.7);}
+
+/* module dock — SPOS-style dark solid tiles with status pills, bottom, no scroll */
+.dock{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:6;
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:94vw;}
+.tile{background:rgba(9,14,28,0.82);border:1px solid rgba(0,194,255,0.18);
+  border-radius:14px;padding:12px 16px;cursor:pointer;text-align:left;min-width:130px;
+  transition:transform .15s, box-shadow .2s, border-color .2s;}
+.tile:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,194,255,0.22);border-color:var(--cyan);}
+.tile.active{border-color:var(--cyan);box-shadow:0 0 22px rgba(0,194,255,0.4);}
+.tile-label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.tile-value{font-size:13.5px;font-weight:600;}
+.pill{display:inline-block;margin-top:6px;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.03em;}
+.pill-live{background:rgba(0,220,140,0.15);color:#3fe0a0;border:1px solid rgba(0,220,140,0.35);}
+.pill-book{background:rgba(0,194,255,0.15);color:#5fd4ff;border:1px solid rgba(0,194,255,0.35);}
+
+/* liquid glass panel overlay */
+.panel-backdrop{position:fixed;inset:0;z-index:20;background:rgba(3,5,10,0.55);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;}
+.panel-backdrop.open{display:flex;}
+.panel{width:min(480px,92vw);max-height:78vh;overflow-y:auto;background:var(--glass);
+  border:1px solid var(--glass-border);border-radius:24px;padding:30px;backdrop-filter:blur(28px) saturate(150%);
+  box-shadow:0 0 70px rgba(0,194,255,0.18), inset 0 1px 0 rgba(255,255,255,0.06);}
+.panel h2{font-size:19px;margin-bottom:4px;}
+.panel .panel-sub{color:var(--dim);font-size:13px;margin-bottom:18px;}
+.panel p{font-size:13.5px;line-height:1.6;color:#cdd9ee;margin-bottom:10px;}
+.panel ul{margin:0 0 14px 18px;font-size:13.5px;color:#cdd9ee;line-height:1.7;}
+.panel .close{position:absolute;top:16px;right:20px;cursor:pointer;color:var(--dim);font-size:18px;}
+.panel-wrap{position:relative;}
+.btn{padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;
+  display:inline-block;transition:transform .15s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;}
+.btn-ghost{border:1px solid var(--glass-border);color:var(--ink);background:rgba(255,255,255,0.04);}
+
+/* Madison — the real chat widget, bottom-right, distinct from the brain */
+.madison-fab{position:absolute;bottom:26px;right:26px;z-index:7;display:flex;flex-direction:column;
+  align-items:center;gap:4px;cursor:pointer;}
+.madison-orb{width:78px;height:78px;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 50% 55%, rgba(0,194,255,0.28), rgba(4,16,31,0) 70%);
+  animation:mpulse 2.6s ease-in-out infinite;display:flex;align-items:center;justify-content:center;}
+.madison-orb img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(0,194,255,0.65));}
+.madison-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
+  border:1px solid rgba(0,194,255,0.4);animation:mring 2.6s ease-in-out infinite;}
+@keyframes mpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+@keyframes mring{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.35);opacity:0;}}
+.madison-fab-label{font-size:10.5px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,0.8);font-weight:600;}
+
+/* bottom-left footer strip */
+.bottombar{position:absolute;bottom:26px;left:26px;z-index:6;font-size:10.5px;color:var(--dim);
+  display:none;}
+
+@media(min-width:780px){ .bottombar{display:block;} }
+@media(max-width:640px){
+  .topbar nav{display:none;}
+  .madison-fab{bottom:110px;}
+  .dock{bottom:16px;}
+  .tile{min-width:104px;padding:10px 14px;}
+}
+</style>
 </head>
 <body>
-<div id="root"></div>
+<div id="stage">
+  <div class="brain-globe-bg">
+    <div class="brain-globe-spin"><img src="assets/brain-globe.png" alt="BlueHippoCyber obsidian brain network" /></div>
+  </div>
+  <div class="vignette"></div>
 
-<script type="text/babel" src="tweaks-panel.jsx?v=20260701i"></script>
-<script type="text/babel" src="components.jsx?v=20260701i"></script>
-<script type="text/babel" src="chat-and-solutions.jsx?v=20260701i"></script>
-<script type="text/babel" src="portfolio.jsx?v=20260701i"></script>
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span> BlueHippoCyber</div>
+    <nav>
+      <a href="portfolio-classic.html">Portfolio</a>
+      <a href="tel:+18634404145">(863) 440-4145</a>
+      <a href="mailto:keenan@bluehippocyber.com">Contact</a>
+    </nav>
+    <a class="book-pill" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call →</a>
+  </header>
 
-<script type="text/babel">
-const { useState, useEffect } = React;
+  <div class="headline-zone">
+    <div class="eyebrow">AI Operating Systems · United States</div>
+    <div class="headline">Every lead answered. Every job booked.</div>
+    <div class="sub">One AI Operating System — built for cybersecurity consultants &amp; service businesses.</div>
+  </div>
 
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accentHue": 220,
-  "videoOpacity": 0.55,
-  "scanlineStrength": 0.015,
-  "reducedMotion": false
-}/*EDITMODE-END*/;
+  <div class="dock" id="dock">
+    <div class="tile" data-panel="services"><div class="tile-label">Module</div><div class="tile-value">What We Build</div><span class="pill pill-live">LIVE</span></div>
+    <div class="tile" data-panel="portfolio"><div class="tile-label">Module</div><div class="tile-value">Proof of Work</div><span class="pill pill-live">LIVE</span></div>
+    <div class="tile" data-panel="pricing"><div class="tile-label">Module</div><div class="tile-value">Pricing</div><span class="pill pill-live">LIVE</span></div>
+    <div class="tile" data-panel="contact"><div class="tile-label">Module</div><div class="tile-value">Book Free Audit</div><span class="pill pill-book">BOOK NOW</span></div>
+  </div>
 
-function App() {
-  const [route, setRoute] = useState('home');
-  const [chatOpen, setChatOpen] = useState(false);
-  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  <div class="madison-fab" id="madisonFab">
+    <div class="madison-orb"><img src="assets/origin-mascot-transparent.png" alt="Madison — Origin One AI assistant" /></div>
+    <div class="madison-fab-label">Talk to Madison</div>
+  </div>
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root.style.setProperty('--neon', `oklch(0.85 0.15 ${tweaks.accentHue})`);
-    root.style.setProperty('--neon-2', `oklch(0.78 0.18 ${tweaks.accentHue - 5})`);
-    root.style.setProperty('--neon-deep', `oklch(0.55 0.18 ${tweaks.accentHue})`);
-    root.style.setProperty('--video-opacity', String(tweaks.videoOpacity));
-    root.style.setProperty('--scan-strength', String(tweaks.scanlineStrength));
-  }, [tweaks]);
+  <div class="bottombar">© 2026 BlueHippoCyber · Serving the entire United States</div>
+</div>
 
-  useEffect(() => {
-    const handleHash = () => {
-      const h = (window.location.hash || '').replace('#', '');
-      if (h === 'services' || h === 'solutions') { setRoute('solutions'); return; }
-      if (h === 'portfolio') { setRoute('portfolio'); return; }
-      if (h === 'pricing-full') { setRoute('pricing'); return; }
-      if (h === 'home' || h === '') { setRoute('home'); return; }
-    };
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+<div class="panel-backdrop" id="panelBackdrop">
+  <div class="panel panel-wrap" id="panelBody">
+    <div class="close" onclick="closePanel()">✕</div>
+  </div>
+</div>
 
-  const navigate = (target, anchor) => {
-    if (target === 'solutions') {
-      window.location.hash = '#services';
-      setRoute('solutions');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (target === 'portfolio') {
-      window.location.hash = '#portfolio';
-      setRoute('portfolio');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (target === 'pricing') {
-      window.location.hash = '#pricing-full';
-      setRoute('pricing');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      if (route !== 'home') {
-        window.location.hash = '#home';
-        setRoute('home');
-        if (anchor) {
-          setTimeout(() => {
-            const el = document.getElementById(anchor);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 100);
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      } else {
-        if (anchor) {
-          const el = document.getElementById(anchor);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      }
-    }
-  };
+<script>
+const PANELS = {
+  services: {
+    title: "What We Build",
+    sub: "AI Operating Systems",
+    body: `<p>One system, not a pile of tools: lead capture, automated follow-up, and booking — running whether you're on a job or asleep.</p>
+      <ul><li>Missed-call and web-form capture, instantly</li><li>Automated text/email follow-up until they book</li><li>Calendar booking wired straight to your schedule</li><li>Every step logged, nothing falls through</li></ul>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book Your Free Audit</a>`
+  },
+  portfolio: {
+    title: "Proof",
+    sub: "Real systems, not mockups",
+    body: `<p>Every link below is a live, deployed build — click through and use it yourself.</p>
+      <ul>
+        <li><a href="https://moores-welding.vercel.app" target="_blank" rel="noopener">Moore's Welding</a> — booking site + review proof</li>
+        <li><a href="https://towers-tv.vercel.app" target="_blank" rel="noopener">Towers TV Installations</a> — lead capture site</li>
+        <li><a href="https://mint-lounge.vercel.app" target="_blank" rel="noopener">Mint Lounge</a> — event/booking site</li>
+        <li><a href="https://hr-printing.vercel.app" target="_blank" rel="noopener">H&amp;R Printing</a> — animated product demo</li>
+      </ul>
+      <a class="btn btn-ghost" href="portfolio-classic.html" style="display:block;text-align:center;">See Every Project →</a>`
+  },
+  pricing: {
+    title: "Pricing",
+    sub: "One-time setup, no subscription to start",
+    body: `<p>Landing page + automated lead capture from <b>$360</b>. Full site + booking + follow-up system from <b>$560</b>. Optional hosting/maintenance after launch, $100–150/mo — never required.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Get Your Free Audit</a>`
+  },
+  contact: {
+    title: "Book a Free Audit",
+    sub: "15 minutes, direct with Keenan",
+    body: `<p>Tell me what's slipping through the cracks in your business right now, and I'll show you exactly what to automate first.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="display:block;text-align:center;margin-bottom:8px;">Open My Calendar</a>
+      <a class="btn btn-ghost" href="mailto:keenan@bluehippocyber.com" style="display:block;text-align:center;">Email Instead</a>`
+  },
+  madison: {
+    title: "Madison",
+    sub: "Your AI front desk, live 24/7",
+    body: `<p>Madison is BlueHippoCyber's live AI voice receptionist — answers every call, qualifies the lead, and books the audit automatically, day or night.</p>
+      <ul>
+        <li><b>What Madison knows:</b> BHC builds AI Operating Systems — automated lead capture, follow-up, and booking — for cybersecurity consultants and service businesses, nationwide.</li>
+        <li><b>Pricing she'll quote:</b> Landing page + lead capture from $360. Full site + booking + follow-up from $560. Optional hosting $100–150/mo, never required.</li>
+        <li><b>Service area:</b> All 50 states, remote-first.</li>
+        <li><b>Who built her:</b> Keenan McGriff, founder — (863) 440-4145 / keenan@bluehippocyber.com.</li>
+      </ul>
+      <a class="btn btn-primary" href="tel:+18553073995" style="display:block;text-align:center;margin-bottom:8px;">Call Madison — (855) 307-3995</a>
+      <a class="btn btn-ghost" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="display:block;text-align:center;">Book a Call Instead</a>`
+  }
+};
 
-  return (
-    <>
-      <Nav route={route} navigate={navigate} />
-
-      {/* HOME */}
-      <div className={`page ${route === 'home' ? 'active' : ''}`} data-screen-label="home">
-        <Hero onSpeak={() => setChatOpen(true)} />
-        <BuiltFor />
-        <WhatWeDo />
-        <HowItWorks onSpeak={() => navigate('home', 'contact')} />
-        <PricingTeaser onSpeak={() => setChatOpen(true)} navigate={navigate} />
-        <GalaxyPanels />
-        <FinalCTA onSpeak={() => navigate('home', 'contact')} />
-        <Marquee />
-        <Contact />
-        <Footer navigate={navigate} />
-      </div>
-
-      {/* SERVICES */}
-      <div className={`page ${route === 'solutions' ? 'active' : ''}`} data-screen-label="services">
-        <SolutionsPage navigate={navigate} />
-        <Marquee />
-        <Footer navigate={navigate} />
-      </div>
-
-      {/* PORTFOLIO */}
-      <div className={`page ${route === 'portfolio' ? 'active' : ''}`} data-screen-label="portfolio">
-        <PortfolioPage navigate={navigate} />
-        <Marquee />
-        <Footer navigate={navigate} />
-      </div>
-
-      {/* FULL PRICING */}
-      <div className={`page ${route === 'pricing' ? 'active' : ''}`} data-screen-label="pricing">
-        <Pricing />
-        <FinalCTA onSpeak={() => navigate('home', 'contact')} />
-        <Footer navigate={navigate} />
-      </div>
-
-      {/* Chat */}
-      <OriginChat open={chatOpen} setOpen={setChatOpen} navigate={navigate} />
-
-      {/* Scanlines overlay */}
-      {!tweaks.reducedMotion && tweaks.scanlineStrength > 0 && <div className="scanlines"></div>}
-
-      {/* Tweaks panel */}
-      <TweaksPanel title="Tweaks">
-        <TweakSection label="Look" />
-        <TweakSlider label="Accent hue" value={tweaks.accentHue}
-          min={180} max={260} step={2} unit="°"
-          onChange={(v) => setTweak('accentHue', v)} />
-        <TweakSlider label="Video opacity" value={tweaks.videoOpacity}
-          min={0} max={1} step={0.05}
-          onChange={(v) => setTweak('videoOpacity', v)} />
-        <TweakSlider label="Scanline strength" value={tweaks.scanlineStrength}
-          min={0} max={0.06} step={0.005}
-          onChange={(v) => setTweak('scanlineStrength', v)} />
-
-        <TweakToggle label="Reduced motion" value={tweaks.reducedMotion}
-          onChange={(v) => setTweak('reducedMotion', v)} />
-
-        <TweakSection label="Quick nav" />
-        <TweakButton label="→ Home"      onClick={() => navigate('home')} />
-        <TweakButton label="→ Services"  onClick={() => navigate('solutions')} />
-        <TweakButton label="→ Portfolio" onClick={() => navigate('portfolio')} />
-        <TweakButton label="→ Pricing"   onClick={() => navigate('pricing')} />
-        <TweakButton label="Open chat"   onClick={() => setChatOpen(true)} />
-      </TweaksPanel>
-    </>
-  );
+function openPanel(key){
+  const p = PANELS[key];
+  if(!p) return;
+  document.getElementById('panelBody').innerHTML =
+    `<div class="close" onclick="closePanel()">✕</div><h2>${p.title}</h2><div class="panel-sub">${p.sub}</div>${p.body}`;
+  document.getElementById('panelBackdrop').classList.add('open');
+  document.querySelectorAll('.tile').forEach(t => t.classList.toggle('active', t.dataset.panel === key));
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+function closePanel(){
+  document.getElementById('panelBackdrop').classList.remove('open');
+  document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+}
+document.querySelectorAll('.tile').forEach(t => t.addEventListener('click', () => openPanel(t.dataset.panel)));
+document.getElementById('madisonFab').addEventListener('click', () => openPanel('madison'));
+document.getElementById('panelBackdrop').addEventListener('click', function(e){ if(e.target === this) closePanel(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closePanel(); });
 </script>
 </body>
 </html>

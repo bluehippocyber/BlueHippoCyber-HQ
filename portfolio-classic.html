@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BlueHippoCyber — Automated Lead Systems for Service Businesses</title>
+<meta name="description" content="BlueHippoCyber builds automated lead capture, follow-up, and booking systems for cybersecurity consultants and local service businesses. One-time setup, no subscriptions. Free Business Growth Audit." />
+<link rel="canonical" href="https://bluehippocyber.com/" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#06080c" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="BlueHippoCyber" />
+<meta property="og:title" content="BlueHippoCyber — Automated Lead Systems for Service Businesses" />
+<meta property="og:description" content="Stop losing jobs to whoever answers first. Automated lead capture, follow-up, and booking — built for cybersecurity consultants and local service businesses. One-time setup, no subscriptions." />
+<meta property="og:url" content="https://bluehippocyber.com/" />
+<meta property="og:image" content="https://bluehippocyber.com/assets/hero-poster.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BlueHippoCyber — Automated Lead Systems for Service Businesses" />
+<meta name="twitter:description" content="Stop losing jobs to whoever answers first. Automated lead capture, follow-up, and booking — one-time setup, no subscriptions." />
+<meta name="twitter:image" content="https://bluehippocyber.com/assets/hero-poster.jpg" />
+
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "BlueHippoCyber",
+  "description": "Automated lead capture, follow-up, and booking systems for cybersecurity consultants and local service businesses.",
+  "url": "https://bluehippocyber.com/",
+  "telephone": "+18632097940",
+  "email": "keenan@bluehippocyber.com",
+  "areaServed": "US",
+  "address": { "@type": "PostalAddress", "addressRegion": "FL", "addressCountry": "US" },
+  "sameAs": ["https://github.com/keenan371", "https://www.linkedin.com/in/keenanmcgriff"]
+}
+</script>
+
+<link rel="stylesheet" href="styles.css?v=20260701i" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx?v=20260701i"></script>
+<script type="text/babel" src="components.jsx?v=20260701i"></script>
+<script type="text/babel" src="chat-and-solutions.jsx?v=20260701i"></script>
+<script type="text/babel" src="portfolio.jsx?v=20260701i"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentHue": 220,
+  "videoOpacity": 0.55,
+  "scanlineStrength": 0.015,
+  "reducedMotion": false
+}/*EDITMODE-END*/;
+
+function App() {
+  const [route, setRoute] = useState('home');
+  const [chatOpen, setChatOpen] = useState(false);
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--neon', `oklch(0.85 0.15 ${tweaks.accentHue})`);
+    root.style.setProperty('--neon-2', `oklch(0.78 0.18 ${tweaks.accentHue - 5})`);
+    root.style.setProperty('--neon-deep', `oklch(0.55 0.18 ${tweaks.accentHue})`);
+    root.style.setProperty('--video-opacity', String(tweaks.videoOpacity));
+    root.style.setProperty('--scan-strength', String(tweaks.scanlineStrength));
+  }, [tweaks]);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const h = (window.location.hash || '').replace('#', '');
+      if (h === 'services' || h === 'solutions') { setRoute('solutions'); return; }
+      if (h === 'portfolio') { setRoute('portfolio'); return; }
+      if (h === 'pricing-full') { setRoute('pricing'); return; }
+      if (h === 'home' || h === '') { setRoute('home'); return; }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const navigate = (target, anchor) => {
+    if (target === 'solutions') {
+      window.location.hash = '#services';
+      setRoute('solutions');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (target === 'portfolio') {
+      window.location.hash = '#portfolio';
+      setRoute('portfolio');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (target === 'pricing') {
+      window.location.hash = '#pricing-full';
+      setRoute('pricing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      if (route !== 'home') {
+        window.location.hash = '#home';
+        setRoute('home');
+        if (anchor) {
+          setTimeout(() => {
+            const el = document.getElementById(anchor);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        if (anchor) {
+          const el = document.getElementById(anchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  return (
+    <>
+      <Nav route={route} navigate={navigate} />
+
+      {/* HOME */}
+      <div className={`page ${route === 'home' ? 'active' : ''}`} data-screen-label="home">
+        <Hero onSpeak={() => setChatOpen(true)} />
+        <BuiltFor />
+        <WhatWeDo />
+        <HowItWorks onSpeak={() => navigate('home', 'contact')} />
+        <PricingTeaser onSpeak={() => setChatOpen(true)} navigate={navigate} />
+        <GalaxyPanels />
+        <FinalCTA onSpeak={() => navigate('home', 'contact')} />
+        <Marquee />
+        <Contact />
+        <Footer navigate={navigate} />
+      </div>
+
+      {/* SERVICES */}
+      <div className={`page ${route === 'solutions' ? 'active' : ''}`} data-screen-label="services">
+        <SolutionsPage navigate={navigate} />
+        <Marquee />
+        <Footer navigate={navigate} />
+      </div>
+
+      {/* PORTFOLIO */}
+      <div className={`page ${route === 'portfolio' ? 'active' : ''}`} data-screen-label="portfolio">
+        <PortfolioPage navigate={navigate} />
+        <Marquee />
+        <Footer navigate={navigate} />
+      </div>
+
+      {/* FULL PRICING */}
+      <div className={`page ${route === 'pricing' ? 'active' : ''}`} data-screen-label="pricing">
+        <Pricing />
+        <FinalCTA onSpeak={() => navigate('home', 'contact')} />
+        <Footer navigate={navigate} />
+      </div>
+
+      {/* Chat */}
+      <OriginChat open={chatOpen} setOpen={setChatOpen} navigate={navigate} />
+
+      {/* Scanlines overlay */}
+      {!tweaks.reducedMotion && tweaks.scanlineStrength > 0 && <div className="scanlines"></div>}
+
+      {/* Tweaks panel */}
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Look" />
+        <TweakSlider label="Accent hue" value={tweaks.accentHue}
+          min={180} max={260} step={2} unit="°"
+          onChange={(v) => setTweak('accentHue', v)} />
+        <TweakSlider label="Video opacity" value={tweaks.videoOpacity}
+          min={0} max={1} step={0.05}
+          onChange={(v) => setTweak('videoOpacity', v)} />
+        <TweakSlider label="Scanline strength" value={tweaks.scanlineStrength}
+          min={0} max={0.06} step={0.005}
+          onChange={(v) => setTweak('scanlineStrength', v)} />
+
+        <TweakToggle label="Reduced motion" value={tweaks.reducedMotion}
+          onChange={(v) => setTweak('reducedMotion', v)} />
+
+        <TweakSection label="Quick nav" />
+        <TweakButton label="→ Home"      onClick={() => navigate('home')} />
+        <TweakButton label="→ Services"  onClick={() => navigate('solutions')} />
+        <TweakButton label="→ Portfolio" onClick={() => navigate('portfolio')} />
+        <TweakButton label="→ Pricing"   onClick={() => navigate('pricing')} />
+        <TweakButton label="Open chat"   onClick={() => setChatOpen(true)} />
+      </TweaksPanel>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
