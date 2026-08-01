@@ -316,11 +316,12 @@ applyTheme(localStorage.getItem('bhc-theme') === 'light' ? 'light' : 'dark');
 
 /* ===== FAQ accordion — right panel, matches helpdesk.bluehippocyber.com ===== */
 const FAQS = [
-  { q: "Why not just use a generic AI chat tool?", a: "Ours is built for exactly two things — funeral home trust and private helpdesks — not a generic assistant guessing at your business." },
-  { q: "What does the Funeral Home audit look at?", a: "Your website, Google presence, and response speed for a family searching right now — delivered as a real report, no sales call required." },
-  { q: "How is the Helpdesk private?", a: "It runs on infrastructure you own and only shows each person what they're cleared to see — nothing leaves your systems." },
-  { q: "How long does setup take?", a: "Both systems are one-time setup builds — no long onboarding, no subscription required to start." },
-  { q: "What does this cost?", a: "See the Pricing module to the left, or book a free audit and we'll walk through it live." },
+  { q: "How do you rank us higher on Google?", a: "Real Google Business Profile setup and optimization, a site that actually loads fast and matches what people search for — not a trick, just the fundamentals done right." },
+  { q: "How do you help with my reviews?", a: "We help you get more real reviews and make sure they show up where customers actually look — your Google profile and your site." },
+  { q: "How much do you charge for a website?", a: "See the Pricing module to the left, or book a free audit and we'll quote you straight, no surprises." },
+  { q: "What's the difference between a website and a landing page?", a: "A website is your full presence — services, reviews, contact. A landing page is one focused page built to get a call or a form filled out fast. We build whichever fits what you're trying to do." },
+  { q: "How long does it take to get this all set up?", a: "Most builds are one-time setup, not a long drawn-out project — we'll give you a real timeline once we know what you need." },
+  { q: "What kind of business is this for?", a: "Home service businesses (plumbing, HVAC, electrical), local service pros (salons, contractors), and funeral homes/cyber-IT businesses — if you need more calls and a system that doesn't drop leads, this is for you." },
 ];
 document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
   `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
