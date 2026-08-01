@@ -65,19 +65,21 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .headline,.eyebrow,.brand{text-shadow:0 0 12px rgba(0,194,255,0.55);}
 #stage{position:fixed;inset:0;overflow:hidden;}
 
-/* Obsidian Brain — EXACT copy of the proven SecurityPracticeOS BrainGlobe.tsx pattern.
-   Same image, same math, same numbers. Not reinterpreted: fixed inset:0 wrapper,
-   circular image centered at min(90vw,90vh), opacity 0.55, rotate 90s + pulse 6s.
-   No crop tricks, no oversized scale, no "eclipse" artifacts. */
+/* Obsidian Brain — FULL BLEED background, native size, no rotation (the source
+   photo is already a widescreen crop — spinning it just re-creates a moving
+   crop artifact). No circle crop, no visible edge, no zoom.
+   The source render is itself a sphere with a hard circular boundary — a plain
+   object-fit:cover shows that boundary as a "crop circle" against the page's
+   black. Fixed by masking the image so it fades to transparent before its own
+   edge, letting the page's matching #05070d show through instead of a seam. */
 .brain-globe-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:#05070d;pointer-events:none;}
-.brain-globe-spin{position:absolute;inset:0;animation:brainGlobeSpin 90s linear infinite, brainGlobePulse 6s ease-in-out infinite;}
-.brain-globe-spin img{position:absolute;top:50%;left:50%;width:min(90vw,90vh);height:min(90vw,90vh);
-  transform:translate(-50%,-50%);object-fit:cover;border-radius:50%;opacity:0.85;
-  box-shadow:0 0 140px 40px rgba(0,150,255,0.25);}
-@keyframes brainGlobeSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.brain-globe-spin{position:absolute;inset:0;animation:brainGlobePulse 6s ease-in-out infinite;}
+.brain-globe-spin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;
+  -webkit-mask-image:radial-gradient(circle at center, black 0%, black 30%, transparent 52%);
+  mask-image:radial-gradient(circle at center, black 0%, black 30%, transparent 52%);}
 @keyframes brainGlobePulse{0%,100%{filter:brightness(1) saturate(1);}50%{filter:brightness(1.15) saturate(1.2);}}
 .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:radial-gradient(ellipse at center, rgba(5,7,13,0.05) 0%, rgba(5,7,13,0.28) 60%, rgba(5,7,13,0.82) 100%);}
+  background:radial-gradient(ellipse at center, rgba(5,7,13,0) 0%, rgba(5,7,13,0.1) 28%, rgba(5,7,13,0.98) 55%, rgba(5,7,13,1) 100%);}
 
 /* top bar */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;
@@ -188,7 +190,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
     <div class="brand"><span class="dot"></span> BlueHippoCyber</div>
     <nav>
       <a href="portfolio.html">Portfolio</a>
-      <a href="tel:+18634404145">(863) 440-4145</a>
+      <a href="tel:+18638252215">(863) 825-2215</a>
       <a href="mailto:keenan@bluehippocyber.com">Contact</a>
     </nav>
     <a class="book-pill" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call →</a>
