@@ -69,16 +69,25 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .headline,.eyebrow,.brand{text-shadow:0 0 12px rgba(0,194,255,0.55);}
 #stage{position:fixed;inset:0;overflow:hidden;}
 
-/* BHC logo — FULL BLEED hero background, anchored to the upper area so the
-   glyph + wordmark stay clear of the two-panel row below. No crop, no scroll. */
+/* BHC logo — genuinely full-bleed, edge-to-edge, feathered so there's no
+   visible crop boundary anywhere (same technique as portfolio.html). Real
+   glowing/pulsing motion — brightness, glow spread, and a slow scale
+   breathe — so the hero has actual life, not a static image. */
 .logo-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);pointer-events:none;transition:background .3s;}
-.logo-bg img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:62%;width:auto;
-  max-width:100%;object-fit:contain;opacity:0.9;animation:logoPulse 6s ease-in-out infinite;}
-@keyframes logoPulse{0%,100%{filter:brightness(1) saturate(1);}50%{filter:brightness(1.1) saturate(1.15);}}
+.logo-bg img{position:absolute;top:50%;left:50%;width:120vw;height:120vh;min-width:120%;min-height:120%;
+  transform:translate(-50%,-50%) scale(1);object-fit:cover;opacity:0.95;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
+  mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
+  animation:logoPulse 5s ease-in-out infinite;
+  filter:drop-shadow(0 0 40px rgba(0,194,255,0.35));}
+@keyframes logoPulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 0 40px rgba(0,194,255,0.35)) brightness(1);}
+  50%{transform:translate(-50%,-50%) scale(1.035);filter:drop-shadow(0 0 70px rgba(0,194,255,0.6)) brightness(1.12);}
+}
 .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 30%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.1) 45%, rgba(5,7,13,0.6) 100%);}
+  background:radial-gradient(ellipse at 50% 30%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.05) 40%, rgba(5,7,13,0.55) 100%);}
 :root[data-theme="light"] .vignette{
-  background:radial-gradient(ellipse at 50% 30%, rgba(244,247,252,0) 0%, rgba(244,247,252,0.1) 45%, rgba(244,247,252,0.6) 100%);}
+  background:radial-gradient(ellipse at 50% 30%, rgba(244,247,252,0) 0%, rgba(244,247,252,0.05) 40%, rgba(244,247,252,0.55) 100%);}
 
 /* theme toggle — simple sliding pill, no emoji */
 .theme-toggle{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
@@ -104,33 +113,37 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 /* two-panel row — mirrors helpdesk.bluehippocyber.com: glass card, left panel
    (headline + CTA + module list), right panel (FAQ drop-downs). Sits low
    enough to clear the logo glyph/wordmark above it. */
-.hero-panels{position:absolute;top:62%;left:50%;transform:translateX(-50%) translateY(10px);z-index:6;
-  display:flex;gap:0;width:min(1040px,92vw);max-height:38vh;
+.hero-panels{position:absolute;top:60%;left:50%;transform:translateX(-50%) translateY(10px);z-index:6;
+  display:flex;gap:0;width:min(1220px,95vw);max-height:42vh;
   background:var(--glass);backdrop-filter:blur(24px) saturate(150%);border:1px solid var(--glass-border);
-  border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4);opacity:0;
+  border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,0.4);opacity:0;
   animation:panelsIn .6s ease-out .3s forwards;}
 @keyframes panelsIn{to{opacity:1;transform:translateX(-50%) translateY(0);}}
-.panel-left{flex:1.1;padding:22px 28px;border-right:1px solid var(--glass-border);overflow-y:auto;}
-.panel-right{flex:0.9;padding:22px 26px;overflow-y:auto;}
-.panel-left .headline{font-size:clamp(18px,2.2vw,24px);font-weight:700;line-height:1.2;margin-bottom:6px;}
-.panel-left .sub{color:var(--dim);font-size:12.5px;line-height:1.5;margin-bottom:12px;}
-.module-list{display:flex;flex-direction:column;gap:7px;}
-.module-row{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;
+.panel-left{flex:0 0 34%;padding:28px 32px;border-right:1px solid var(--glass-border);overflow-y:auto;}
+.panel-right{flex:1;padding:28px 30px;overflow:hidden;display:flex;flex-direction:column;}
+.panel-left .headline{font-size:clamp(20px,2.6vw,28px);font-weight:700;line-height:1.2;margin-bottom:8px;}
+.panel-left .sub{color:var(--dim);font-size:13px;line-height:1.5;margin-bottom:14px;}
+.module-list{display:flex;flex-direction:column;gap:8px;}
+.module-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;
   border:1px solid var(--glass-border);border-radius:10px;cursor:pointer;transition:all .15s;}
 .module-row:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(0,194,255,0.18);transform:translateX(2px);}
-.module-row-label{font-size:13px;font-weight:600;}
+.module-row-label{font-size:13.5px;font-weight:600;}
+.module-row[data-panel="contact"]{border-color:var(--cyan);background:rgba(0,194,255,0.12);
+  box-shadow:0 0 20px rgba(0,194,255,0.25);animation:bookPulse 2.4s ease-in-out infinite;}
+@keyframes bookPulse{0%,100%{box-shadow:0 0 20px rgba(0,194,255,0.25);}50%{box-shadow:0 0 32px rgba(0,194,255,0.5);}}
 .pill{display:inline-block;padding:4px 11px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.03em;}
-.faq-eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;}
-.faq-item{border:1px solid var(--glass-border);border-radius:10px;margin-bottom:8px;overflow:hidden;}
-.faq-q{padding:11px 14px;font-size:12.5px;font-weight:600;cursor:pointer;display:flex;
-  justify-content:space-between;align-items:center;}
-.faq-q::after{content:"+";color:var(--cyan);font-size:16px;transition:transform .2s;}
+.faq-eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;flex-shrink:0;}
+.faq-row{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px;scroll-snap-type:x proximity;}
+.faq-item{flex:0 0 240px;border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;
+  cursor:pointer;transition:all .15s;scroll-snap-align:start;}
+.faq-item:hover{border-color:var(--cyan);}
+.faq-q{font-size:12.5px;font-weight:600;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;}
+.faq-q::after{content:"+";color:var(--cyan);font-size:16px;transition:transform .2s;flex-shrink:0;}
 .faq-item.open .faq-q::after{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:12px;color:var(--dim);
-  line-height:1.5;padding:0 14px;}
-.faq-item.open .faq-a{max-height:120px;padding:0 14px 12px;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:11.5px;color:var(--dim);line-height:1.5;}
+.faq-item.open .faq-a{max-height:160px;margin-top:8px;}
 @media(max-width:780px){ .hero-panels{flex-direction:column;top:auto;bottom:14px;max-height:none;
-  transform:translateX(-50%);} .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);} }
+  transform:translateX(-50%);} .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);flex:none;} }
 .pill-live,.pill-book{background:rgba(0,194,255,0.12);color:var(--cyan);border:1px solid var(--glass-border);}
 
 /* liquid glass panel overlay */
@@ -230,8 +243,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
       </div>
     </div>
     <div class="panel-right">
-      <div class="faq-eyebrow">Questions people ask</div>
-      <div id="faqList"></div>
+      <div class="faq-eyebrow">BlueHippoCyber FAQs</div>
+      <div class="faq-row" id="faqList"></div>
     </div>
   </div>
 
@@ -316,12 +329,15 @@ applyTheme(localStorage.getItem('bhc-theme') === 'light' ? 'light' : 'dark');
 
 /* ===== FAQ accordion — right panel, matches helpdesk.bluehippocyber.com ===== */
 const FAQS = [
-  { q: "How do you rank us higher on Google?", a: "Real Google Business Profile setup and optimization, a site that actually loads fast and matches what people search for — not a trick, just the fundamentals done right." },
-  { q: "How do you help with my reviews?", a: "We help you get more real reviews and make sure they show up where customers actually look — your Google profile and your site." },
+  { q: "How do you rank us higher on Google?", a: "Your Google Business Profile is the single biggest lever — category, reviews, and how well it connects to your site. Proximity matters too, but GBP + reviews is where we start." },
+  { q: "How do you help with my reviews?", a: "More real reviews, faster, plus responding to them consistently — businesses that respond to most of their reviews see a real ranking boost." },
   { q: "How much do you charge for a website?", a: "See the Pricing module to the left, or book a free audit and we'll quote you straight, no surprises." },
-  { q: "What's the difference between a website and a landing page?", a: "A website is your full presence — services, reviews, contact. A landing page is one focused page built to get a call or a form filled out fast. We build whichever fits what you're trying to do." },
-  { q: "How long does it take to get this all set up?", a: "Most builds are one-time setup, not a long drawn-out project — we'll give you a real timeline once we know what you need." },
-  { q: "What kind of business is this for?", a: "Home service businesses (plumbing, HVAC, electrical), local service pros (salons, contractors), and funeral homes/cyber-IT businesses — if you need more calls and a system that doesn't drop leads, this is for you." },
+  { q: "Website vs. landing page — what's the difference?", a: "A website is your full presence — services, reviews, contact. A landing page is one focused page built to get a call or form filled fast." },
+  { q: "How long does setup take?", a: "One-time setup builds, not long drawn-out projects — we'll give you a real timeline once we know what you need." },
+  { q: "Will this actually work, or is it vague AI hype?", a: "No '10x efficiency' promises — we tell you exactly what gets built, tied to your actual leads and calls, not a generic pitch." },
+  { q: "Do I own everything you build?", a: "Yes. No dependency trap — the site, the system, the setup is yours." },
+  { q: "Is my data private and secure?", a: "For the Helpdesk especially — it runs on infrastructure you own, and nothing leaves your systems." },
+  { q: "What kind of business is this for?", a: "Funeral homes, dermatologists, construction, pet cemeteries, HVAC, plumbers, welders, law firms — if you need more calls and a system that doesn't drop leads, this is for you." },
 ];
 document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
   `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
@@ -370,7 +386,7 @@ function openChatWidget(){
 }
 
 async function greetVisitor(){
-  const bubble = appendChatBubble('assistant', "Welcome to BlueHippoCyber! Are you looking into the Funeral Home Digital Trust Audit, the Private Helpdesk OS, or something else?");
+  const bubble = appendChatBubble('assistant', "Hey — thanks for visiting BlueHippoCyber! How can I help you today? What kind of business do you have?");
   chatHistory.push({ role: 'assistant', content: bubble.textContent });
 }
 
