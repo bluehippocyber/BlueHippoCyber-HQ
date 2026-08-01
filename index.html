@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BlueHippoCyber — AI Operating Systems for Cybersecurity Consultants</title>
-<meta name="description" content="BlueHippoCyber builds AI Operating Systems that capture leads, follow up, and book jobs automatically — for cybersecurity consultants and service businesses across the United States. Talk to Madison, our AI agent, and book a free audit." />
+<title>BlueHippoCyber — Real Systems for Funeral Homes &amp; Tech Businesses</title>
+<meta name="description" content="BlueHippoCyber builds real, deployed systems — the Funeral Home Digital Trust Audit and the Private Helpdesk OS — for funeral homes, cybersecurity consultants, and IT businesses across the United States." />
 <link rel="canonical" href="https://bluehippocyber.com/" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#05070d" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BlueHippoCyber" />
-<meta property="og:title" content="BlueHippoCyber — AI Operating Systems for Cybersecurity Consultants" />
-<meta property="og:description" content="One system. Every lead answered, followed up, and booked automatically. Talk to Madison, book your free audit." />
+<meta property="og:title" content="BlueHippoCyber — Real Systems for Funeral Homes &amp; Tech Businesses" />
+<meta property="og:description" content="Real, deployed systems — not mockups. Built for funeral homes and cybersecurity/IT businesses." />
 <meta property="og:url" content="https://bluehippocyber.com/" />
-<meta property="og:image" content="https://bluehippocyber.com/assets/obsidian-brain-blue.jpg" />
+<meta property="og:image" content="https://bluehippocyber.com/assets/bhc-logo-black.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="BlueHippoCyber — AI Operating Systems for Cybersecurity Consultants" />
-<meta name="twitter:description" content="One system. Every lead answered, followed up, and booked automatically." />
-<meta name="twitter:image" content="https://bluehippocyber.com/assets/obsidian-brain-blue.jpg" />
+<meta name="twitter:title" content="BlueHippoCyber — Real Systems for Funeral Homes &amp; Tech Businesses" />
+<meta name="twitter:description" content="Real, deployed systems — not mockups. Built for funeral homes and cybersecurity/IT businesses." />
+<meta name="twitter:image" content="https://bluehippocyber.com/assets/bhc-logo-black.png" />
 
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
@@ -32,7 +32,7 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "BlueHippoCyber",
-  "description": "AI Operating Systems — automated lead capture, follow-up, and booking — for cybersecurity consultants and service businesses.",
+  "description": "Real, deployed digital systems for funeral homes and cybersecurity/IT businesses — the Funeral Home Digital Trust Audit and the Private Helpdesk OS.",
   "url": "https://bluehippocyber.com/",
   "telephone": "+18634404145",
   "email": "keenan@bluehippocyber.com",
@@ -46,8 +46,8 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"What is an AI Operating System (AIOS)?","acceptedAnswer":{"@type":"Answer","text":"An AIOS is a unified system that captures every lead, follows up automatically, and books jobs onto your calendar — replacing scattered tools and manual follow-up with one automated pipeline."}},
-    {"@type":"Question","name":"Does BlueHippoCyber work with businesses outside Florida?","acceptedAnswer":{"@type":"Answer","text":"Yes. BlueHippoCyber builds and deploys AI Operating Systems for cybersecurity consultants and service businesses across the entire United States."}},
+    {"@type":"Question","name":"What does BlueHippoCyber build?","acceptedAnswer":{"@type":"Answer","text":"Real, deployed digital systems — including the Funeral Home Digital Trust Audit and the Private Helpdesk OS — that capture leads, answer questions, and book jobs automatically."}},
+    {"@type":"Question","name":"Does BlueHippoCyber work with businesses outside Florida?","acceptedAnswer":{"@type":"Answer","text":"Yes. BlueHippoCyber builds and deploys systems for funeral homes and cybersecurity/IT businesses across the entire United States."}},
     {"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Book a free Business Growth Audit directly on Keenan's calendar. No subscription required to start — one-time setup builds."}}
   ]
 }
@@ -58,28 +58,35 @@
   --bg:#05070d; --ink:#eaf2ff; --dim:#8fa3c9; --cyan:#00c2ff; --glass:rgba(14,20,38,0.55);
   --glass-border:rgba(0,194,255,0.25);
 }
+:root[data-theme="light"]{
+  --bg:#f4f7fc; --ink:#0a1220; --dim:#4a5a78; --cyan:#0072ff; --glass:rgba(255,255,255,0.65);
+  --glass-border:rgba(0,114,255,0.25);
+}
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(--ink);
-  font-family:"JetBrains Mono",monospace;}
+  font-family:"JetBrains Mono",monospace;transition:background .3s,color .3s;}
 .brand,.headline,.tile-value,.panel h2,.eyebrow,.tile-label,.book-pill,.pill{font-family:"Share Tech Mono",monospace;}
 .headline,.eyebrow,.brand{text-shadow:0 0 12px rgba(0,194,255,0.55);}
 #stage{position:fixed;inset:0;overflow:hidden;}
 
-/* Obsidian Brain — FULL BLEED background, native size, no rotation (the source
-   photo is already a widescreen crop — spinning it just re-creates a moving
-   crop artifact). No circle crop, no visible edge, no zoom.
-   The source render is itself a sphere with a hard circular boundary — a plain
-   object-fit:cover shows that boundary as a "crop circle" against the page's
-   black. Fixed by masking the image so it fades to transparent before its own
-   edge, letting the page's matching #05070d show through instead of a seam. */
-.brain-globe-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:#05070d;pointer-events:none;}
-.brain-globe-spin{position:absolute;inset:0;animation:brainGlobePulse 6s ease-in-out infinite;}
-.brain-globe-spin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;
-  -webkit-mask-image:radial-gradient(circle at center, black 0%, black 30%, transparent 52%);
-  mask-image:radial-gradient(circle at center, black 0%, black 30%, transparent 52%);}
-@keyframes brainGlobePulse{0%,100%{filter:brightness(1) saturate(1);}50%{filter:brightness(1.15) saturate(1.2);}}
+/* BHC logo — FULL BLEED hero background, anchored to the upper area so the
+   glyph + wordmark stay clear of the two-panel row below. No crop, no scroll. */
+.logo-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);pointer-events:none;transition:background .3s;}
+.logo-bg img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:62%;width:auto;
+  max-width:100%;object-fit:contain;opacity:0.9;animation:logoPulse 6s ease-in-out infinite;}
+@keyframes logoPulse{0%,100%{filter:brightness(1) saturate(1);}50%{filter:brightness(1.1) saturate(1.15);}}
 .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:radial-gradient(ellipse at center, rgba(5,7,13,0) 0%, rgba(5,7,13,0.1) 28%, rgba(5,7,13,0.98) 55%, rgba(5,7,13,1) 100%);}
+  background:radial-gradient(ellipse at 50% 30%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.1) 45%, rgba(5,7,13,0.6) 100%);}
+:root[data-theme="light"] .vignette{
+  background:radial-gradient(ellipse at 50% 30%, rgba(244,247,252,0) 0%, rgba(244,247,252,0.1) 45%, rgba(244,247,252,0.6) 100%);}
+
+/* theme toggle — simple sliding pill, no emoji */
+.theme-toggle{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
+  width:44px;height:24px;border-radius:999px;display:flex;align-items:center;padding:3px;cursor:pointer;
+  transition:all .2s;}
+.theme-toggle .thumb{width:16px;height:16px;border-radius:50%;background:var(--cyan);transition:transform .25s;
+  box-shadow:0 0 8px rgba(0,194,255,0.6);}
+:root[data-theme="light"] .theme-toggle .thumb{transform:translateX(20px);}
 
 /* top bar */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;
@@ -94,24 +101,36 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
   box-shadow:0 0 20px rgba(0,194,255,0.15);transition:all .2s;}
 .book-pill:hover{box-shadow:0 0 28px rgba(0,194,255,0.35);border-color:var(--cyan);}
 
-/* headline sits above the globe, doesn't cover it */
-.headline-zone{position:absolute;top:96px;left:0;right:0;z-index:6;text-align:center;pointer-events:none;}
-.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
-.headline{font-size:clamp(22px,3.6vw,34px);font-weight:700;line-height:1.15;
-  text-shadow:0 4px 30px rgba(0,0,0,0.6);}
-.sub{color:var(--dim);font-size:14px;margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,0.7);}
-
-/* module dock — SPOS-style dark solid tiles with status pills, bottom, no scroll */
-.dock{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:6;
-  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:94vw;}
-.tile{background:rgba(9,14,28,0.82);border:1px solid rgba(0,194,255,0.18);
-  border-radius:14px;padding:12px 16px;cursor:pointer;text-align:left;min-width:130px;
-  transition:transform .15s, box-shadow .2s, border-color .2s;}
-.tile:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,194,255,0.22);border-color:var(--cyan);}
-.tile.active{border-color:var(--cyan);box-shadow:0 0 22px rgba(0,194,255,0.4);}
-.tile-label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
-.tile-value{font-size:13.5px;font-weight:600;}
-.pill{display:inline-block;margin-top:6px;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.03em;}
+/* two-panel row — mirrors helpdesk.bluehippocyber.com: glass card, left panel
+   (headline + CTA + module list), right panel (FAQ drop-downs). Sits low
+   enough to clear the logo glyph/wordmark above it. */
+.hero-panels{position:absolute;top:62%;left:50%;transform:translateX(-50%) translateY(10px);z-index:6;
+  display:flex;gap:0;width:min(1040px,92vw);max-height:38vh;
+  background:var(--glass);backdrop-filter:blur(24px) saturate(150%);border:1px solid var(--glass-border);
+  border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4);opacity:0;
+  animation:panelsIn .6s ease-out .3s forwards;}
+@keyframes panelsIn{to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.panel-left{flex:1.1;padding:22px 28px;border-right:1px solid var(--glass-border);overflow-y:auto;}
+.panel-right{flex:0.9;padding:22px 26px;overflow-y:auto;}
+.panel-left .headline{font-size:clamp(18px,2.2vw,24px);font-weight:700;line-height:1.2;margin-bottom:6px;}
+.panel-left .sub{color:var(--dim);font-size:12.5px;line-height:1.5;margin-bottom:12px;}
+.module-list{display:flex;flex-direction:column;gap:7px;}
+.module-row{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;
+  border:1px solid var(--glass-border);border-radius:10px;cursor:pointer;transition:all .15s;}
+.module-row:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(0,194,255,0.18);transform:translateX(2px);}
+.module-row-label{font-size:13px;font-weight:600;}
+.pill{display:inline-block;padding:4px 11px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.03em;}
+.faq-eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;}
+.faq-item{border:1px solid var(--glass-border);border-radius:10px;margin-bottom:8px;overflow:hidden;}
+.faq-q{padding:11px 14px;font-size:12.5px;font-weight:600;cursor:pointer;display:flex;
+  justify-content:space-between;align-items:center;}
+.faq-q::after{content:"+";color:var(--cyan);font-size:16px;transition:transform .2s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:12px;color:var(--dim);
+  line-height:1.5;padding:0 14px;}
+.faq-item.open .faq-a{max-height:120px;padding:0 14px 12px;}
+@media(max-width:780px){ .hero-panels{flex-direction:column;top:auto;bottom:14px;max-height:none;
+  transform:translateX(-50%);} .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);} }
 .pill-live{background:rgba(0,220,140,0.15);color:#3fe0a0;border:1px solid rgba(0,220,140,0.35);}
 .pill-book{background:rgba(0,194,255,0.15);color:#5fd4ff;border:1px solid rgba(0,194,255,0.35);}
 
@@ -124,8 +143,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
   box-shadow:0 0 70px rgba(0,194,255,0.18), inset 0 1px 0 rgba(255,255,255,0.06);}
 .panel h2{font-size:19px;margin-bottom:4px;}
 .panel .panel-sub{color:var(--dim);font-size:13px;margin-bottom:18px;}
-.panel p{font-size:13.5px;line-height:1.6;color:#cdd9ee;margin-bottom:10px;}
-.panel ul{margin:0 0 14px 18px;font-size:13.5px;color:#cdd9ee;line-height:1.7;}
+.panel p{font-size:13.5px;line-height:1.6;color:var(--ink);margin-bottom:10px;}
+.panel ul{margin:0 0 14px 18px;font-size:13.5px;color:var(--ink);line-height:1.7;}
 .panel .close{position:absolute;top:16px;right:20px;cursor:pointer;color:var(--dim);font-size:18px;}
 .panel-wrap{position:relative;}
 .btn{padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;
@@ -134,23 +153,23 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .btn-primary{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;}
 .btn-ghost{border:1px solid var(--glass-border);color:var(--ink);background:rgba(255,255,255,0.04);}
 
-/* Madison — the real chat widget, bottom-right, distinct from the brain */
-.madison-fab{position:absolute;bottom:26px;right:26px;z-index:7;display:flex;flex-direction:column;
+/* BHC chat widget — bottom-right, obsidian-brain icon, no separate persona name */
+.chat-fab{position:absolute;bottom:26px;right:26px;z-index:7;display:flex;flex-direction:column;
   align-items:center;gap:4px;cursor:pointer;}
-.madison-orb{width:78px;height:78px;border-radius:50%;position:relative;overflow:hidden;
+.chat-orb{width:78px;height:78px;border-radius:50%;position:relative;overflow:hidden;
   background:radial-gradient(circle at 50% 55%, rgba(0,194,255,0.28), rgba(4,16,31,0) 70%);
   animation:mpulse 2.6s ease-in-out infinite;box-shadow:0 0 18px rgba(0,194,255,0.65);}
-.madison-orb img{width:100%;height:100%;object-fit:cover;}
-.madison-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
+.chat-orb img{width:100%;height:100%;object-fit:cover;}
+.chat-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
   border:1px solid rgba(0,194,255,0.4);animation:mring 2.6s ease-in-out infinite;}
 @keyframes mpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
 @keyframes mring{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.35);opacity:0;}}
-.madison-fab-label{font-size:10.5px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,0.8);font-weight:600;}
-.madison-bubble{position:absolute;bottom:90px;right:0;max-width:220px;background:rgba(9,14,28,0.92);
+.chat-fab-label{font-size:10.5px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,0.8);font-weight:600;}
+.chat-bubble{position:absolute;bottom:90px;right:0;max-width:220px;background:rgba(9,14,28,0.92);
   border:1px solid var(--glass-border);border-radius:14px 14px 4px 14px;padding:10px 13px;
-  font-size:12px;line-height:1.4;color:var(--ink);opacity:0;transform:translateY(6px);
+  font-size:12px;line-height:1.4;color:#eaf2ff;opacity:0;transform:translateY(6px);
   transition:opacity .3s, transform .3s;pointer-events:none;}
-.madison-bubble.show{opacity:1;transform:translateY(0);}
+.chat-bubble.show{opacity:1;transform:translateY(0);}
 
 /* live chat interface */
 .chat-window{display:flex;flex-direction:column;height:min(60vh,520px);width:min(360px,88vw);}
@@ -173,16 +192,16 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 @media(min-width:780px){ .bottombar{display:block;} }
 @media(max-width:640px){
   .topbar nav{display:none;}
-  .madison-fab{bottom:110px;}
+  .chat-fab{bottom:110px;}
   .dock{bottom:16px;}
-  .tile{min-width:104px;padding:10px 14px;}
+  .tile{min-width:140px;padding:14px 18px;}
 }
 </style>
 </head>
 <body>
 <div id="stage">
-  <div class="brain-globe-bg">
-    <div class="brain-globe-spin"><img src="assets/obsidian-brain-blue.jpg" alt="BlueHippoCyber obsidian brain network" /></div>
+  <div class="logo-bg">
+    <img id="heroLogo" src="assets/bhc-logo-black.png" alt="BlueHippoCyber" />
   </div>
   <div class="vignette"></div>
 
@@ -190,29 +209,36 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
     <div class="brand"><span class="dot"></span> BlueHippoCyber</div>
     <nav>
       <a href="portfolio.html">Portfolio</a>
-      <a href="tel:+18638252215">(863) 825-2215</a>
+      <a href="tel:+18634404145">(863) 440-4145</a>
       <a href="mailto:keenan@bluehippocyber.com">Contact</a>
     </nav>
-    <a class="book-pill" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call →</a>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="theme-toggle" id="themeToggle" title="Toggle light/dark"><div class="thumb"></div></div>
+      <a class="book-pill" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call →</a>
+    </div>
   </header>
 
-  <div class="headline-zone">
-    <div class="eyebrow">AI Operating Systems · United States</div>
-    <div class="headline">Every lead answered. Every job booked.</div>
-    <div class="sub">One AI Operating System — built for cybersecurity consultants &amp; service businesses.</div>
+  <div class="hero-panels">
+    <div class="panel-left">
+      <div class="headline">Real systems. Not pretty pictures.</div>
+      <div class="sub">Two live products, built and run by us — book a free audit to see which one fits.</div>
+      <div class="module-list" id="dock">
+        <div class="module-row" data-panel="services"><span class="module-row-label">What We Build</span><span class="pill pill-live">LIVE</span></div>
+        <div class="module-row" data-panel="portfolio"><span class="module-row-label">Proof of Work</span><span class="pill pill-live">LIVE</span></div>
+        <div class="module-row" data-panel="pricing"><span class="module-row-label">Pricing</span><span class="pill pill-live">LIVE</span></div>
+        <div class="module-row" data-panel="contact"><span class="module-row-label">Book Free Audit</span><span class="pill pill-book">BOOK NOW</span></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class="faq-eyebrow">Questions people ask</div>
+      <div id="faqList"></div>
+    </div>
   </div>
 
-  <div class="dock" id="dock">
-    <div class="tile" data-panel="services"><div class="tile-label">Module</div><div class="tile-value">What We Build</div><span class="pill pill-live">LIVE</span></div>
-    <div class="tile" data-panel="portfolio"><div class="tile-label">Module</div><div class="tile-value">Proof of Work</div><span class="pill pill-live">LIVE</span></div>
-    <div class="tile" data-panel="pricing"><div class="tile-label">Module</div><div class="tile-value">Pricing</div><span class="pill pill-live">LIVE</span></div>
-    <div class="tile" data-panel="contact"><div class="tile-label">Module</div><div class="tile-value">Book Free Audit</div><span class="pill pill-book">BOOK NOW</span></div>
-  </div>
-
-  <div class="madison-fab" id="madisonFab">
-    <div class="madison-bubble" id="madisonBubble"></div>
-    <div class="madison-orb"><img src="assets/madison-head.jpg" alt="Madison — BlueHippoCyber AI assistant" /></div>
-    <div class="madison-fab-label">Talk to Madison</div>
+  <div class="chat-fab" id="chatFab">
+    <div class="chat-bubble" id="chatBubble"></div>
+    <div class="chat-orb"><img id="chatOrbImg" src="assets/obsidian-brain-blue.jpg" alt="BlueHippoCyber chat" /></div>
+    <div class="chat-fab-label">Chat with BlueHippoCyber</div>
   </div>
 
   <div class="bottombar">© 2026 BlueHippoCyber · Serving the entire United States</div>
@@ -228,21 +254,20 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 const PANELS = {
   services: {
     title: "What We Build",
-    sub: "AI Operating Systems",
-    body: `<p>One system, not a pile of tools: lead capture, automated follow-up, and booking — running whether you're on a job or asleep.</p>
-      <ul><li>Missed-call and web-form capture, instantly</li><li>Automated text/email follow-up until they book</li><li>Calendar booking wired straight to your schedule</li><li>Every step logged, nothing falls through</li></ul>
+    sub: "Real, deployed systems — for funeral homes & cyber/IT businesses",
+    body: `<p>We build two things, and we build them well: a trust audit for funeral homes, and a private helpdesk for cybersecurity and IT teams. Both are real, live, and running right now.</p>
+      <ul><li>Funeral Home Digital Trust Audit — a free assessment that becomes a real client relationship</li><li>Private Helpdesk OS — a white-label private helpdesk your team (or your clients) actually uses</li><li>Every lead captured, followed up, and booked automatically</li><li>No pretty-picture websites — every build has to drive real calls</li></ul>
       <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book Your Free Audit</a>`
   },
   portfolio: {
-    title: "Proof",
-    sub: "Real systems, not mockups",
-    body: `<p>Every link below is a live, deployed build — click through and use it yourself.</p>
+    title: "Proof of Work",
+    sub: "The real systems we build and sell",
+    body: `<p>Two live products, built by us and sold as-is:</p>
       <ul>
-        <li><a href="https://moores-welding.vercel.app" target="_blank" rel="noopener">Moore's Welding</a> — booking site + review proof</li>
-        <li><a href="https://towers-tv.vercel.app" target="_blank" rel="noopener">Towers TV Installations</a> — lead capture site</li>
-        <li><a href="https://mint-lounge.vercel.app" target="_blank" rel="noopener">Mint Lounge</a> — event/booking site</li>
-        <li><a href="https://hr-printing.vercel.app" target="_blank" rel="noopener">H&amp;R Printing</a> — animated product demo</li>
+        <li><a href="https://audit.bluehippocyber.com" target="_blank" rel="noopener">Funeral Home Digital Trust Audit</a> — free lead-magnet assessment for funeral directors</li>
+        <li><a href="https://helpdesk.bluehippocyber.com" target="_blank" rel="noopener">Private Helpdesk OS</a> — white-label private helpdesk for cyber/IT teams</li>
       </ul>
+      <p>Plus real client demo builds — see the full story, including which are paying clients.</p>
       <a class="btn btn-ghost" href="portfolio.html" style="display:block;text-align:center;">See Every Project →</a>`
   },
   pricing: {
@@ -266,25 +291,53 @@ function openPanel(key){
   document.getElementById('panelBody').innerHTML =
     `<div class="close" onclick="closePanel()">✕</div><h2>${p.title}</h2><div class="panel-sub">${p.sub}</div>${p.body}`;
   document.getElementById('panelBackdrop').classList.add('open');
-  document.querySelectorAll('.tile').forEach(t => t.classList.toggle('active', t.dataset.panel === key));
+  document.querySelectorAll('.module-row').forEach(t => t.classList.toggle('active', t.dataset.panel === key));
 }
 function closePanel(){
   document.getElementById('panelBackdrop').classList.remove('open');
-  document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.module-row').forEach(t => t.classList.remove('active'));
 }
-document.querySelectorAll('.tile').forEach(t => t.addEventListener('click', () => openPanel(t.dataset.panel)));
+document.querySelectorAll('.module-row').forEach(t => t.addEventListener('click', () => openPanel(t.dataset.panel)));
 document.getElementById('panelBackdrop').addEventListener('click', function(e){ if(e.target === this) closePanel(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closePanel(); });
 
-/* ===== Madison — live chat, calls /api/chat, auto-greets, navigates via [NAV:key] ===== */
+/* ===== theme toggle — swaps hero logo image and dark/light CSS vars.
+   Chat orb stays the neon obsidian-brain image regardless of theme. ===== */
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('heroLogo').src = theme === 'light' ? 'assets/bhc-logo-white.png' : 'assets/bhc-logo-black.png';
+  localStorage.setItem('bhc-theme', theme);
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  applyTheme(current === 'light' ? 'dark' : 'light');
+});
+applyTheme(localStorage.getItem('bhc-theme') === 'light' ? 'light' : 'dark');
+
+/* ===== FAQ accordion — right panel, matches helpdesk.bluehippocyber.com ===== */
+const FAQS = [
+  { q: "Why not just use a generic AI chat tool?", a: "Ours is built for exactly two things — funeral home trust and private helpdesks — not a generic assistant guessing at your business." },
+  { q: "What does the Funeral Home audit look at?", a: "Your website, Google presence, and response speed for a family searching right now — delivered as a real report, no sales call required." },
+  { q: "How is the Helpdesk private?", a: "It runs on infrastructure you own and only shows each person what they're cleared to see — nothing leaves your systems." },
+  { q: "How long does setup take?", a: "Both systems are one-time setup builds — no long onboarding, no subscription required to start." },
+  { q: "What does this cost?", a: "See the Pricing module to the left, or book a free audit and we'll walk through it live." },
+];
+document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
+  `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
+).join('');
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+});
+
+/* ===== BHC chat — calls /api/chat, auto-greets, navigates via [NAV:key] ===== */
 const chatHistory = [];
 let chatOpen = false;
 
 function renderChatShell(){
   document.getElementById('panelBody').innerHTML = `
     <div class="close" onclick="closePanel()">✕</div>
-    <h2>Madison</h2>
-    <div class="panel-sub">Your AI front desk — ask me anything about BHC</div>
+    <h2>BlueHippoCyber</h2>
+    <div class="panel-sub">Ask us anything — funeral home audit, helpdesk, pricing</div>
     <div class="chat-window">
       <div class="chat-log" id="chatLog"></div>
       <div class="chat-input-row">
@@ -307,8 +360,8 @@ function appendChatBubble(role, text){
   return div;
 }
 
-function openMadisonChat(){
-  document.getElementById('madisonBubble').classList.remove('show');
+function openChatWidget(){
+  document.getElementById('chatBubble').classList.remove('show');
   document.getElementById('panelBackdrop').classList.add('open');
   chatOpen = true;
   renderChatShell();
@@ -316,7 +369,7 @@ function openMadisonChat(){
 }
 
 async function greetVisitor(){
-  const bubble = appendChatBubble('assistant', "Hey — I'm Madison. Welcome to BlueHippoCyber! What kind of business are you running, and what brought you by today?");
+  const bubble = appendChatBubble('assistant', "Welcome to BlueHippoCyber! Are you looking into the Funeral Home Digital Trust Audit, the Private Helpdesk OS, or something else?");
   chatHistory.push({ role: 'assistant', content: bubble.textContent });
 }
 
@@ -328,7 +381,7 @@ async function sendChat(){
   appendChatBubble('user', text);
   chatHistory.push({ role: 'user', content: text });
 
-  const typing = appendChatBubble('assistant typing', 'Madison is typing…');
+  const typing = appendChatBubble('assistant typing', 'Typing…');
   try {
     const res = await fetch('/api/chat', {
       method: 'POST',
@@ -338,7 +391,7 @@ async function sendChat(){
     const data = await res.json();
     typing.remove();
     if(!res.ok || data.error){
-      appendChatBubble('assistant', "Sorry — I'm offline right now. Call (855) 307-3995 or book a call directly.");
+      appendChatBubble('assistant', "Sorry — I'm offline right now. Call (863) 440-4145 or book a call directly.");
       return;
     }
     let reply = data.reply || '';
@@ -355,14 +408,14 @@ async function sendChat(){
   }
 }
 
-document.getElementById('madisonFab').addEventListener('click', openMadisonChat);
+document.getElementById('chatFab').addEventListener('click', openChatWidget);
 
 /* auto-greet bubble a few seconds after page load — invites the click, doesn't block */
 window.addEventListener('load', () => {
   setTimeout(() => {
     if(chatOpen) return;
-    const b = document.getElementById('madisonBubble');
-    b.textContent = "Hi! I'm Madison — click me and I'll help you find what you need.";
+    const b = document.getElementById('chatBubble');
+    b.textContent = "Hi! Click here and I'll help you find what you need.";
     b.classList.add('show');
     setTimeout(() => b.classList.remove('show'), 8000);
   }, 2500);
