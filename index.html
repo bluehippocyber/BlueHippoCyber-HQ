@@ -75,15 +75,10 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
    breathe — so the hero has actual life, not a static image. */
 .logo-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);pointer-events:none;transition:background .3s;}
 .logo-bg img{position:absolute;top:50%;left:50%;width:120vw;height:120vh;min-width:120%;min-height:120%;
-  transform:translate(-50%,-50%) scale(1);object-fit:cover;opacity:0.95;
+  transform:translate(-50%,-50%);object-fit:cover;opacity:0.95;
   -webkit-mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
   mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
-  animation:logoPulse 5s ease-in-out infinite;
   filter:drop-shadow(0 0 40px rgba(0,194,255,0.35));}
-@keyframes logoPulse{
-  0%,100%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 0 40px rgba(0,194,255,0.35)) brightness(1);}
-  50%{transform:translate(-50%,-50%) scale(1.035);filter:drop-shadow(0 0 70px rgba(0,194,255,0.6)) brightness(1.12);}
-}
 .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
   background:radial-gradient(ellipse at 50% 30%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.05) 40%, rgba(5,7,13,0.55) 100%);}
 :root[data-theme="light"] .vignette{
