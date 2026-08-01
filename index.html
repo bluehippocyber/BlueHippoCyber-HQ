@@ -131,8 +131,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .faq-item.open .faq-a{max-height:120px;padding:0 14px 12px;}
 @media(max-width:780px){ .hero-panels{flex-direction:column;top:auto;bottom:14px;max-height:none;
   transform:translateX(-50%);} .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);} }
-.pill-live{background:rgba(0,220,140,0.15);color:#3fe0a0;border:1px solid rgba(0,220,140,0.35);}
-.pill-book{background:rgba(0,194,255,0.15);color:#5fd4ff;border:1px solid rgba(0,194,255,0.35);}
+.pill-live,.pill-book{background:rgba(0,194,255,0.12);color:var(--cyan);border:1px solid var(--glass-border);}
 
 /* liquid glass panel overlay */
 .panel-backdrop{position:fixed;inset:0;z-index:20;background:rgba(3,5,10,0.55);backdrop-filter:blur(4px);
@@ -159,7 +158,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .chat-orb{width:78px;height:78px;border-radius:50%;position:relative;overflow:hidden;
   background:radial-gradient(circle at 50% 55%, rgba(0,194,255,0.28), rgba(4,16,31,0) 70%);
   animation:mpulse 2.6s ease-in-out infinite;box-shadow:0 0 18px rgba(0,194,255,0.65);}
-.chat-orb img{width:100%;height:100%;object-fit:cover;}
+.chat-orb img{position:absolute;top:50%;left:50%;width:190%;height:190%;transform:translate(-50%,-50%);
+  object-fit:cover;}
 .chat-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
   border:1px solid rgba(0,194,255,0.4);animation:mring 2.6s ease-in-out infinite;}
 @keyframes mpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}

@@ -18,11 +18,15 @@
 body{background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",monospace;min-height:100vh;padding:60px 24px 80px;position:relative;}
 h1,h2,.eyebrow{font-family:"Share Tech Mono",monospace;}
 
-/* full-bleed BHC logo, fixed behind all content, dimmed so text stays readable */
+/* full-bleed BHC logo, fixed behind all content — genuinely edge-to-edge,
+   feathered (not letterboxed/contained) so there's no visible crop boundary,
+   blurred slightly for a "looking through rainy glass" feel behind the panels. */
 .logo-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg);}
-.logo-bg img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:70%;width:auto;
-  max-width:100%;object-fit:contain;opacity:0.22;}
-.logo-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,13,0.2) 0%,rgba(5,7,13,0.92) 60%,var(--bg) 100%);}
+.logo-bg img{position:absolute;top:50%;left:50%;width:130vw;height:130vh;min-width:130%;min-height:130%;
+  transform:translate(-50%,-50%);object-fit:cover;opacity:0.5;filter:blur(3px) saturate(1.2);
+  -webkit-mask-image:radial-gradient(ellipse at center, black 35%, transparent 78%);
+  mask-image:radial-gradient(ellipse at center, black 35%, transparent 78%);}
+.logo-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,13,0.1) 0%,rgba(5,7,13,0.6) 55%,var(--bg) 100%);}
 
 .wrap{max-width:1080px;margin:0 auto;}
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px;flex-wrap:wrap;gap:12px;}
@@ -101,7 +105,7 @@ footer a{color:var(--cyan);text-decoration:none;}
     <h2>The honest story</h2>
     <div class="story">
       <p>We'll be straight with you: a website is just a pretty picture if it doesn't drive real calls. That's why we built two real products instead of chasing "AI website" hype — both are systems that do something, not sites that just sit there.</p>
-      <p>Right now, <b>Ace/Reeves Remodels is our one paying client</b>. For Ace, we built a live site, ran real Google Business Profile automation, and fixed real production bugs on his AI voice agent — proof-of-work you can ask him about directly.</p>
+      <p>Right now, <b>Reeves Remodels LLC is our one paying client</b>. We built a live site, ran real Google Business Profile automation, and fixed real production bugs on their AI voice agent — proof-of-work they can confirm directly.</p>
       <p>The sites in the grid below — Hicks Welding, Heem Kustomz, H&amp;R Printing, Mint Lounge, Wig Man, Moore's Welding, Towers TV Installations — are <b>real, deployed demo builds</b> we made for local businesses, not paid client work. They're live and clickable because we don't ship mockups; every demo is a working site, just not a signed contract yet.</p>
       <p>We've also built and shipped real AI voice receptionists (answering real calls, booking real jobs) and hands-on Google Business Profile automation — the kind of work that actually moves a business's phone, not just its website.</p>
       <p>If a claim on this page isn't something you could test yourself and get the same result we're describing, we don't put it here.</p>
@@ -112,10 +116,16 @@ footer a{color:var(--cyan);text-decoration:none;}
     <h2>Demo &amp; client builds</h2>
     <div class="grid">
       <a class="card" href="#" style="pointer-events:none;">
-        <div class="name">Ace / Reeves Remodels</div>
+        <div class="name">Reeves Remodels LLC</div>
         <div class="desc">Live site, GBP automation, and voice agent build — our one paying client relationship.</div>
         <div class="url">Contact for details</div>
         <span class="pill pill-client">PAYING CLIENT</span>
+      </a>
+      <a class="card" href="https://dinkgenetics.com" target="_blank" rel="noopener">
+        <div class="name">Dink Genetics</div>
+        <div class="desc">Live e-commerce site on its own domain.</div>
+        <div class="url">dinkgenetics.com</div>
+        <span class="pill pill-demo">DEMO BUILD</span>
       </a>
       <a class="card" href="https://moores-welding.vercel.app" target="_blank" rel="noopener">
         <div class="name">Moore's Welding</div>
