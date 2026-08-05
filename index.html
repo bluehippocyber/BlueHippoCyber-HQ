@@ -137,8 +137,29 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 .faq-item.open .faq-q::after{transform:rotate(45deg);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:12.5px;color:var(--dim);line-height:1.55;}
 .faq-item.open .faq-a{max-height:120px;margin-top:8px;}
-@media(max-width:780px){ .hero-panels{flex-direction:column;height:80vh;top:52%;}
-  .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);} }
+/* ===== MOBILE OVERHAUL — this is a fixed-height, no-scroll "app" layout on
+   desktop (#stage is position:fixed, panels scroll internally). That breaks
+   on real phones: nested scrollbars, clipped rows, chat orb overlapping FAQ
+   text. Below 780px we abandon the fixed-viewport app model entirely and
+   let it be a normal, full-page-scrolling mobile site instead. ===== */
+@media(max-width:780px){
+  html,body{overflow-y:auto;overflow-x:hidden;}
+  #stage{position:relative;min-height:100vh;overflow:visible;}
+  .logo-bg{position:fixed;}
+  .topbar{position:sticky;top:0;z-index:10;padding:16px 18px;
+    background:var(--bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);}
+  .hero-panels{position:static;transform:none;top:auto;left:auto;
+    width:92vw;max-width:520px;height:auto;margin:22px auto 110px;
+    flex-direction:column;opacity:1;animation:none;}
+  .panel-left,.panel-right{overflow-y:visible;padding:26px 22px;}
+  .panel-right{padding-bottom:70px;}
+  .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);}
+  .panel-left .headline{font-size:26px;}
+  .chat-fab{position:fixed;bottom:16px;right:14px;z-index:15;}
+  .chat-orb{width:52px;height:52px;}
+  .chat-fab-label{display:none;}
+  .panel{width:92vw;max-height:82vh;padding:26px 22px;}
+}
 .pill-live,.pill-book{background:rgba(0,194,255,0.12);color:var(--cyan);border:1px solid var(--glass-border);}
 
 /* liquid glass panel overlay */
@@ -204,9 +225,11 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 @media(min-width:780px){ .bottombar{display:block;} }
 @media(max-width:640px){
   .topbar nav{display:none;}
-  .chat-fab{bottom:110px;}
-  .dock{bottom:16px;}
-  .tile{min-width:140px;padding:14px 18px;}
+}
+@media(max-width:400px){
+  .panel-left .headline{font-size:23px;}
+  .hero-panels{width:94vw;}
+  .panel{width:94vw;}
 }
 </style>
 </head>
