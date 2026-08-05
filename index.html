@@ -236,6 +236,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
       <div class="sub">Two live products, built and run by us — book a free audit to see which one fits.</div>
       <div class="module-list" id="dock">
         <div class="module-row" data-panel="services"><span class="module-row-label">What We Build</span><span class="pill pill-live">LIVE</span></div>
+        <div class="module-row" data-panel="aiops"><span class="module-row-label">AI Systems & Ops</span><span class="pill pill-live">NEW</span></div>
         <div class="module-row" data-panel="portfolio"><span class="module-row-label">Proof of Work</span><span class="pill pill-live">LIVE</span></div>
         <div class="module-row" data-panel="pricing"><span class="module-row-label">Pricing</span><span class="pill pill-live">LIVE</span></div>
         <div class="module-row" data-panel="contact"><span class="module-row-label">Book Free Audit</span><span class="pill pill-book">BOOK NOW</span></div>
@@ -270,6 +271,17 @@ const PANELS = {
     body: `<p>We build two things, and we build them well: a trust audit for funeral homes, and a private helpdesk for cybersecurity and IT teams. Both are real, live, and running right now.</p>
       <ul><li>Funeral Home Digital Trust Audit — a free assessment that becomes a real client relationship</li><li>Private Helpdesk OS — a white-label private helpdesk your team (or your clients) actually uses</li><li>Every lead captured, followed up, and booked automatically</li><li>No pretty-picture websites — every build has to drive real calls</li></ul>
       <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book Your Free Audit</a>`
+  },
+  aiops: {
+    title: "AI Systems & Ops",
+    sub: "Three services, for three different problems — pick what fits",
+    body: `<p>Not tiers of the same thing — three separate services. Book a call and we'll tell you straight which one (if any) actually fits.</p>
+      <ul>
+        <li><b>SOP Suite</b> — we turn your scattered processes and voice memos into clean, written SOPs your team can actually use. From $500.</li>
+        <li><b>Custom "Second Brain"</b> — a private AI workspace loaded with your pricing, SOPs, and voice, so staff can ask it questions instead of you. From $2,500 + monthly.</li>
+        <li><b>Content & Newsletter Retainer</b> — 20 minutes of your voice a month becomes newsletters and social content, in your voice. From $500/edition.</li>
+      </ul>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call</a>`
   },
   portfolio: {
     title: "Proof of Work",
@@ -374,6 +386,8 @@ const FAQS = [
   { q: "Do I own everything you build?", a: "Yes. No dependency trap — the site, the system, the setup is yours." },
   { q: "Is my data private and secure?", a: "For the Helpdesk especially — it runs on infrastructure you own, and nothing leaves your systems." },
   { q: "What kind of business is this for?", a: "Funeral homes, dermatologists, construction, pet cemeteries, HVAC, plumbers, welders, law firms — if you need more calls and a system that doesn't drop leads, this is for you." },
+  { q: "Can you build me my own AI assistant?", a: "Yes — we load your pricing, SOPs, and voice into a private workspace so it can answer staff questions and train new hires 24/7. See AI Systems & Ops." },
+  { q: "I don't have anything written down — can you still help?", a: "That's most of our clients. We turn voice memos and verbal explanations into clean SOPs first, then build from there." },
 ];
 document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
   `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
