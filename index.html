@@ -50,7 +50,7 @@
   "mainEntity": [
     {"@type":"Question","name":"Is this just a WISP template?","acceptedAnswer":{"@type":"Answer","text":"No. The engagement combines a bounded security assessment, agreed implementation assistance, tailored documentation, control verification, and an evidence package."}},
     {"@type":"Question","name":"Do you replace our MSP or IT provider?","acceptedAnswer":{"@type":"Answer","text":"No. BlueHippoCyber can coordinate with the provider that already manages your systems and clearly separates project work from ongoing IT ownership."}},
-    {"@type":"Question","name":"What does the engagement cost?","acceptedAnswer":{"@type":"Answer","text":"The working fixed fee is $4,500 for the stated small-firm scope. Hardware, licenses, major migrations, ongoing monitoring and work outside the signed scope are separate."}}
+    {"@type":"Question","name":"What does the engagement cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. BlueHippoCyber confirms the scope and fee in writing before work begins."}}
   ]
 }
 </script>
@@ -260,10 +260,10 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
       <h1 class="headline">Turn your tax firm's security plan into working safeguards.</h1>
       <div class="sub">BlueHippoCyber is a cybersecurity implementation and automation studio. Our featured offer helps tax and accounting firms assess the environment, fix agreed priority gaps, document the program, and verify controls with organized evidence.</div>
       <div class="module-list" id="dock">
-        <div class="module-row" data-panel="services"><span class="module-row-label">Tax Security Setup</span><span class="pill pill-live">FEATURED</span></div>
-        <div class="module-row" data-panel="aiops"><span class="module-row-label">Scope &amp; Deliverables</span><span class="pill pill-live">CLEAR</span></div>
+        <div class="module-row" data-panel="services"><span class="module-row-label">Security Services</span><span class="pill pill-live">2026</span></div>
+        <div class="module-row" data-panel="aiops"><span class="module-row-label">Monthly Microsoft 365 Review</span><span class="pill pill-live">RECURRING</span></div>
         <div class="module-row" data-panel="portfolio"><span class="module-row-label">Portfolio &amp; Capabilities</span><span class="pill pill-live">PROOF</span></div>
-        <div class="module-row" data-panel="pricing"><span class="module-row-label">Price &amp; Boundaries</span><span class="pill pill-live">FIXED</span></div>
+        <div class="module-row" data-panel="pricing"><span class="module-row-label">Scope &amp; Engagement</span><span class="pill pill-live">CLEAR</span></div>
         <div class="module-row" data-panel="contact"><span class="module-row-label">Book a Discovery Call</span><span class="pill pill-book">BOOK NOW</span></div>
       </div>
     </div>
@@ -291,23 +291,26 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(
 <script>
 const PANELS = {
   services: {
-    title: "Tax Security Setup",
-    sub: "A fixed-scope assessment, implementation and evidence engagement",
-    body: `<p>We do more than hand you a WISP template. We assess the environment, identify the priority gaps, help implement the agreed safeguards, document the actual setup and verify what was completed.</p>
+    title: "Security Services",
+    sub: "Focused assessments and practical security improvements",
+    body: `<p><b>Tax Security Setup</b> is our featured engagement for small tax and accounting firms. We assess the environment, identify priority gaps, help implement agreed safeguards, document the actual setup and verify what was completed.</p>
       <ul>
-        <li><b>Identity and access</b> — account inventory, MFA, administrative access and least-privilege review</li>
-        <li><b>Core safeguards</b> — bounded endpoint, backup, remote-access and logging review with agreed implementation assistance</li>
-        <li><b>Written program</b> — tailored WISP/security plan and incident-response procedures based on the verified environment</li>
-        <li><b>Evidence</b> — risk register, verification matrix, residual-risk record and owner-ready final report</li>
+        <li><b>Phishing Resilience Assessment</b> — test awareness and identify where safer habits and controls are needed.</li>
+        <li><b>Essential Vulnerability Scan</b> — identify exposed systems and prioritize confirmed findings.</li>
+        <li><b>Dark Web Exposure Report</b> — review discovered business-account exposure and recommend next steps.</li>
+        <li><b>Basic Policy Pack</b> — create practical security policies matched to how the business operates.</li>
+        <li><b>Wireless Network Audit</b> — review Wi-Fi configuration, access and separation.</li>
+        <li><b>Password Hygiene Review</b> — assess password, MFA and account practices without collecting passwords.</li>
+        <li><b>Social Media Security Checkup</b> — review account access, recovery and impersonation safeguards.</li>
       </ul>
       <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Discovery Call</a>`
   },
   aiops: {
-    title: "Scope & Deliverables",
-    sub: "Clear completion criteria and no unlimited-remediation trap",
-    body: `<p>The standard engagement is designed for a small independent tax or accounting firm and is completed against a signed statement of work.</p>
-      <ul><li>Discovery and evidence collection</li><li>Prioritized assessment and bounded remediation</li><li>Customized security documentation</li><li>Verification and final owner review</li></ul>
-      <p style="font-size:12px;color:var(--dim);margin-top:14px;">Major migrations, hardware, software licenses, penetration testing, incident forensics, 24/7 monitoring and ongoing IT support are outside the fixed scope unless separately agreed.</p>
+    title: "Microsoft 365 Security & Compliance Review",
+    sub: "A practical monthly check for configuration drift and new recommendations",
+    body: `<p>Microsoft 365 changes constantly. Each month, we review the tenant's relevant security recommendations, advisories and Purview compliance items, then document the actions that matter most.</p>
+      <ul><li>Security dashboard recommendations and advisories</li><li>Identity, MFA and privileged-access review</li><li>Relevant Purview compliance dashboard items</li><li>Prioritized findings and a concise monthly evidence summary</li></ul>
+      <p style="font-size:12px;color:var(--dim);margin-top:14px;">Monthly plans are scoped to tenant size, licensing and access. Implementation, licenses, legal advice and compliance certification are not automatically included.</p>
       <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call</a>`
   },
   portfolio: {
@@ -320,9 +323,9 @@ const PANELS = {
       <p style="font-size:12px;color:var(--dim);margin-top:14px;text-align:center;"><a href="https://github.com/keenan371" target="_blank" rel="noopener" style="color:var(--cyan);">GitHub</a> · <a href="https://www.linkedin.com/in/keenanmcgriff" target="_blank" rel="noopener" style="color:var(--cyan);">LinkedIn</a> · <a href="https://www.upwork.com/freelancers/keenanm" target="_blank" rel="noopener" style="color:var(--cyan);">Upwork</a></p>`
   },
   pricing: {
-    title: "$4,500 Fixed-Scope Setup",
-    sub: "Implementation and evidence—not a document generator",
-    body: `<p>The working fixed fee is <b>$4,500</b> for the stated small-firm scope. The signed statement of work names the users, endpoints, systems, deliverables, acceptance tests and implementation boundaries.</p>
+    title: "Clear Scope Before Price",
+    sub: "The fee follows the environment and the agreed work",
+    body: `<p>Every engagement starts with a short fit conversation. The statement of work names the users, endpoints, systems, deliverables, acceptance tests and implementation boundaries before work begins.</p>
       <p>Hardware, licenses, major migrations, unlimited remediation, penetration testing, incident forensics and ongoing monitoring are separate.</p>
       <p>Security risk cannot be eliminated. We do not guarantee compliance, regulator or insurer acceptance, or prevention of every incident.</p>
       <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Discuss Your Environment</a>`
@@ -417,7 +420,7 @@ const FAQS = [
   { q: "Is ongoing monitoring included?", a: "No. This is a one-time setup engagement. Ongoing monitoring or managed support can be discussed separately after responsibilities and tooling are clear." },
   { q: "Why does LedgerGuard use fictional data?", a: "It is a transparent reference implementation designed to show our process without exposing a real firm's confidential information. It is not presented as client work or a testimonial." },
   { q: "What happens after the discovery call?", a: "If the firm fits the engagement, we confirm scope, send the agreement and statement of work, collect the initial payment, complete intake and schedule kickoff." },
-  { q: "What does the engagement cost?", a: "The working fixed fee is $4,500 for the stated small-firm scope, normally split 50% before kickoff and 50% at presentation. Third-party costs and out-of-scope work are separate." },
+  { q: "What does the engagement cost?", a: "Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. We confirm the scope and fee in writing before work begins; third-party costs and out-of-scope work are separate." },
 ];
 document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
   `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
@@ -434,7 +437,7 @@ function renderChatShell(){
   document.getElementById('panelBody').innerHTML = `
     <div class="close" onclick="closePanel()">✕</div>
     <h2>BlueHippoCyber</h2>
-    <div class="panel-sub">Ask about the Tax Security Setup, scope, proof or pricing</div>
+    <div class="panel-sub">Ask about Tax Security Setup, monthly Microsoft 365 reviews or our focused assessments</div>
     <div class="chat-window">
       <div class="chat-log" id="chatLog"></div>
       <div class="chat-input-row">
@@ -501,7 +504,7 @@ async function sendChat(){
     }
   } catch(e){
     typing.remove();
-    appendChatBubble('assistant', "Sorry — I'm offline right now. Call (855) 307-3995 or book a call directly.");
+    appendChatBubble('assistant', "Sorry — I'm offline right now. Call (863) 440-4145 or book a call directly.");
   }
 }
 

@@ -3,12 +3,7 @@ const SYSTEM_PROMPT = `You are BlueHippoCyber's chat assistant. You don't have a
 
 YOUR GOAL, ABOVE EVERYTHING ELSE: get the visitor to book a call with Keenan. Every message you send should move toward that, not just answer-and-stop. Answer their question fully and honestly first — never dodge or rush past it — then bring it back to their specific business and a next step: booking a free audit or a call. You are a guide toward a real conversation with Keenan, not a self-contained encyclopedia. If someone is engaged and asking real questions, that's a buying signal — lean into booking, don't just keep answering forever.
 
-WHAT WE DO: BlueHippoCyber builds four things, all real and deployed, not mockups:
-1. Agentic AI Agents & AI Operating Systems — live systems that run parts of a client's business for them.
-2. Websites That Convert — landing pages and full sites built to capture and follow up on every lead automatically.
-3. Google SEO & Business Profile Setup — getting a business found first on Google, not buried on page 13.
-4. AI Systems & Ops — SOP documentation and custom AI workspaces so a team stops asking the owner the same question twice.
-One system, not a pile of disconnected tools.
+WHAT WE DO: BlueHippoCyber's featured offer is Tax Security Setup for small tax and accounting firms. We assess whether the safeguards described in the firm's security plan match its real accounts, devices, backups and workflows; help implement agreed bounded improvements; verify the result; and document the evidence. We also offer a recurring Microsoft 365 Security & Compliance Review and focused phishing, vulnerability, dark-web exposure, policy, wireless, password-hygiene and social-media security assessments.
 
 IMPORTANT — the Funeral Home Digital Trust Audit and the Private Helpdesk OS are PRODUCTS we've already built, not a menu of services to pitch. Treat them as proof-of-work / portfolio examples of what an "Agentic AI Agent / AI Operating System" build looks like — if someone asks for a live example, point to Proof of Work, don't sell them as standalone named offerings. The Helpdesk OS is part of the broader Security Practice OS.
 
@@ -18,10 +13,7 @@ SLOGAN: Automate. Protect. Grow. Use it naturally if it fits, don't force it int
 
 THE OWNER: Keenan McGriff, founder, based in Florida. Direct contact: (863) 440-4145 / keenan@bluehippocyber.com.
 
-PRICING (locked, always quote these exact numbers — never invent a number that isn't here):
-- Websites That Convert: landing page + automated lead capture from $360. Full site + booking + follow-up system from $560. Optional hosting/maintenance after launch, $100–150/mo — never required to start. No subscriptions.
-- AI Systems & Ops: SOP Suite (turns voice memos/scattered processes into real documentation) from $500. Custom AI workspace ("Second Brain") — we're piloting this with clients right now, it is NOT publicly priced yet — say so and offer to book a call, never guess a number.
-- Agentic AI Agents, AI Operating Systems, and Google SEO/Business Profile Setup: these are scoped to the client's business, not a fixed public price — say pricing depends on their setup and offer to book a free audit for a straight quote.
+PRICING: Do not quote a fixed Tax Security Setup or Microsoft 365 monthly price. Explain that users, devices, licensing and remediation needs vary, so scope and fee follow a short fit conversation. Never invent a number.
 
 COMMON QUESTIONS you should be ready to answer plainly:
 - How do we rank higher on Google? Per Whitespark's annual Local Search Ranking Factors study, Google Business Profile carries the most weight of any single signal, reviews right behind it. We set up GBP correctly and make sure the website backs up what the profile claims.
@@ -67,6 +59,16 @@ const hits = new Map();
 const WINDOW_MS = 60_000;
 const LIMIT = 20;
 
+function fallbackReply(text) {
+  const q = text.toLowerCase();
+  if (/(price|cost|how much|rate)/.test(q)) return "Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. We confirm the scope and fee in writing before work begins.\n[NAV:pricing]";
+  if (/(microsoft|365|purview|monthly|recurring)/.test(q)) return "Our monthly Microsoft 365 Security & Compliance Review checks relevant security recommendations, advisories, identity and MFA settings, privileged access and applicable Purview items, then documents prioritized actions. Monthly plans are scoped to the tenant and licensing.\n[NAV:aiops]";
+  if (/(ledgerguard|proof|portfolio|case study)/.test(q)) return "LedgerGuard is a fictional tax-firm security simulation built with synthetic evidence, not a client engagement. It shows our assessment, risk, remediation and verification process without exposing real firm data.\n[NAV:portfolio]";
+  if (/(book|call|contact|email|phone|talk)/.test(q)) return "The best next step is a short discovery call with Keenan to confirm fit and scope. You can book directly or contact BlueHippoCyber at keenan@bluehippocyber.com or (863) 440-4145.\n[NAV:contact]";
+  if (/(service|offer|assessment|security|wisp|tax|account)/.test(q)) return "Our featured Tax Security Setup helps small tax and accounting firms match their written security plan to their real accounts, devices, backups and workflows. We also offer monthly Microsoft 365 reviews plus focused phishing, vulnerability, dark-web, policy, wireless, password and social-media assessments.\n[NAV:services]";
+  return "BlueHippoCyber helps small firms turn security plans into working, verified safeguards. Tell me what kind of business you run or book a short call with Keenan to confirm the right starting point.\n[NAV:contact]";
+}
+
 function rateLimited(ip) {
   const now = Date.now();
   const rec = hits.get(ip);
@@ -91,10 +93,6 @@ module.exports = async (req, res) => {
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    res.status(500).json({ error: 'no key configured' });
-    return;
-  }
 
   let body = req.body;
   if (typeof body === 'string') {
@@ -107,6 +105,12 @@ module.exports = async (req, res) => {
 
   if (!messages.length) {
     res.status(400).json({ error: 'no messages' });
+    return;
+  }
+
+  // ponytail: the site remains useful when the optional AI provider is unavailable.
+  if (!apiKey) {
+    res.status(200).json({ reply: fallbackReply(messages.at(-1).content) });
     return;
   }
 
@@ -129,7 +133,7 @@ module.exports = async (req, res) => {
     if (!anthropicRes.ok) {
       const errText = await anthropicRes.text();
       console.error('anthropic error', anthropicRes.status, errText);
-      res.status(502).json({ error: 'upstream error' });
+      res.status(200).json({ reply: fallbackReply(messages.at(-1).content) });
       return;
     }
 
@@ -138,6 +142,6 @@ module.exports = async (req, res) => {
     res.status(200).json({ reply: reply || "Give me that one more time?" });
   } catch (e) {
     console.error('chat handler error', e);
-    res.status(500).json({ error: 'server error' });
+    res.status(200).json({ reply: fallbackReply(messages.at(-1).content) });
   }
 };
