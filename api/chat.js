@@ -11,7 +11,7 @@ WHO WE WORK WITH: any business that needs more calls and a system that doesn't d
 
 SLOGAN: Automate. Protect. Grow. Use it naturally if it fits, don't force it into every message.
 
-THE OWNER: Keenan McGriff, founder, based in Florida. Direct contact: (863) 440-4145 / keenan@bluehippocyber.com.
+THE OWNER: Keenan McGriff, founder, based in Florida. Direct contact: (863) 440-4145 / bluehippo.cyber@gmail.com.
 
 PRICING: Do not quote a fixed Tax Security Setup or Microsoft 365 monthly price. Explain that users, devices, licensing and remediation needs vary, so scope and fee follow a short fit conversation. Never invent a number.
 
@@ -64,7 +64,7 @@ function fallbackReply(text) {
   if (/(price|cost|how much|rate)/.test(q)) return "Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. We confirm the scope and fee in writing before work begins.\n[NAV:pricing]";
   if (/(microsoft|365|purview|monthly|recurring)/.test(q)) return "Our monthly Microsoft 365 Security & Compliance Review checks relevant security recommendations, advisories, identity and MFA settings, privileged access and applicable Purview items, then documents prioritized actions. Monthly plans are scoped to the tenant and licensing.\n[NAV:aiops]";
   if (/(ledgerguard|proof|portfolio|case study)/.test(q)) return "LedgerGuard is a fictional tax-firm security simulation built with synthetic evidence, not a client engagement. It shows our assessment, risk, remediation and verification process without exposing real firm data.\n[NAV:portfolio]";
-  if (/(book|call|contact|email|phone|talk)/.test(q)) return "The best next step is a short discovery call with Keenan to confirm fit and scope. You can book directly or contact BlueHippoCyber at keenan@bluehippocyber.com or (863) 440-4145.\n[NAV:contact]";
+  if (/(book|call|contact|email|phone|talk)/.test(q)) return "The best next step is a short discovery call with Keenan to confirm fit and scope. You can book directly or contact BlueHippoCyber at bluehippo.cyber@gmail.com or (863) 440-4145.\n[NAV:contact]";
   if (/(service|offer|assessment|security|wisp|tax|account)/.test(q)) return "Our featured Tax Security Setup helps small tax and accounting firms match their written security plan to their real accounts, devices, backups and workflows. We also offer monthly Microsoft 365 reviews plus focused phishing, vulnerability, dark-web, policy, wireless, password and social-media assessments.\n[NAV:services]";
   return "BlueHippoCyber helps small firms turn security plans into working, verified safeguards. Tell me what kind of business you run or book a short call with Keenan to confirm the right starting point.\n[NAV:contact]";
 }
