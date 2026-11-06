@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://bluehippocyber.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://bluehippocyber.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://bluehippocyber.com/services</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/pricing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/how</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/demos</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/faq</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/contact</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/services/it-support</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/services/cybersecurity</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/services/website-security</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/services/microsoft-365</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/services/ai-automation</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bluehippocyber.com/services/ai-security</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
