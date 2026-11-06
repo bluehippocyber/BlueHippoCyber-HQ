@@ -380,7 +380,7 @@ select.in option{background:#0a1428;}
           <input type="hidden" name="service" value="" /><input type="hidden" name="tier" value="" />
           <button class="btn btn-p" type="submit">Send Request</button>
           <div class="msg"></div>
-          <div class="fine">No account. No long questionnaire. Rather text? (863) 440-4145</div>
+          <div class="fine">No account. No long questionnaire. Rather text? (863) 440-4145<br/>By sending, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</div>
         </div>
       </form>
     </div>
@@ -494,6 +494,7 @@ select.in option{background:#0a1428;}
           <a class="glass" href="mailto:bluehippo.cyber@gmail.com">✉️ bluehippo.cyber@gmail.com</a>
           <a class="glass" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">📅 Book a call</a>
         </div>
+        <div class="client" style="font-size:12.5px;color:var(--mute)">&copy; 2026 BlueHippoCyber &middot; <a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a></div>
         <div class="client"><b>Already a client?</b> Skip the form. Text or email Keenan directly with your business name.</div>
         <div class="socials" data-socials></div>
       </div>
@@ -516,6 +517,7 @@ select.in option{background:#0a1428;}
           <input class="in" name="business" placeholder="Your business" />
           <button class="btn btn-p" type="submit">Send Request</button>
           <div class="msg"></div>
+          <div class="fine">By sending, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>. If you give a phone number, we'll only text you about your request. Msg &amp; data rates may apply. Reply STOP to opt out.</div>
         </div>
       </form>
     </div>
@@ -538,6 +540,7 @@ select.in option{background:#0a1428;}
 <div class="glass chatbox" id="chatbox">
   <div class="term"><span><i style="background:#28c840"></i> bhc-assistant <b>online</b></span><button onclick="toggleChat(false)" aria-label="Close chat">✕</button></div>
   <a class="human" href="sms:+18634404145">Rather talk to a person? <b>Text Keenan directly →</b></a>
+  <div class="fine" style="padding:6px 14px 0">AI assistant. Never share passwords or sensitive info in chat.</div>
   <div class="log" id="log"></div>
   <div class="quick" id="quick"></div>
   <div class="chat-in"><input class="in" id="chatInput" placeholder="Describe your problem..." /><button onclick="sendChat()">Send</button></div>
@@ -932,12 +935,12 @@ function hideTip(mute){ $('tip').classList.remove('on'); if(mute) tipMuted=true;
 // it leans toward the cursor a little, so it feels alive
 window.addEventListener('mousemove',e=>{
   const w=$('orbWrap'); if(isMobile()||!w.dataset.x) return;
-  const dx=e.clientX-(+w.dataset.x+37), dy=e.clientY-(+w.dataset.y+37), d=Math.hypot(dx,dy)||1, pull=Math.min(28,d/12);
+  const dx=e.clientX-(+w.dataset.x+37), dy=e.clientY-(+w.dataset.y+37), d=Math.hypot(dx,dy)||1, pull=d>260?0:Math.min(6,d/30);
   mx=dx/d*pull; my=dy/d*pull; w.style.transition='transform .9s cubic-bezier(.2,.8,.2,1)';
   w.style.transform=`translate(${+w.dataset.x+mx}px,${+w.dataset.y+my}px)`;
   clearTimeout(w._t); w._t=setTimeout(()=>w.style.transition='',900);
 });
-$('orb').onclick=()=>toggleChat(true);
+$('orb').onclick=()=>toggleChat(!$('chatbox').classList.contains('on'));
 $('tip').onclick=()=>toggleChat(true);
 
 /* ============ chat ============ */
@@ -951,7 +954,8 @@ function toggleChat(on){
       $('quick').innerHTML=QUICK.map(([t],i)=>`<button onclick="quickAsk(${i})">${t}</button>`).join(''); }
     setTimeout(()=>$('chatInput').focus(),300); track_('chat_opened'); }
 }
-$('dock').onclick=()=>toggleChat(true);
+$('dock').onclick=()=>toggleChat(!$('chatbox').classList.contains('on'));
+document.addEventListener('click',e=>{ if($('chatbox').classList.contains('on') && !e.target.closest('#chatbox,#orbWrap,#dock')) toggleChat(false); });
 $('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
 function quickAsk(i){ $('quick').innerHTML=''; $('chatInput').value=QUICK[i][0]; sendChat(); }
 function navTo(k){ if(BY[k]) openService(k); else if(k==='pricing') go('pricing'); else if(IDS.includes(k)) go(k); }
