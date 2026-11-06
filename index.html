@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Tax Firm Security Setup | BlueHippoCyber</title>
 <meta name="description" content="BlueHippoCyber helps independent tax and accounting firms implement practical safeguards, document their security program, and verify the controls with organized evidence." />
 <meta name="keywords" content="tax firm cybersecurity, accounting firm cybersecurity, WISP implementation, FTC Safeguards Rule security, tax preparer security plan, MFA security assessment" />
@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <script type="application/ld+json">
 {
@@ -50,364 +50,354 @@
   "mainEntity": [
     {"@type":"Question","name":"Is this just a WISP template?","acceptedAnswer":{"@type":"Answer","text":"No. The engagement combines a bounded security assessment, agreed implementation assistance, tailored documentation, control verification, and an evidence package."}},
     {"@type":"Question","name":"Do you replace our MSP or IT provider?","acceptedAnswer":{"@type":"Answer","text":"No. BlueHippoCyber can coordinate with the provider that already manages your systems and clearly separates project work from ongoing IT ownership."}},
-    {"@type":"Question","name":"What does the engagement cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. BlueHippoCyber confirms the scope and fee in writing before work begins."}}
+    {"@type":"Question","name":"What does the engagement cost?","acceptedAnswer":{"@type":"Answer","text":"Most Tax Security Setup engagements run $750 to $2,500 depending on scope. Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. BlueHippoCyber confirms the scope and fee in writing before work begins."}}
   ]
 }
 </script>
 
 <style>
 :root{
-  --bg:#05070d; --ink:#eaf2ff; --dim:#8fa3c9; --cyan:#00c2ff; --glass:rgba(14,20,38,0.55);
-  --glass-border:rgba(0,194,255,0.25);
+  --bg:#05070d; --ink:#eaf2ff; --dim:#8fa3c9; --cyan:#00c2ff; --cyan-2:#5bc8ff;
+  --glass:rgba(14,20,38,0.50); --glass-strong:rgba(14,20,38,0.72); --glass-border:rgba(0,194,255,0.25);
+  --ok:#4be897;
 }
 :root[data-theme="light"]{
-  --bg:#f4f7fc; --ink:#0a1220; --dim:#4a5a78; --cyan:#0072ff; --glass:rgba(255,255,255,0.65);
-  --glass-border:rgba(0,114,255,0.25);
+  --bg:#f4f7fc; --ink:#0a1220; --dim:#4a5a78; --cyan:#0072ff; --cyan-2:#0088ff;
+  --glass:rgba(255,255,255,0.55); --glass-strong:rgba(255,255,255,0.78); --glass-border:rgba(0,114,255,0.25);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   font-family:"JetBrains Mono",monospace;transition:background .3s,color .3s;}
-.brand,.headline,.tile-value,.panel h2,.eyebrow,.tile-label,.book-pill,.pill{font-family:"Share Tech Mono",monospace;}
-.headline,.eyebrow,.brand{text-shadow:0 0 12px rgba(0,194,255,0.55);}
+.brand,.headline,.stop-title,.pill,.btn,.book-pill{font-family:"Share Tech Mono",monospace;}
+a{color:inherit;}
+button{font-family:inherit;}
+
 #stage{position:fixed;inset:0;overflow:hidden;}
+.starfield{position:absolute;inset:0;z-index:0;opacity:.65;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(180,220,255,.55), transparent),
+    radial-gradient(1px 1px at 38% 68%, rgba(180,220,255,.4), transparent),
+    radial-gradient(1.5px 1.5px at 62% 12%, rgba(180,220,255,.5), transparent),
+    radial-gradient(1px 1px at 82% 55%, rgba(180,220,255,.35), transparent),
+    radial-gradient(1px 1px at 25% 90%, rgba(180,220,255,.4), transparent),
+    radial-gradient(1.5px 1.5px at 92% 85%, rgba(180,220,255,.5), transparent),
+    radial-gradient(1px 1px at 50% 40%, rgba(180,220,255,.3), transparent);
+  background-size:260px 260px;}
+:root[data-theme="light"] .starfield{opacity:.25;}
+.vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,.55) 100%);}
 
-/* BHC logo — genuinely full-bleed, edge-to-edge, feathered so there's no
-   visible crop boundary anywhere (same technique as portfolio.html). Real
-   glowing/pulsing motion — brightness, glow spread, and a slow scale
-   breathe — so the hero has actual life, not a static image. */
-.logo-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);pointer-events:none;transition:background .3s;}
-.logo-bg img{position:absolute;top:50%;left:50%;width:120vw;height:120vh;min-width:120%;min-height:120%;
-  transform:translate(-50%,-50%);object-fit:cover;opacity:0.95;
-  -webkit-mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
-  mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
-  filter:drop-shadow(0 0 40px rgba(0,194,255,0.35));}
-.vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 30%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.05) 40%, rgba(5,7,13,0.55) 100%);}
-:root[data-theme="light"] .vignette{
-  background:radial-gradient(ellipse at 50% 30%, rgba(244,247,252,0) 0%, rgba(244,247,252,0.05) 40%, rgba(244,247,252,0.55) 100%);}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;height:60px;display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;background:linear-gradient(180deg, rgba(5,7,13,.85), transparent);
+  backdrop-filter:blur(6px);}
+:root[data-theme="light"] .topbar{background:linear-gradient(180deg, rgba(244,247,252,.9), transparent);}
+.brand{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.06em;font-weight:700;}
+.brand .mark{width:26px;height:26px;background-image:url('assets/hippo-logo.png');background-size:contain;
+  background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 0 6px var(--cyan));}
+.topbar nav{display:flex;gap:16px;align-items:center;font-size:11px;color:var(--dim);}
+.topbar nav a{text-decoration:none;}
+.topbar nav a:hover{color:var(--cyan);}
+.topbar .right{display:flex;align-items:center;gap:12px;}
+.theme-toggle{width:38px;height:20px;border-radius:999px;background:rgba(255,255,255,.08);
+  border:1px solid var(--glass-border);position:relative;cursor:pointer;flex:0 0 auto;}
+.theme-toggle .thumb{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+  background:var(--cyan);transition:left .2s;box-shadow:0 0 8px var(--cyan);}
+:root[data-theme="light"] .theme-toggle .thumb{left:20px;}
+.book-pill{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);
+  background:var(--cyan);padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:700;
+  white-space:nowrap;box-shadow:0 0 16px rgba(0,194,255,.35);}
 
-/* theme toggle — simple sliding pill, no emoji */
-.theme-toggle{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
-  width:44px;height:24px;border-radius:999px;display:flex;align-items:center;padding:3px;cursor:pointer;
-  transition:all .2s;}
-.theme-toggle .thumb{width:16px;height:16px;border-radius:50%;background:var(--cyan);transition:transform .25s;
-  box-shadow:0 0 8px rgba(0,194,255,0.6);}
-:root[data-theme="light"] .theme-toggle .thumb{transform:translateX(20px);}
+.rail{position:relative;z-index:2;height:100%;display:flex;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;cursor:grab;
+  scrollbar-width:none;}
+.rail::-webkit-scrollbar{display:none;}
+.rail.dragging{cursor:grabbing;scroll-behavior:auto;}
+.stop{flex:0 0 100vw;width:100vw;height:100%;scroll-snap-align:start;display:flex;align-items:center;
+  justify-content:center;padding:84px 24px 64px;position:relative;}
 
-/* top bar */
-.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;
-  justify-content:space-between;padding:22px 34px;}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:0.02em;font-size:15px;}
-.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);}
-.topbar nav{display:flex;gap:22px;font-size:13px;color:var(--dim);}
-.topbar nav a{color:var(--dim);text-decoration:none;transition:color .2s;}
-.topbar nav a:hover{color:var(--ink);}
-.book-pill{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
-  padding:9px 18px;border-radius:999px;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;
-  box-shadow:0 0 20px rgba(0,194,255,0.15);transition:all .2s;}
-.book-pill:hover{box-shadow:0 0 28px rgba(0,194,255,0.35);border-color:var(--cyan);}
+.pane{background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;
+  backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:0 10px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+  transform-style:preserve-3d;will-change:transform;transition:transform .15s ease-out, box-shadow .2s;}
+.pane.tilt:hover{box-shadow:0 16px 60px rgba(0,194,255,.18), inset 0 1px 0 rgba(255,255,255,.12);}
 
-/* two-panel row — mirrors helpdesk.bluehippocyber.com: glass card, left panel
-   (headline + CTA + module list), right panel (FAQ drop-downs). Sits low
-   enough to clear the logo glyph/wordmark above it. */
-.hero-panels{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:6;
-  display:flex;gap:0;width:min(1200px,95vw);height:min(600px,78vh);
-  background:var(--glass);backdrop-filter:blur(24px) saturate(150%);border:1px solid var(--glass-border);
-  border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,0.4);opacity:0;
-  animation:panelsIn .6s ease-out .3s forwards;}
-@keyframes panelsIn{to{opacity:1;transform:translate(-50%,-50%);}}
-.panel-left{flex:1;padding:36px 40px;border-right:1px solid var(--glass-border);overflow-y:auto;}
-.panel-right{flex:1;padding:36px 38px;overflow-y:auto;}
-.panel-left .headline{font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.2;margin-bottom:12px;}
-.panel-left .sub{color:var(--dim);font-size:14px;line-height:1.6;margin-bottom:22px;max-width:440px;}
-.module-list{display:flex;flex-direction:column;gap:10px;max-width:440px;}
-.module-row{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
-  border:1px solid var(--glass-border);border-radius:12px;cursor:pointer;transition:all .15s;}
-.module-row:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(0,194,255,0.18);transform:translateX(2px);}
-.module-row-label{font-size:15px;font-weight:600;}
-.module-row[data-panel="contact"]{border-color:var(--cyan);background:rgba(0,194,255,0.12);
-  box-shadow:0 0 18px rgba(0,194,255,0.25);animation:bookPulse 2.4s ease-in-out infinite;}
-@keyframes bookPulse{0%,100%{box-shadow:0 0 18px rgba(0,194,255,0.25);}50%{box-shadow:0 0 28px rgba(0,194,255,0.5);}}
-.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.03em;}
-.faq-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:16px;}
-.faq-row{display:flex;flex-direction:column;gap:10px;}
-.faq-item{border:1px solid var(--glass-border);border-radius:12px;padding:14px 18px;
-  cursor:pointer;transition:all .15s;}
-.faq-item:hover{border-color:var(--cyan);}
-.faq-q{font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:8px;}
-.faq-q::after{content:"+";color:var(--cyan);font-size:17px;transition:transform .2s;flex-shrink:0;}
-.faq-item.open .faq-q::after{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:12.5px;color:var(--dim);line-height:1.55;}
-.faq-item.open .faq-a{max-height:120px;margin-top:8px;}
-/* ===== MOBILE OVERHAUL — this is a fixed-height, no-scroll "app" layout on
-   desktop (#stage is position:fixed, panels scroll internally). That breaks
-   on real phones: nested scrollbars, clipped rows, chat orb overlapping FAQ
-   text. Below 780px we abandon the fixed-viewport app model entirely and
-   let it be a normal, full-page-scrolling mobile site instead. ===== */
-@media(max-width:780px){
-  html,body{overflow-y:auto;overflow-x:hidden;}
-  #stage{position:relative;min-height:100vh;overflow:visible;}
-  .logo-bg{position:fixed;}
-  .topbar{position:sticky;top:0;z-index:10;padding:16px 18px;
-    background:var(--bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);}
-  .hero-panels{position:static;transform:none;top:auto;left:auto;
-    width:92vw;max-width:520px;height:auto;margin:22px auto 110px;
-    flex-direction:column;opacity:1;animation:none;}
-  .panel-left,.panel-right{overflow-y:visible;padding:26px 22px;}
-  .panel-right{padding-bottom:70px;}
-  .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);}
-  .panel-left .headline{font-size:26px;}
-  .chat-fab{position:fixed;bottom:16px;right:14px;z-index:15;}
-  .chat-orb{width:52px;height:52px;}
-  .chat-fab-label{display:none;}
-  .panel{width:92vw;max-height:82vh;padding:26px 22px;}
-}
-.pill-live,.pill-book{background:rgba(0,194,255,0.12);color:var(--cyan);border:1px solid var(--glass-border);}
+.hero-pane{width:min(760px,88vw);padding:46px 44px;text-align:left;}
+.hero-logo{width:52px;height:52px;background-image:url('assets/bhc-logo-black.png');background-size:contain;
+  background-repeat:no-repeat;margin-bottom:18px;filter:drop-shadow(0 0 10px rgba(0,194,255,.4));}
+:root[data-theme="light"] .hero-logo{background-image:url('assets/bhc-logo-white.png');}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;}
+.headline{font-size:clamp(28px,4.2vw,46px);line-height:1.08;font-weight:700;margin-bottom:16px;}
+.headline em{font-style:normal;color:var(--cyan-2);}
+.sub{font-size:14.5px;line-height:1.6;color:var(--dim);max-width:52ch;margin-bottom:28px;}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.04em;
+  padding:13px 20px;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid transparent;
+  cursor:pointer;}
+.btn-primary{background:var(--cyan);color:#04101f;box-shadow:0 0 20px rgba(0,194,255,.35);}
+.btn-ghost{background:transparent;border-color:var(--glass-border);color:var(--ink);}
+.hero-contact{display:flex;gap:18px;margin-top:26px;font-size:11.5px;color:var(--dim);flex-wrap:wrap;}
+.hero-contact a{text-decoration:none;}
+.hero-contact a:hover{color:var(--cyan);}
+.drag-hint{position:absolute;bottom:92px;left:50%;transform:translateX(-50%);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;
+  animation:hintpulse 2.4s ease-in-out infinite;pointer-events:none;}
+@keyframes hintpulse{0%,100%{opacity:.4;transform:translateX(-50%) translateX(0);}50%{opacity:1;transform:translateX(-50%) translateX(6px);}}
 
-/* liquid glass panel overlay */
-.panel-backdrop{position:fixed;inset:0;z-index:20;background:rgba(3,5,10,0.55);backdrop-filter:blur(4px);
-  display:none;align-items:center;justify-content:center;}
-.panel-backdrop.open{display:flex;}
-.panel{width:min(480px,92vw);max-height:78vh;overflow-y:auto;background:var(--glass);
-  border:1px solid var(--glass-border);border-radius:24px;padding:30px;backdrop-filter:blur(28px) saturate(150%);
-  box-shadow:0 0 70px rgba(0,194,255,0.18), inset 0 1px 0 rgba(255,255,255,0.06);}
-.panel h2{font-size:19px;margin-bottom:4px;}
-.panel .panel-sub{color:var(--dim);font-size:13px;margin-bottom:18px;}
-.panel p{font-size:13.5px;line-height:1.6;color:var(--ink);margin-bottom:10px;}
-.panel ul{margin:0 0 14px 18px;font-size:13.5px;color:var(--ink);line-height:1.7;}
-.panel .close{position:absolute;top:16px;right:20px;cursor:pointer;color:var(--dim);font-size:18px;}
-.panel-wrap{position:relative;}
-.btn{padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;
-  display:inline-block;transition:transform .15s;}
-.btn:hover{transform:translateY(-2px);}
-.btn-primary{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;}
-.btn-ghost{border:1px solid var(--glass-border);color:var(--ink);background:rgba(255,255,255,0.04);}
-.audit-input{background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);border-radius:10px;
-  padding:11px 13px;color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:13px;width:100%;}
+.stop-pane{width:min(820px,90vw);padding:40px 42px;}
+.stop-eyebrow{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+.stop-title{font-size:clamp(20px,2.6vw,28px);font-weight:700;margin-bottom:10px;}
+.stop-sub{font-size:13px;color:var(--dim);line-height:1.55;margin-bottom:22px;max-width:62ch;}
+
+.mini-rail{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;
+  padding:4px 2px 14px;scrollbar-width:none;cursor:grab;}
+.mini-rail::-webkit-scrollbar{display:none;}
+.mini-rail.dragging{cursor:grabbing;}
+.card{flex:0 0 220px;scroll-snap-align:start;background:rgba(255,255,255,.04);
+  border:1px solid var(--glass-border);border-radius:16px;padding:18px 16px;min-height:150px;
+  display:flex;flex-direction:column;gap:8px;}
+.card b{font-size:13px;}
+.card span{font-size:11.5px;color:var(--dim);line-height:1.5;}
+.faq-card{flex:0 0 280px;min-height:200px;}
+.faq-card b{font-size:12.5px;line-height:1.4;}
+.faq-card span{font-size:11px;}
+.mini-hint{font-size:10px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:-6px;margin-bottom:16px;opacity:.7;}
+
+.bullet-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
+.bullet-list li{font-size:12.5px;color:var(--dim);line-height:1.5;padding-left:16px;position:relative;}
+.bullet-list li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 6px var(--cyan);}
+.fine{font-size:11px;color:var(--dim);opacity:.75;line-height:1.5;margin-bottom:20px;}
+
+.price-anchor{display:inline-flex;align-items:baseline;gap:8px;background:rgba(0,194,255,.08);
+  border:1px solid var(--glass-border);border-radius:12px;padding:10px 16px;margin-bottom:18px;}
+.price-anchor .num{font-size:19px;font-weight:700;color:var(--cyan-2);}
+.price-anchor .lbl{font-size:10.5px;color:var(--dim);letter-spacing:.04em;}
+
+.form-row{display:flex;gap:10px;margin-bottom:10px;}
+.audit-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--glass-border);
+  border-radius:10px;padding:12px 13px;color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:13px;}
 .audit-input:focus{outline:none;border-color:var(--cyan);}
-.audit-input::placeholder{color:var(--dim);}
+#auditFormMsg{font-size:11.5px;color:var(--dim);min-height:16px;margin-top:4px;}
 
-/* BHC chat widget — bottom-right, obsidian-brain icon, no separate persona name */
-.chat-fab{position:absolute;bottom:26px;right:26px;z-index:7;display:flex;flex-direction:column;
+.navdock{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:50;
+  display:flex;align-items:center;gap:14px;}
+.dots{display:flex;gap:9px;background:var(--glass-strong);border:1px solid var(--glass-border);
+  border-radius:999px;padding:9px 14px;backdrop-filter:blur(14px);}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;
+  transition:all .2s;border:none;padding:0;}
+.dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan);width:20px;border-radius:4px;}
+.arrow{width:38px;height:38px;border-radius:50%;background:var(--glass-strong);border:1px solid var(--glass-border);
+  color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(14px);
+  font-size:15px;flex:0 0 auto;}
+.arrow:hover{border-color:var(--cyan);color:var(--cyan);}
+.arrow[disabled]{opacity:.3;cursor:default;}
+
+.scanline-track{position:fixed;top:60px;left:0;right:0;height:2px;z-index:49;background:rgba(255,255,255,.06);}
+.scanline{height:100%;width:0%;background:linear-gradient(90deg, var(--cyan), var(--cyan-2));
+  box-shadow:0 0 10px var(--cyan);transition:width .1s linear;}
+
+.chat-fab{position:fixed;bottom:26px;right:26px;z-index:51;display:flex;flex-direction:column;
   align-items:center;gap:4px;cursor:pointer;}
-.chat-orb{width:78px;height:78px;border-radius:50%;position:relative;overflow:hidden;
-  background:radial-gradient(circle at 50% 55%, rgba(0,194,255,0.28), rgba(4,16,31,0) 70%);
-  animation:mpulse 2.6s ease-in-out infinite;box-shadow:0 0 18px rgba(0,194,255,0.65);}
-.chat-orb img{position:absolute;top:50%;left:50%;width:190%;height:190%;transform:translate(-50%,-50%);
-  object-fit:cover;}
-.chat-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
-  border:1px solid rgba(0,194,255,0.4);animation:mring 2.6s ease-in-out infinite;}
+.chat-orb{width:66px;height:66px;border-radius:50%;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 50% 55%, rgba(0,194,255,.28), rgba(4,16,31,0) 70%);
+  animation:mpulse 2.6s ease-in-out infinite;box-shadow:0 0 18px rgba(0,194,255,.65);}
+.chat-orb img{position:absolute;top:50%;left:50%;width:190%;height:190%;transform:translate(-50%,-50%);object-fit:cover;}
+.chat-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(0,194,255,.4);
+  animation:mring 2.6s ease-in-out infinite;}
 @keyframes mpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
 @keyframes mring{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.35);opacity:0;}}
-.chat-fab-label{font-size:10.5px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,0.8);font-weight:600;}
-.chat-bubble{position:absolute;bottom:90px;right:0;max-width:220px;background:rgba(9,14,28,0.92);
-  border:1px solid var(--glass-border);border-radius:14px 14px 4px 14px;padding:10px 13px;
-  font-size:12px;line-height:1.4;color:#eaf2ff;opacity:0;transform:translateY(6px);
-  transition:opacity .3s, transform .3s;pointer-events:none;}
+.chat-fab-label{font-size:10px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,.8);font-weight:600;}
+.chat-bubble{position:absolute;bottom:82px;right:0;max-width:200px;background:rgba(9,14,28,.92);
+  border:1px solid var(--glass-border);border-radius:14px 14px 4px 14px;padding:10px 13px;font-size:11.5px;
+  line-height:1.4;color:#eaf2ff;opacity:0;transform:translateY(6px);transition:opacity .3s, transform .3s;
+  pointer-events:none;}
 .chat-bubble.show{opacity:1;transform:translateY(0);}
 
-/* live chat interface */
-.chat-window{display:flex;flex-direction:column;height:min(60vh,520px);width:min(360px,88vw);}
+.panel-backdrop{position:fixed;inset:0;z-index:80;background:rgba(2,4,10,.6);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;}
+.panel-backdrop.open{display:flex;}
+.panel{width:min(420px,92vw);max-height:80vh;background:var(--glass-strong);border:1px solid var(--glass-border);
+  border-radius:20px;padding:26px 24px;backdrop-filter:blur(24px);position:relative;}
+.panel .close{position:absolute;top:14px;right:16px;cursor:pointer;color:var(--dim);font-size:16px;}
+.panel h2{font-size:18px;margin-bottom:6px;}
+.chat-window{display:flex;flex-direction:column;height:min(56vh,480px);width:100%;}
 .chat-log{flex:1;overflow-y:auto;padding:4px 2px 10px;display:flex;flex-direction:column;gap:10px;}
 .chat-msg{max-width:85%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;}
 .chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;border-radius:14px 14px 4px 14px;}
-.chat-msg.assistant{align-self:flex-start;background:rgba(255,255,255,0.06);color:#dce8fb;border-radius:14px 14px 14px 4px;}
+.chat-msg.assistant{align-self:flex-start;background:rgba(255,255,255,.06);color:#dce8fb;border-radius:14px 14px 14px 4px;}
 .chat-msg.typing{font-style:italic;color:var(--dim);}
 .chat-input-row{display:flex;gap:8px;margin-top:8px;}
-.chat-input-row input{flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);
+.chat-input-row input{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--glass-border);
   border-radius:10px;padding:10px 12px;color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:13px;}
 .chat-input-row input:focus{outline:none;border-color:var(--cyan);}
 .chat-input-row button{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;border:none;
   border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer;font-family:"Share Tech Mono",monospace;}
 
-/* bottom-left footer strip */
-.bottombar{position:absolute;bottom:26px;left:26px;z-index:6;font-size:10.5px;color:var(--dim);
-  display:none;}
+@media (prefers-reduced-motion: reduce){
+  .rail{scroll-behavior:auto;}
+  .pane,.hint,.scanline{transition:none !important;animation:none !important;}
+}
 
-@media(min-width:780px){ .bottombar{display:block;} }
 @media(max-width:640px){
   .topbar nav{display:none;}
-}
-@media(max-width:400px){
-  .panel-left .headline{font-size:23px;}
-  .hero-panels{width:94vw;}
-  .panel{width:94vw;}
+  .stop{padding:78px 16px 92px;}
+  .hero-pane,.stop-pane{padding:28px 22px;width:94vw;}
+  .headline{font-size:clamp(24px,7vw,32px);}
+  .card{flex:0 0 76vw;min-height:150px;}
+  .faq-card{flex:0 0 82vw;min-height:230px;}
+  .drag-hint{bottom:86px;}
 }
 </style>
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div id="stage">
-  <div class="logo-bg">
-    <img id="heroLogo" src="assets/bhc-logo-black.png" alt="BlueHippoCyber" />
-  </div>
+  <div class="starfield"></div>
   <div class="vignette"></div>
 
   <header class="topbar">
-    <div class="brand"><span class="dot"></span> BlueHippoCyber</div>
+    <div class="brand"><span class="mark"></span> BlueHippoCyber</div>
     <nav>
       <a href="sms:+18634404145" title="Text us">(863) 440-4145</a>
       <a href="mailto:bluehippo.cyber@gmail.com">bluehippo.cyber@gmail.com</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:14px;">
+    <div class="right">
       <div class="theme-toggle" id="themeToggle" title="Toggle light/dark"><div class="thumb"></div></div>
       <a class="book-pill" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call →</a>
     </div>
   </header>
 
-  <div class="hero-panels">
-    <div class="panel-left">
-      <h1 class="headline">Turn your tax firm's security plan into working safeguards.</h1>
-      <div class="sub">BlueHippoCyber is a cybersecurity implementation and automation studio. Our featured offer helps tax and accounting firms assess the environment, fix agreed priority gaps, document the program, and verify controls with organized evidence.</div>
-      <div class="module-list" id="dock">
-        <div class="module-row" data-panel="services"><span class="module-row-label">Security Services</span><span class="pill pill-live">2026</span></div>
-        <div class="module-row" data-panel="aiops"><span class="module-row-label">Monthly Microsoft 365 Review</span><span class="pill pill-live">RECURRING</span></div>
-        <div class="module-row" data-panel="portfolio"><span class="module-row-label">Portfolio &amp; Capabilities</span><span class="pill pill-live">PROOF</span></div>
-        <div class="module-row" data-panel="pricing"><span class="module-row-label">Scope &amp; Engagement</span><span class="pill pill-live">CLEAR</span></div>
-        <div class="module-row" data-panel="contact"><span class="module-row-label">Book a Discovery Call</span><span class="pill pill-book">BOOK NOW</span></div>
+  <div class="scanline-track"><div class="scanline" id="scanline"></div></div>
+
+  <main class="rail" id="rail" tabindex="0" aria-label="BlueHippoCyber — drag, scroll or use arrow keys to move sideways through the site">
+
+    <section class="stop" id="stop-hero" data-stop="0">
+      <div class="pane hero-pane tilt">
+        <div class="hero-logo"></div>
+        <div class="eyebrow">Tax &amp; Accounting Firm Security</div>
+        <h1 class="headline">Turn your tax firm's security plan into <em>working safeguards.</em></h1>
+        <p class="sub">BlueHippoCyber is a cybersecurity implementation and automation studio. Our featured engagement helps tax and accounting firms assess the environment, fix agreed priority gaps, document the program, and verify controls with organized evidence.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" onclick="goTo(5)">Free 15-Minute Safeguards Gap Check</button>
+          <a class="btn btn-ghost" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Discovery Call</a>
+        </div>
+        <div class="hero-contact">
+          <a href="sms:+18634404145">(863) 440-4145</a>
+          <a href="mailto:bluehippo.cyber@gmail.com">bluehippo.cyber@gmail.com</a>
+          <span>Serving the entire United States</span>
+        </div>
       </div>
-    </div>
-    <div class="panel-right">
-      <div class="faq-eyebrow">BlueHippoCyber FAQs</div>
-      <div class="faq-row" id="faqList"></div>
-    </div>
+      <div class="drag-hint">◄ drag / scroll / arrow keys ►</div>
+    </section>
+
+    <section class="stop" id="stop-services" data-stop="1">
+      <div class="pane stop-pane tilt">
+        <div class="stop-eyebrow">Security Services · 2026</div>
+        <h2 class="stop-title">Tax Security Setup is the featured engagement.</h2>
+        <p class="stop-sub">We assess the environment, identify priority gaps, help implement agreed safeguards, document the actual setup and verify what was completed. Everything below can be scoped in or out.</p>
+        <div class="mini-rail" id="servicesRail">
+          <div class="card"><b>Phishing Resilience Assessment</b><span>Test awareness and identify where safer habits and controls are needed.</span></div>
+          <div class="card"><b>Essential Vulnerability Scan</b><span>Identify exposed systems and prioritize confirmed findings.</span></div>
+          <div class="card"><b>Dark Web Exposure Report</b><span>Review discovered business-account exposure and recommend next steps.</span></div>
+          <div class="card"><b>Basic Policy Pack</b><span>Create practical security policies matched to how the business operates.</span></div>
+          <div class="card"><b>Wireless Network Audit</b><span>Review Wi-Fi configuration, access and separation.</span></div>
+          <div class="card"><b>Password Hygiene Review</b><span>Assess password, MFA and account practices without collecting passwords.</span></div>
+          <div class="card"><b>Social Media Security Checkup</b><span>Review account access, recovery and impersonation safeguards.</span></div>
+        </div>
+        <div class="mini-hint">drag sideways for more →</div>
+        <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Discovery Call</a>
+      </div>
+    </section>
+
+    <section class="stop" id="stop-aiops" data-stop="2">
+      <div class="pane stop-pane tilt">
+        <div class="stop-eyebrow">Recurring · Monthly</div>
+        <h2 class="stop-title">Microsoft 365 Security &amp; Compliance Review</h2>
+        <p class="stop-sub">Microsoft 365 changes constantly. Each month we review the tenant's relevant security recommendations, advisories and Purview compliance items, then document the actions that matter most.</p>
+        <ul class="bullet-list">
+          <li>Security dashboard recommendations and advisories</li>
+          <li>Identity, MFA and privileged-access review</li>
+          <li>Relevant Purview compliance dashboard items</li>
+          <li>Prioritized findings and a concise monthly evidence summary</li>
+        </ul>
+        <p class="fine">Monthly plans are scoped to tenant size, licensing and access. Implementation, licenses, legal advice and compliance certification are not automatically included.</p>
+        <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call</a>
+      </div>
+    </section>
+
+    <section class="stop" id="stop-portfolio" data-stop="3">
+      <div class="pane stop-pane tilt">
+        <div class="stop-eyebrow">Portfolio &amp; Capabilities</div>
+        <h2 class="stop-title">LedgerGuard — the process, shown in the open.</h2>
+        <p class="stop-sub">LedgerGuard is a fictional tax-firm security simulation built with synthetic evidence. It is not represented as paid client work.</p>
+        <p class="stop-sub">The public project shows the complete reasoning trail: scope, evidence register, IAM/MFA findings, risk scoring, remediation roadmap, verification matrix, executive report and sanitized screenshots.</p>
+        <a class="btn btn-primary" href="https://github.com/keenan371/ledgerguard-tax-security-simulation" target="_blank" rel="noopener">Review the LedgerGuard Lab</a>
+        <p class="fine" style="margin-top:18px;"><a href="https://github.com/keenan371" target="_blank" rel="noopener" style="color:var(--cyan);">GitHub</a> · <a href="https://www.linkedin.com/in/keenanmcgriff" target="_blank" rel="noopener" style="color:var(--cyan);">LinkedIn</a> · <a href="https://www.upwork.com/freelancers/keenanm" target="_blank" rel="noopener" style="color:var(--cyan);">Upwork</a></p>
+      </div>
+    </section>
+
+    <section class="stop" id="stop-pricing" data-stop="4">
+      <div class="pane stop-pane tilt">
+        <div class="stop-eyebrow">Scope &amp; Engagement</div>
+        <h2 class="stop-title">Clear scope before price.</h2>
+        <div class="price-anchor"><span class="num">$750–$2,500</span><span class="lbl">typical Tax Security<br/>Setup engagement</span></div>
+        <p class="stop-sub">Every engagement starts with a short fit conversation. The statement of work names the users, endpoints, systems, deliverables, acceptance tests and implementation boundaries before work begins — the number above is a starting range, not a quote.</p>
+        <p class="fine">Hardware, licenses, major migrations, unlimited remediation, penetration testing, incident forensics and ongoing monitoring are separate. Security risk cannot be eliminated. We do not guarantee compliance, regulator or insurer acceptance, or prevention of every incident.</p>
+        <button class="btn btn-primary" onclick="goTo(5)">Discuss Your Environment</button>
+      </div>
+    </section>
+
+    <section class="stop" id="stop-contact" data-stop="5">
+      <div class="pane stop-pane tilt">
+        <div class="stop-eyebrow">Free · No pitch</div>
+        <h2 class="stop-title">Free 15-Minute Safeguards Gap Check</h2>
+        <p class="stop-sub">Tell us about the firm. We'll point out where you're exposed on a short call — no audit fee, no compliance certification, no pressure. Three fields and you're done.</p>
+        <form id="auditForm" onsubmit="submitAuditLead(event)">
+          <div class="form-row">
+            <input class="audit-input" name="name" placeholder="Full name" required style="flex:1;" />
+            <input class="audit-input" name="business" placeholder="Business name" required style="flex:1;" />
+          </div>
+          <div class="form-row">
+            <input class="audit-input" name="email" type="email" placeholder="Email" required />
+            <input class="audit-input" name="phone" type="tel" placeholder="Phone (optional)" />
+          </div>
+          <button class="btn btn-primary" type="submit" style="margin-top:4px;width:100%;justify-content:center;">Request My Free Gap Check</button>
+          <div id="auditFormMsg"></div>
+        </form>
+        <p class="fine" style="margin-top:14px;">Prefer to talk now instead? <a href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="color:var(--cyan);">Book a Discovery Call</a> or text (863) 440-4145.</p>
+      </div>
+    </section>
+
+    <section class="stop" id="stop-faq" data-stop="6">
+      <div class="pane stop-pane tilt" style="width:min(900px,92vw);">
+        <div class="stop-eyebrow">BlueHippoCyber FAQs</div>
+        <h2 class="stop-title">Everything asked before a discovery call.</h2>
+        <div class="mini-rail" id="faqRail"></div>
+        <div class="mini-hint">drag sideways for more →</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="navdock">
+    <button class="arrow" id="prevArrow" aria-label="Previous">‹</button>
+    <div class="dots" id="dots"></div>
+    <button class="arrow" id="nextArrow" aria-label="Next">›</button>
   </div>
 
   <div class="chat-fab" id="chatFab">
     <div class="chat-bubble" id="chatBubble"></div>
     <div class="chat-orb"><img id="chatOrbImg" src="assets/obsidian-brain-blue.jpg" alt="BlueHippoCyber chat" /></div>
-    <div class="chat-fab-label">Chat with BlueHippoCyber</div>
+    <div class="chat-fab-label">Chat</div>
   </div>
-
-  <div class="bottombar">© 2026 BlueHippoCyber · Serving the entire United States · <a href="https://github.com/keenan371" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/keenanmcgriff" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.upwork.com/freelancers/keenanm" target="_blank" rel="noopener">Upwork</a></div>
 </div>
 
 <div class="panel-backdrop" id="panelBackdrop">
-  <div class="panel panel-wrap" id="panelBody">
+  <div class="panel" id="panelBody">
     <div class="close" onclick="closePanel()">✕</div>
   </div>
 </div>
 
 <script>
-const PANELS = {
-  services: {
-    title: "Security Services",
-    sub: "Focused assessments and practical security improvements",
-    body: `<p><b>Tax Security Setup</b> is our featured engagement for small tax and accounting firms. We assess the environment, identify priority gaps, help implement agreed safeguards, document the actual setup and verify what was completed.</p>
-      <ul>
-        <li><b>Phishing Resilience Assessment</b> — test awareness and identify where safer habits and controls are needed.</li>
-        <li><b>Essential Vulnerability Scan</b> — identify exposed systems and prioritize confirmed findings.</li>
-        <li><b>Dark Web Exposure Report</b> — review discovered business-account exposure and recommend next steps.</li>
-        <li><b>Basic Policy Pack</b> — create practical security policies matched to how the business operates.</li>
-        <li><b>Wireless Network Audit</b> — review Wi-Fi configuration, access and separation.</li>
-        <li><b>Password Hygiene Review</b> — assess password, MFA and account practices without collecting passwords.</li>
-        <li><b>Social Media Security Checkup</b> — review account access, recovery and impersonation safeguards.</li>
-      </ul>
-      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Discovery Call</a>`
-  },
-  aiops: {
-    title: "Microsoft 365 Security & Compliance Review",
-    sub: "A practical monthly check for configuration drift and new recommendations",
-    body: `<p>Microsoft 365 changes constantly. Each month, we review the tenant's relevant security recommendations, advisories and Purview compliance items, then document the actions that matter most.</p>
-      <ul><li>Security dashboard recommendations and advisories</li><li>Identity, MFA and privileged-access review</li><li>Relevant Purview compliance dashboard items</li><li>Prioritized findings and a concise monthly evidence summary</li></ul>
-      <p style="font-size:12px;color:var(--dim);margin-top:14px;">Monthly plans are scoped to tenant size, licensing and access. Implementation, licenses, legal advice and compliance certification are not automatically included.</p>
-      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call</a>`
-  },
-  portfolio: {
-    title: "Portfolio & Capabilities",
-    sub: "Hands-on cybersecurity, IT, IAM and automation proof",
-    body: `<p>LedgerGuard is a fictional tax-firm security simulation built with synthetic evidence. It is not represented as paid client work.</p>
-      <p>The public project shows the complete reasoning trail: scope, evidence register, IAM/MFA findings, risk scoring, remediation roadmap, verification matrix, executive report and sanitized screenshots.</p>
-      <a class="btn btn-primary" href="https://github.com/keenan371/ledgerguard-tax-security-simulation" target="_blank" rel="noopener">Review the LedgerGuard Lab</a>
-      <p style="font-size:12px;color:var(--dim);margin-top:14px;text-align:center;"><a href="https://github.com/keenan371" target="_blank" rel="noopener" style="color:var(--cyan);">GitHub</a> · <a href="https://www.linkedin.com/in/keenanmcgriff" target="_blank" rel="noopener" style="color:var(--cyan);">LinkedIn</a> · <a href="https://www.upwork.com/freelancers/keenanm" target="_blank" rel="noopener" style="color:var(--cyan);">Upwork</a></p>`
-  },
-  pricing: {
-    title: "Clear Scope Before Price",
-    sub: "The fee follows the environment and the agreed work",
-    body: `<p>Every engagement starts with a short fit conversation. The statement of work names the users, endpoints, systems, deliverables, acceptance tests and implementation boundaries before work begins.</p>
-      <p>Hardware, licenses, major migrations, unlimited remediation, penetration testing, incident forensics and ongoing monitoring are separate.</p>
-      <p>Security risk cannot be eliminated. We do not guarantee compliance, regulator or insurer acceptance, or prevention of every incident.</p>
-      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Discuss Your Environment</a>`
-  },
-  contact: {
-    title: "Book a Discovery Call",
-    sub: "Confirm fit before access, contracts or payment",
-    body: `<p style="margin-bottom:16px;">Tell us about the firm, the current IT support and what is driving the security conversation. The first call determines fit and scope; it is not an audit or compliance certification.</p>
-      <form id="auditForm" onsubmit="submitAuditLead(event)" style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:10px;">
-          <input class="audit-input" name="firstName" placeholder="First name" required style="flex:1;" />
-          <input class="audit-input" name="lastName" placeholder="Last name" required style="flex:1;" />
-        </div>
-        <input class="audit-input" name="email" type="email" placeholder="Email" required />
-        <input class="audit-input" name="phone" type="tel" placeholder="Phone" required />
-        <input class="audit-input" name="business" placeholder="Business name" required />
-        <input class="audit-input" name="website" placeholder="Website (if you have one)" />
-        <button class="btn btn-primary" type="submit" style="margin-top:6px;">Request a Discovery Call</button>
-        <div id="auditFormMsg" style="font-size:12px;color:var(--dim);min-height:16px;"></div>
-      </form>
-      <p style="font-size:11.5px;color:var(--dim);margin-top:8px;">Prefer to talk first? <a href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="color:var(--cyan);">Book a call</a> or text (863) 440-4145.</p>`
-  },
-};
-
-function openPanel(key){
-  const p = PANELS[key];
-  if(!p) return;
-  document.getElementById('panelBody').innerHTML =
-    `<div class="close" onclick="closePanel()">✕</div><h2>${p.title}</h2><div class="panel-sub">${p.sub}</div>${p.body}`;
-  document.getElementById('panelBackdrop').classList.add('open');
-  document.querySelectorAll('.module-row').forEach(t => t.classList.toggle('active', t.dataset.panel === key));
-}
-async function submitAuditLead(event){
-  event.preventDefault();
-  const form = event.target;
-  const btn = form.querySelector('button[type="submit"]');
-  const msg = document.getElementById('auditFormMsg');
-  const data = Object.fromEntries(new FormData(form).entries());
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  try {
-    const res = await fetch('https://n8n-jtbg.srv1669998.hstgr.cloud/webhook/bhc-website-lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ source: 'bhc-main-site-audit', ...data }),
-    });
-    if(!res.ok) throw new Error('bad response');
-    document.getElementById('panelBody').innerHTML =
-      `<div class="close" onclick="closePanel()">✕</div><h2>You're in.</h2><div class="panel-sub">Check your email shortly</div>
-       <p>We got your info — your free audit is on its way. If you don't see it soon, text (863) 440-4145 and we'll make sure it lands.</p>`;
-  } catch(e){
-    btn.disabled = false;
-    btn.textContent = 'Request a Discovery Call';
-    msg.textContent = "Something didn't go through — text (863) 440-4145 or email bluehippo.cyber@gmail.com directly.";
-    msg.style.color = '#ff8080';
-  }
-}
-
-function closePanel(){
-  document.getElementById('panelBackdrop').classList.remove('open');
-  document.querySelectorAll('.module-row').forEach(t => t.classList.remove('active'));
-}
-document.querySelectorAll('.module-row').forEach(t => t.addEventListener('click', () => openPanel(t.dataset.panel)));
-document.getElementById('panelBackdrop').addEventListener('click', function(e){ if(e.target === this) closePanel(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closePanel(); });
-
-/* ===== theme toggle — swaps hero logo image and dark/light CSS vars.
-   Chat orb stays the neon obsidian-brain image regardless of theme. ===== */
-function applyTheme(theme){
-  document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('heroLogo').src = theme === 'light' ? 'assets/bhc-logo-white.png' : 'assets/bhc-logo-black.png';
-  localStorage.setItem('bhc-theme', theme);
-}
-document.getElementById('themeToggle').addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-  applyTheme(current === 'light' ? 'dark' : 'light');
-});
-applyTheme(localStorage.getItem('bhc-theme') === 'light' ? 'light' : 'dark');
-
-/* ===== FAQ accordion — right panel, matches helpdesk.bluehippocyber.com ===== */
 const FAQS = [
   { q: "Is this just a WISP template?", a: "No. The engagement combines a bounded assessment, agreed implementation assistance, tailored documentation, verification and an evidence package based on the environment we actually reviewed." },
   { q: "What exactly is included?", a: "Discovery, evidence collection, risk prioritization, identity and MFA review, agreed bounded remediation, WISP/security-plan documentation, incident procedures, a verification matrix and an owner-ready final review." },
@@ -422,24 +412,137 @@ const FAQS = [
   { q: "Is ongoing monitoring included?", a: "No. This is a one-time setup engagement. Ongoing monitoring or managed support can be discussed separately after responsibilities and tooling are clear." },
   { q: "Why does LedgerGuard use fictional data?", a: "It is a transparent reference implementation designed to show our process without exposing a real firm's confidential information. It is not presented as client work or a testimonial." },
   { q: "What happens after the discovery call?", a: "If the firm fits the engagement, we confirm scope, send the agreement and statement of work, collect the initial payment, complete intake and schedule kickoff." },
-  { q: "What does the engagement cost?", a: "Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. We confirm the scope and fee in writing before work begins; third-party costs and out-of-scope work are separate." },
+  { q: "What does the engagement cost?", a: "Most Tax Security Setup engagements run $750 to $2,500 depending on scope. Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. We confirm the scope and fee in writing before work begins; third-party costs and out-of-scope work are separate." },
 ];
-document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
-  `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
+document.getElementById('faqRail').innerHTML = FAQS.map(f =>
+  `<div class="card faq-card"><b>${f.q}</b><span>${f.a}</span></div>`
 ).join('');
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+
+const rail = document.getElementById('rail');
+const stops = Array.from(document.querySelectorAll('.stop'));
+const dotsEl = document.getElementById('dots');
+const scanline = document.getElementById('scanline');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
+
+stops.forEach((s, i) => {
+  const d = document.createElement('button');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.setAttribute('aria-label', 'Go to section ' + (i + 1));
+  d.addEventListener('click', () => goTo(i));
+  dotsEl.appendChild(d);
+});
+const dotEls = Array.from(dotsEl.children);
+
+function currentIndex(){
+  const w = window.innerWidth;
+  return Math.round(rail.scrollLeft / w);
+}
+function updateDock(){
+  const i = Math.max(0, Math.min(stops.length - 1, currentIndex()));
+  dotEls.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  prevArrow.disabled = i === 0;
+  nextArrow.disabled = i === stops.length - 1;
+  const max = rail.scrollWidth - rail.clientWidth;
+  scanline.style.width = (max > 0 ? (rail.scrollLeft / max) * 100 : 0) + '%';
+}
+function goTo(i){
+  i = Math.max(0, Math.min(stops.length - 1, i));
+  rail.scrollTo({ left: i * window.innerWidth, behavior: 'smooth' });
+}
+rail.addEventListener('scroll', () => requestAnimationFrame(updateDock));
+window.addEventListener('resize', () => goTo(currentIndex()));
+prevArrow.addEventListener('click', () => goTo(currentIndex() - 1));
+nextArrow.addEventListener('click', () => goTo(currentIndex() + 1));
+
+rail.addEventListener('wheel', (e) => {
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+    e.preventDefault();
+    rail.scrollLeft += e.deltaY;
+  }
+}, { passive: false });
+
+document.addEventListener('keydown', (e) => {
+  if (document.getElementById('panelBackdrop').classList.contains('open')) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { goTo(currentIndex() + 1); }
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { goTo(currentIndex() - 1); }
 });
 
-/* ===== BHC chat — calls /api/chat, auto-greets, navigates via [NAV:key] ===== */
+function makeDraggable(el){
+  let isDown = false, startX, startScroll;
+  el.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('input,button,a,textarea')) return;
+    isDown = true; el.classList.add('dragging');
+    startX = e.clientX; startScroll = el.scrollLeft;
+    el.setPointerCapture(e.pointerId);
+  });
+  el.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    el.scrollLeft = startScroll - (e.clientX - startX);
+  });
+  const end = () => { isDown = false; el.classList.remove('dragging'); };
+  el.addEventListener('pointerup', end);
+  el.addEventListener('pointercancel', end);
+  el.addEventListener('pointerleave', end);
+}
+makeDraggable(rail);
+document.querySelectorAll('.mini-rail').forEach(makeDraggable);
+
+document.querySelectorAll('.pane.tilt').forEach(pane => {
+  pane.addEventListener('mousemove', (e) => {
+    const r = pane.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    pane.style.transform = `perspective(1000px) rotateX(${(-py * 4).toFixed(2)}deg) rotateY(${(px * 4).toFixed(2)}deg)`;
+  });
+  pane.addEventListener('mouseleave', () => { pane.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)'; });
+});
+
+updateDock();
+
+async function submitAuditLead(event){
+  event.preventDefault();
+  const form = event.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const msg = document.getElementById('auditFormMsg');
+  const data = Object.fromEntries(new FormData(form).entries());
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://n8n-jtbg.srv1669998.hstgr.cloud/webhook/bhc-website-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ source: 'bhc-main-site-gap-check', ...data }),
+    });
+    if (!res.ok) throw new Error('bad response');
+    form.innerHTML = `<p style="font-weight:700;margin-bottom:6px;">You're in.</p>
+      <p class="fine">We got your info — check your email shortly. If you don't see it soon, text (863) 440-4145 and we'll make sure it lands.</p>`;
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Request My Free Gap Check';
+    msg.textContent = "Something didn't go through — text (863) 440-4145 or email bluehippo.cyber@gmail.com directly.";
+    msg.style.color = '#ff8080';
+  }
+}
+
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('bhc-theme', theme);
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  applyTheme(current === 'light' ? 'dark' : 'light');
+});
+applyTheme(localStorage.getItem('bhc-theme') === 'light' ? 'light' : 'dark');
+
 const chatHistory = [];
 let chatOpen = false;
-
+function closePanel(){ document.getElementById('panelBackdrop').classList.remove('open'); chatOpen = false; }
 function renderChatShell(){
   document.getElementById('panelBody').innerHTML = `
     <div class="close" onclick="closePanel()">✕</div>
     <h2>BlueHippoCyber</h2>
-    <div class="panel-sub">Ask about Tax Security Setup, monthly Microsoft 365 reviews or our focused assessments</div>
+    <p class="fine" style="margin-bottom:14px;">Ask about Tax Security Setup, monthly Microsoft 365 reviews or our focused assessments</p>
     <div class="chat-window">
       <div class="chat-log" id="chatLog"></div>
       <div class="chat-input-row">
@@ -447,13 +550,12 @@ function renderChatShell(){
         <button onclick="sendChat()">Send</button>
       </div>
     </div>`;
-  document.getElementById('chatInput').addEventListener('keydown', e => { if(e.key === 'Enter') sendChat(); });
+  document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
   chatHistory.forEach(m => appendChatBubble(m.role, m.content));
 }
-
 function appendChatBubble(role, text){
   const log = document.getElementById('chatLog');
-  if(!log) return;
+  if (!log) return;
   const div = document.createElement('div');
   div.className = 'chat-msg ' + role;
   div.textContent = text;
@@ -461,28 +563,25 @@ function appendChatBubble(role, text){
   log.scrollTop = log.scrollHeight;
   return div;
 }
-
 function openChatWidget(){
   document.getElementById('chatBubble').classList.remove('show');
   document.getElementById('panelBackdrop').classList.add('open');
   chatOpen = true;
   renderChatShell();
-  if(chatHistory.length === 0) greetVisitor();
+  if (chatHistory.length === 0) greetVisitor();
 }
-
 async function greetVisitor(){
   const bubble = appendChatBubble('assistant', "Hey — thanks for visiting BlueHippoCyber! How can I help you today? What kind of business do you have?");
   chatHistory.push({ role: 'assistant', content: bubble.textContent });
 }
-
+const STOP_NAV = { services: 1, aiops: 2, portfolio: 3, pricing: 4, contact: 5, faq: 6 };
 async function sendChat(){
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
-  if(!text) return;
+  if (!text) return;
   input.value = '';
   appendChatBubble('user', text);
   chatHistory.push({ role: 'user', content: text });
-
   const typing = appendChatBubble('assistant typing', 'Typing…');
   try {
     const res = await fetch('/api/chat', {
@@ -492,7 +591,7 @@ async function sendChat(){
     });
     const data = await res.json();
     typing.remove();
-    if(!res.ok || data.error){
+    if (!res.ok || data.error) {
       appendChatBubble('assistant', "Sorry — I'm offline right now. Call (863) 440-4145 or book a call directly.");
       return;
     }
@@ -501,21 +600,20 @@ async function sendChat(){
     reply = reply.replace(/\[NAV:\w+\]/, '').trim();
     appendChatBubble('assistant', reply);
     chatHistory.push({ role: 'assistant', content: reply });
-    if(navMatch && PANELS[navMatch[1]]){
-      setTimeout(() => openPanel(navMatch[1]), 900);
+    if (navMatch && STOP_NAV[navMatch[1]] !== undefined) {
+      setTimeout(() => { closePanel(); goTo(STOP_NAV[navMatch[1]]); }, 900);
     }
-  } catch(e){
+  } catch (e) {
     typing.remove();
     appendChatBubble('assistant', "Sorry — I'm offline right now. Call (863) 440-4145 or book a call directly.");
   }
 }
-
 document.getElementById('chatFab').addEventListener('click', openChatWidget);
-
-/* auto-greet bubble a few seconds after page load — invites the click, doesn't block */
+document.getElementById('panelBackdrop').addEventListener('click', function(e){ if (e.target === this) closePanel(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 window.addEventListener('load', () => {
   setTimeout(() => {
-    if(chatOpen) return;
+    if (chatOpen) return;
     const b = document.getElementById('chatBubble');
     b.textContent = "Hi! Click here and I'll help you find what you need.";
     b.classList.add('show');
