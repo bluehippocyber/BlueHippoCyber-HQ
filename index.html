@@ -1,1 +1,735 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Small Business IT Support, Cybersecurity & AI Automation | BlueHippoCyber</title>
+<meta name="description" content="BlueHippoCyber provides small business IT support, practical cybersecurity, website security, Microsoft 365 management, and AI agents & automation — one team, no jargon." />
+<meta name="keywords" content="small business IT support, small business cybersecurity, website security review, Microsoft 365 management, AI automation for small business, AI agents, IT helpdesk" />
+<link rel="canonical" href="https://bluehippocyber.com/" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#05070d" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="BlueHippoCyber" />
+<meta property="og:title" content="IT Problems? Security Concerns? We've Got You Covered. | BlueHippoCyber" />
+<meta property="og:description" content="Practical IT support, smarter security, and intelligent automation for small businesses — one team instead of five vendors." />
+<meta property="og:url" content="https://bluehippocyber.com/" />
+<meta property="og:image" content="https://bluehippocyber.com/assets/bhc-logo-black.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="IT Problems? Security Concerns? We've Got You Covered. | BlueHippoCyber" />
+<meta name="twitter:description" content="Practical IT support, smarter security, and intelligent automation for small businesses." />
+<meta name="twitter:image" content="https://bluehippocyber.com/assets/bhc-logo-black.png" />
+
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "BlueHippoCyber",
+  "description": "Small business IT support, cybersecurity, website security, Microsoft 365 management, and AI agents & automation — practical help with no jargon, from one team.",
+  "keywords": "small business IT support, small business cybersecurity, website security, identity and access management, MFA, AI automation, AI agents, incident response",
+  "url": "https://bluehippocyber.com/",
+  "telephone": "+18634404145",
+  "email": "bluehippo.cyber@gmail.com",
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "address": { "@type": "PostalAddress", "addressRegion": "FL", "addressCountry": "US" },
+  "sameAs": ["https://github.com/keenan371", "https://www.linkedin.com/in/keenanmcgriff", "https://www.upwork.com/freelancers/keenanm"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What does BlueHippoCyber actually do?","acceptedAnswer":{"@type":"Answer","text":"BlueHippoCyber provides small business IT support, practical cybersecurity, website security, Microsoft 365 & identity management, and AI agents & automation — one team instead of five vendors."}},
+    {"@type":"Question","name":"Do you replace our MSP or IT provider?","acceptedAnswer":{"@type":"Answer","text":"No. BlueHippoCyber can coordinate with the provider that already manages your systems and clearly separates project work from ongoing IT ownership."}},
+    {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing follows a short fit conversation because users, devices, licensing and remediation needs vary. BlueHippoCyber confirms the scope and fee in writing before work begins."}}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#05070d; --ink:#eaf2ff; --dim:#8fa3c9; --cyan:#00c2ff; --glass:rgba(14,20,38,0.55);
+  --glass-border:rgba(0,194,255,0.25);
+}
+:root[data-theme="light"]{
+  --bg:#f4f7fc; --ink:#0a1220; --dim:#4a5a78; --cyan:#0072ff; --glass:rgba(255,255,255,0.65);
+  --glass-border:rgba(0,114,255,0.25);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+  font-family:"JetBrains Mono",monospace;transition:background .3s,color .3s;}
+.brand,.headline,.tile-value,.panel h2,.eyebrow,.tile-label,.book-pill,.pill{font-family:"Share Tech Mono",monospace;}
+.headline,.eyebrow,.brand{text-shadow:0 0 12px rgba(0,194,255,0.55);}
+#stage{position:fixed;inset:0;overflow:hidden;}
+
+/* BHC logo — genuinely full-bleed, edge-to-edge, feathered so there's no
+   visible crop boundary anywhere (same technique as portfolio.html). Real
+   glowing/pulsing motion — brightness, glow spread, and a slow scale
+   breathe — so the hero has actual life, not a static image.
+   DO NOT REMOVE OR SHRINK THIS — it is the site's identity. */
+.logo-bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);pointer-events:none;transition:background .3s;}
+.logo-bg img{position:absolute;top:50%;left:50%;width:120vw;height:120vh;min-width:120%;min-height:120%;
+  transform:translate(-50%,-50%);object-fit:cover;opacity:0.95;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
+  mask-image:radial-gradient(ellipse at 50% 40%, black 40%, transparent 82%);
+  filter:drop-shadow(0 0 40px rgba(0,194,255,0.35));
+  animation:logoBreathe 9s ease-in-out infinite;}
+@keyframes logoBreathe{0%,100%{opacity:0.92;filter:drop-shadow(0 0 40px rgba(0,194,255,0.3));}50%{opacity:1;filter:drop-shadow(0 0 60px rgba(0,194,255,0.5));}}
+.vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 30%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.05) 40%, rgba(5,7,13,0.55) 100%);}
+:root[data-theme="light"] .vignette{
+  background:radial-gradient(ellipse at 50% 30%, rgba(244,247,252,0) 0%, rgba(244,247,252,0.05) 40%, rgba(244,247,252,0.55) 100%);}
+
+/* faint HUD scanline sweep for "life" — sits above the vignette, below the panels,
+   never obscures the logo */
+.scanline{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden;opacity:0.35;}
+.scanline::after{content:"";position:absolute;left:0;right:0;height:140px;
+  background:linear-gradient(180deg,rgba(0,194,255,0) 0%,rgba(0,194,255,0.08) 50%,rgba(0,194,255,0) 100%);
+  animation:scanSweep 7s linear infinite;}
+@keyframes scanSweep{0%{top:-140px;}100%{top:100%;}}
+
+/* theme toggle — simple sliding pill, no emoji */
+.theme-toggle{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
+  width:44px;height:24px;border-radius:999px;display:flex;align-items:center;padding:3px;cursor:pointer;
+  transition:all .2s;}
+.theme-toggle .thumb{width:16px;height:16px;border-radius:50%;background:var(--cyan);transition:transform .25s;
+  box-shadow:0 0 8px rgba(0,194,255,0.6);}
+:root[data-theme="light"] .theme-toggle .thumb{transform:translateX(20px);}
+
+/* top bar */
+.topbar{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;
+  justify-content:space-between;padding:22px 34px;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:0.02em;font-size:15px;}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);}
+.topbar nav{display:flex;gap:22px;font-size:13px;color:var(--dim);}
+.topbar nav a{color:var(--dim);text-decoration:none;transition:color .2s;}
+.topbar nav a:hover{color:var(--ink);}
+.book-pill{border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(14px);
+  padding:9px 18px;border-radius:999px;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;
+  box-shadow:0 0 20px rgba(0,194,255,0.15);transition:all .2s;}
+.book-pill:hover{box-shadow:0 0 28px rgba(0,194,255,0.35);border-color:var(--cyan);}
+
+/* two-panel row — mirrors helpdesk.bluehippocyber.com: glass card, left panel
+   (headline + CTA + module list), right panel (FAQ drop-downs). Sits low
+   enough to clear the logo glyph/wordmark above it. */
+.hero-panels{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:6;
+  display:flex;gap:0;width:min(1200px,95vw);height:min(600px,78vh);
+  background:var(--glass);backdrop-filter:blur(24px) saturate(150%);border:1px solid var(--glass-border);
+  border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,0.4);opacity:0;
+  animation:panelsIn .6s ease-out .3s forwards;}
+@keyframes panelsIn{to{opacity:1;transform:translate(-50%,-50%);}}
+.panel-left{flex:1;padding:36px 40px;border-right:1px solid var(--glass-border);overflow-y:auto;}
+.panel-right{flex:1;padding:36px 38px;overflow-y:auto;}
+.panel-left .headline{font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.2;margin-bottom:12px;}
+.panel-left .sub{color:var(--dim);font-size:14px;line-height:1.6;margin-bottom:22px;max-width:440px;}
+.module-list{display:flex;flex-direction:column;gap:10px;max-width:440px;}
+.module-row{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
+  border:1px solid var(--glass-border);border-radius:12px;cursor:pointer;transition:all .15s;}
+.module-row:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(0,194,255,0.18);transform:translateX(2px);}
+.module-row-label{font-size:15px;font-weight:600;}
+.module-row[data-panel="contact"]{border-color:var(--cyan);background:rgba(0,194,255,0.12);
+  box-shadow:0 0 18px rgba(0,194,255,0.25);animation:bookPulse 2.4s ease-in-out infinite;}
+@keyframes bookPulse{0%,100%{box-shadow:0 0 18px rgba(0,194,255,0.25);}50%{box-shadow:0 0 28px rgba(0,194,255,0.5);}}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.03em;}
+.faq-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:16px;}
+.faq-row{display:flex;flex-direction:column;gap:10px;}
+.faq-item{border:1px solid var(--glass-border);border-radius:12px;padding:14px 18px;
+  cursor:pointer;transition:all .15s;}
+.faq-item:hover{border-color:var(--cyan);}
+.faq-q{font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.faq-q::after{content:"+";color:var(--cyan);font-size:17px;transition:transform .2s;flex-shrink:0;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:12.5px;color:var(--dim);line-height:1.55;}
+.faq-item.open .faq-a{max-height:120px;margin-top:8px;}
+
+/* ===== JARVIS floating panels — spawned by the dock, draggable glass
+   windows that sit on top of the stage. Desktop/tablet only; phones get
+   the simpler single modal defined further down for touch usability. ===== */
+.float-panel{position:fixed;z-index:50;width:min(420px,88vw);max-height:72vh;
+  background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;
+  backdrop-filter:blur(26px) saturate(150%);
+  box-shadow:0 0 60px rgba(0,194,255,0.16), 0 24px 50px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+  display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;transform:scale(.85) translateY(14px);
+  transition:box-shadow .2s;
+  will-change:transform;}
+.float-panel.in{animation:floatIn .38s cubic-bezier(.2,.9,.25,1.1) forwards;}
+.float-panel.out{animation:floatOut .22s ease-in forwards;}
+.float-panel.dragging{box-shadow:0 0 80px rgba(0,194,255,0.3), 0 30px 60px rgba(0,0,0,0.55);}
+.float-panel.pushed{transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+@keyframes floatIn{to{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes floatOut{to{opacity:0;transform:scale(.88) translateY(10px);}}
+.float-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 16px;border-bottom:1px solid var(--glass-border);cursor:grab;user-select:none;
+  background:rgba(0,194,255,0.05);}
+.float-panel-head:active{cursor:grabbing;}
+.float-panel-head .ftitle{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.float-panel-head .ftitle .pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 10px var(--cyan);animation:mpulse 1.8s ease-in-out infinite;}
+.float-panel-head .fclose{cursor:pointer;color:var(--dim);font-size:16px;line-height:1;padding:2px 6px;
+  border-radius:6px;transition:all .15s;}
+.float-panel-head .fclose:hover{color:var(--ink);background:rgba(255,80,80,0.18);}
+.float-panel-body{padding:18px 20px 22px;overflow-y:auto;font-size:13.5px;line-height:1.6;}
+.float-panel-body .panel-sub{color:var(--dim);font-size:12.5px;margin-bottom:14px;}
+.float-panel-body p{margin-bottom:10px;}
+.float-panel-body ul{margin:0 0 14px 18px;line-height:1.7;}
+
+@media(max-width:780px){
+  html,body{overflow-y:auto;overflow-x:hidden;}
+  #stage{position:relative;min-height:100vh;overflow:visible;}
+  .logo-bg{position:fixed;}
+  .topbar{position:sticky;top:0;z-index:10;padding:16px 18px;
+    background:var(--bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);}
+  .hero-panels{position:static;transform:none;top:auto;left:auto;
+    width:92vw;max-width:520px;height:auto;margin:22px auto 110px;
+    flex-direction:column;opacity:1;animation:none;}
+  .panel-left,.panel-right{overflow-y:visible;padding:26px 22px;}
+  .panel-right{padding-bottom:70px;}
+  .panel-left{border-right:none;border-bottom:1px solid var(--glass-border);}
+  .panel-left .headline{font-size:26px;}
+  .chat-fab{position:fixed;bottom:16px;right:14px;z-index:15;}
+  .chat-orb{width:52px;height:52px;}
+  .chat-fab-label{display:none;}
+  .panel{width:92vw;max-height:82vh;padding:26px 22px;}
+  .float-panel{display:none;}
+}
+.pill-live,.pill-book{background:rgba(0,194,255,0.12);color:var(--cyan);border:1px solid var(--glass-border);}
+
+/* liquid glass panel overlay — used for chat + mobile module panel */
+.panel-backdrop{position:fixed;inset:0;z-index:20;background:rgba(3,5,10,0.55);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;}
+.panel-backdrop.open{display:flex;}
+.panel{width:min(480px,92vw);max-height:78vh;overflow-y:auto;background:var(--glass);
+  border:1px solid var(--glass-border);border-radius:24px;padding:30px;backdrop-filter:blur(28px) saturate(150%);
+  box-shadow:0 0 70px rgba(0,194,255,0.18), inset 0 1px 0 rgba(255,255,255,0.06);}
+.panel h2{font-size:19px;margin-bottom:4px;}
+.panel .panel-sub{color:var(--dim);font-size:13px;margin-bottom:18px;}
+.panel p{font-size:13.5px;line-height:1.6;color:var(--ink);margin-bottom:10px;}
+.panel ul{margin:0 0 14px 18px;font-size:13.5px;color:var(--ink);line-height:1.7;}
+.panel .close{position:absolute;top:16px;right:20px;cursor:pointer;color:var(--dim);font-size:18px;}
+.panel-wrap{position:relative;}
+.btn{padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;
+  display:inline-block;transition:transform .15s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;}
+.btn-ghost{border:1px solid var(--glass-border);color:var(--ink);background:rgba(255,255,255,0.04);}
+.audit-input{background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);border-radius:10px;
+  padding:11px 13px;color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:13px;width:100%;}
+.audit-input:focus{outline:none;border-color:var(--cyan);}
+.audit-input::placeholder{color:var(--dim);}
+
+/* BHC chat widget — bottom-right, obsidian-brain icon, no separate persona name */
+.chat-fab{position:absolute;bottom:26px;right:26px;z-index:40;display:flex;flex-direction:column;
+  align-items:center;gap:4px;cursor:pointer;}
+.chat-orb{width:78px;height:78px;border-radius:50%;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 50% 55%, rgba(0,194,255,0.28), rgba(4,16,31,0) 70%);
+  animation:mpulse 2.6s ease-in-out infinite;box-shadow:0 0 18px rgba(0,194,255,0.65);}
+.chat-orb img{position:absolute;top:50%;left:50%;width:190%;height:190%;transform:translate(-50%,-50%);
+  object-fit:cover;}
+.chat-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;
+  border:1px solid rgba(0,194,255,0.4);animation:mring 2.6s ease-in-out infinite;}
+@keyframes mpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+@keyframes mring{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.35);opacity:0;}}
+.chat-fab-label{font-size:10.5px;color:var(--dim);text-shadow:0 2px 8px rgba(0,0,0,0.8);font-weight:600;}
+.chat-bubble{position:absolute;bottom:90px;right:0;max-width:220px;background:rgba(9,14,28,0.92);
+  border:1px solid var(--glass-border);border-radius:14px 14px 4px 14px;padding:10px 13px;
+  font-size:12px;line-height:1.4;color:#eaf2ff;opacity:0;transform:translateY(6px);
+  transition:opacity .3s, transform .3s;pointer-events:none;}
+.chat-bubble.show{opacity:1;transform:translateY(0);}
+
+/* live chat interface */
+.chat-window{display:flex;flex-direction:column;height:min(60vh,520px);width:min(360px,88vw);}
+.chat-log{flex:1;overflow-y:auto;padding:4px 2px 10px;display:flex;flex-direction:column;gap:10px;}
+.chat-msg{max-width:85%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;border-radius:14px 14px 4px 14px;}
+.chat-msg.assistant{align-self:flex-start;background:rgba(255,255,255,0.06);color:#dce8fb;border-radius:14px 14px 14px 4px;}
+.chat-msg.typing{font-style:italic;color:var(--dim);}
+.chat-input-row{display:flex;gap:8px;margin-top:8px;}
+.chat-input-row input{flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);
+  border-radius:10px;padding:10px 12px;color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:13px;}
+.chat-input-row input:focus{outline:none;border-color:var(--cyan);}
+.chat-input-row button{background:linear-gradient(135deg,#00c2ff,#0072ff);color:#04101f;border:none;
+  border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer;font-family:"Share Tech Mono",monospace;}
+
+/* bottom-left footer strip */
+.bottombar{position:absolute;bottom:26px;left:26px;z-index:6;font-size:10.5px;color:var(--dim);
+  display:none;}
+
+@media(min-width:780px){ .bottombar{display:block;} }
+@media(max-width:640px){
+  .topbar nav{display:none;}
+}
+@media(max-width:400px){
+  .panel-left .headline{font-size:23px;}
+  .hero-panels{width:94vw;}
+  .panel{width:94vw;}
+}
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div id="stage">
+  <div class="logo-bg">
+    <img id="heroLogo" src="assets/bhc-logo-black.png" alt="BlueHippoCyber" />
+  </div>
+  <div class="scanline"></div>
+  <div class="vignette"></div>
+
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span> BlueHippoCyber</div>
+    <nav>
+      <a href="sms:+18634404145" title="Text us">(863) 440-4145</a>
+      <a href="mailto:bluehippo.cyber@gmail.com">bluehippo.cyber@gmail.com</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="theme-toggle" id="themeToggle" title="Toggle light/dark"><div class="thumb"></div></div>
+      <a class="book-pill" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call →</a>
+    </div>
+  </header>
+
+  <div class="hero-panels">
+    <div class="panel-left">
+      <h1 class="headline">IT Problems? Security Concerns? We've Got You Covered.</h1>
+      <div class="sub">Practical IT Support. Smarter Security. Intelligent Automation. BlueHippoCyber keeps small businesses running — fixing what's broken, locking down what matters, and automating the busywork — all from one team.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;">
+        <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Get IT Support</a>
+        <a class="btn btn-ghost" href="#" onclick="spawnFloatingPanel('itsupport');return false;">Explore Services</a>
+      </div>
+      <div class="module-list" id="dock">
+        <div class="module-row" data-panel="itsupport"><span class="module-row-label">Small Business IT Support</span><span class="pill pill-live">FEATURED</span></div>
+        <div class="module-row" data-panel="cybersecurity"><span class="module-row-label">Cybersecurity Services</span><span class="pill pill-live">2026</span></div>
+        <div class="module-row" data-panel="websecurity"><span class="module-row-label">Website Security</span><span class="pill pill-live">NEW</span></div>
+        <div class="module-row" data-panel="m365"><span class="module-row-label">Microsoft 365 &amp; Identity</span><span class="pill pill-live">RECURRING</span></div>
+        <div class="module-row" data-panel="aiautomation"><span class="module-row-label">AI Agents &amp; Automation</span><span class="pill pill-live">NEW</span></div>
+        <div class="module-row" data-panel="aisecurity"><span class="module-row-label">AI Security &amp; Governance</span><span class="pill pill-live">NEW</span></div>
+        <div class="module-row" data-panel="contact"><span class="module-row-label">Book a Consultation</span><span class="pill pill-book">BOOK NOW</span></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class="faq-eyebrow">BlueHippoCyber FAQs</div>
+      <div class="faq-row" id="faqList"></div>
+    </div>
+  </div>
+
+  <div class="chat-fab" id="chatFab">
+    <div class="chat-bubble" id="chatBubble"></div>
+    <div class="chat-orb"><img id="chatOrbImg" src="assets/obsidian-brain-blue.jpg" alt="BlueHippoCyber chat" /></div>
+    <div class="chat-fab-label">Chat with BlueHippoCyber</div>
+  </div>
+
+  <div class="bottombar">© 2026 BlueHippoCyber · Serving the entire United States · <a href="https://github.com/keenan371" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/keenanmcgriff" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.upwork.com/freelancers/keenanm" target="_blank" rel="noopener">Upwork</a></div>
+</div>
+
+<!-- mobile-only single modal (unchanged pattern) -->
+<div class="panel-backdrop" id="panelBackdrop">
+  <div class="panel panel-wrap" id="panelBody">
+    <div class="close" onclick="closePanel()">✕</div>
+  </div>
+</div>
+
+<script>
+const PANELS = {
+  itsupport: {
+    title: "Small Business IT Support",
+    sub: "Practical, responsive IT support — no long-term contract required",
+    body: `<p><b>Small Business IT Support</b> is our primary offer: hands-on help with the everyday IT problems that slow a small business down — slow computers, printer and network issues, email and account lockouts, new-employee setup, and vendor coordination.</p>
+      <ul>
+        <li><b>Helpdesk Support</b> — remote and on-site troubleshooting for everyday IT issues.</li>
+        <li><b>Device &amp; Network Setup</b> — new computers, printers, Wi-Fi and office network configuration.</li>
+        <li><b>Vendor Coordination</b> — we work with your ISP, software vendors and other providers so you don't have to.</li>
+        <li><b>Proactive Maintenance</b> — updates, backups and basic monitoring to catch problems early.</li>
+        <li><b>New Hire &amp; Offboarding Setup</b> — accounts, devices and access handled correctly from day one.</li>
+      </ul>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Get IT Support</a>`
+  },
+  cybersecurity: {
+    title: "Cybersecurity Services",
+    sub: "Focused assessments and practical security improvements",
+    body: `<p>We help small businesses find and close the security gaps that matter most — without enterprise overhead or confusing jargon.</p>
+      <ul>
+        <li><b>Phishing Resilience Assessment</b> — test awareness and identify where safer habits and controls are needed.</li>
+        <li><b>Essential Vulnerability Scan</b> — identify exposed systems and prioritize confirmed findings.</li>
+        <li><b>Dark Web Exposure Report</b> — review discovered business-account exposure and recommend next steps.</li>
+        <li><b>Basic Policy Pack</b> — create practical security policies matched to how the business operates.</li>
+        <li><b>Wireless Network Audit</b> — review Wi-Fi configuration, access and separation.</li>
+        <li><b>Password Hygiene Review</b> — assess password, MFA and account practices without collecting passwords.</li>
+        <li><b>Social Media Security Checkup</b> — review account access, recovery and impersonation safeguards.</li>
+      </ul>
+      <p style="font-size:12px;color:var(--dim);margin-top:10px;">See our process in action: <a href="https://github.com/keenan371/ledgerguard-tax-security-simulation" target="_blank" rel="noopener" style="color:var(--cyan);">LedgerGuard Lab</a> (a fictional simulation, not client work).</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Discovery Call</a>`
+  },
+  websecurity: {
+    title: "Website Security",
+    sub: "Review and harden the site your business depends on",
+    body: `<p>Your website is often the first thing a customer — and an attacker — sees. We review it for real-world risk and fix what matters.</p>
+      <ul>
+        <li><b>AI-Built Site Review</b> — a focused checkup for sites built with AI tools or "vibe-coded," where security is often an afterthought.</li>
+        <li><b>Configuration &amp; Hardening</b> — hosting, DNS, SSL, admin access and plugin/dependency review.</li>
+        <li><b>Exposure Scan</b> — check for leaked credentials, open admin panels and common misconfigurations.</li>
+      </ul>
+      <p style="font-size:12px;color:var(--dim);margin-top:10px;">Full penetration testing is outside our fixed scope — we refer that work to Kairo Sec, a trusted partner, and can coordinate the handoff.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Request a Website Review</a>`
+  },
+  m365: {
+    title: "Microsoft 365 Security & Compliance Review",
+    sub: "A practical monthly check for configuration drift and new recommendations",
+    body: `<p>Microsoft 365 changes constantly. Each month, we review the tenant's relevant security recommendations, advisories and Purview compliance items, then document the actions that matter most.</p>
+      <ul><li>Security dashboard recommendations and advisories</li><li>Identity, MFA and privileged-access review</li><li>Relevant Purview compliance dashboard items</li><li>Prioritized findings and a concise monthly evidence summary</li></ul>
+      <p style="font-size:12px;color:var(--dim);margin-top:14px;">Monthly plans are scoped to tenant size, licensing and access. Implementation, licenses, legal advice and compliance certification are not automatically included.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Call</a>`
+  },
+  aiautomation: {
+    title: "AI Agents & Automation",
+    sub: "Practical automation that removes busywork, not jobs",
+    body: `<p>We build AI agents and automations that handle the repetitive work eating into a small business's day — lead follow-up, scheduling, data entry and routine customer questions.</p>
+      <ul>
+        <li><b>AI Agents &amp; Copilots</b> — custom assistants trained on your business for internal or customer-facing use.</li>
+        <li><b>Workflow Automation</b> — connect your existing tools so information moves without manual re-entry.</li>
+        <li><b>Lead &amp; Follow-Up Automation</b> — faster response times without hiring more staff.</li>
+      </ul>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Talk Through Automation Ideas</a>`
+  },
+  aisecurity: {
+    title: "AI Security & Governance",
+    sub: "Adopting AI without creating new risk",
+    body: `<p>As businesses add AI tools and agents, new risks come with them — data exposure, unreliable outputs and unclear accountability. We help set guardrails before they become problems.</p>
+      <ul>
+        <li><b>AI Usage Policy</b> — practical rules for how staff can (and can't) use AI tools.</li>
+        <li><b>AI Risk Review</b> — assess what data your AI tools can see and where that could go wrong.</li>
+        <li><b>Agent &amp; Automation Oversight</b> — guardrails for AI agents that take real actions in your systems.</li>
+      </ul>
+      <a class="btn btn-primary" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Discuss AI Governance</a>`
+  },
+  contact: {
+    title: "Book a Consultation",
+    sub: "Confirm fit before access, contracts or payment",
+    body: `<p style="margin-bottom:16px;">Tell us about your business, the current IT support situation, and what's driving the conversation — IT, security, your website or AI automation. The first call determines fit and scope; it is not an audit or compliance certification.</p>
+      <form id="auditForm" onsubmit="submitAuditLead(event)" style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:10px;">
+          <input class="audit-input" name="firstName" placeholder="First name" required style="flex:1;" />
+          <input class="audit-input" name="lastName" placeholder="Last name" required style="flex:1;" />
+        </div>
+        <input class="audit-input" name="email" type="email" placeholder="Email" required />
+        <input class="audit-input" name="phone" type="tel" placeholder="Phone" required />
+        <input class="audit-input" name="business" placeholder="Business name" required />
+        <input class="audit-input" name="website" placeholder="Website (if you have one)" />
+        <button class="btn btn-primary" type="submit" style="margin-top:6px;">Request a Consultation</button>
+        <div id="auditFormMsg" style="font-size:12px;color:var(--dim);min-height:16px;"></div>
+      </form>
+      <p style="font-size:11.5px;color:var(--dim);margin-top:8px;">Prefer to talk first? <a href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener" style="color:var(--cyan);">Book a call</a> or text (863) 440-4145.</p>`
+  },
+};
+
+/* ===== mobile fallback: single centered modal (unchanged from before) ===== */
+function openPanel(key){
+  const p = PANELS[key];
+  if(!p) return;
+  document.getElementById('panelBody').innerHTML =
+    `<div class="close" onclick="closePanel()">✕</div><h2>${p.title}</h2><div class="panel-sub">${p.sub}</div>${p.body}`;
+  document.getElementById('panelBackdrop').classList.add('open');
+}
+function closePanel(){
+  document.getElementById('panelBackdrop').classList.remove('open');
+}
+document.getElementById('panelBackdrop').addEventListener('click', function(e){ if(e.target === this) closePanel(); });
+
+async function submitAuditLead(event){
+  event.preventDefault();
+  const form = event.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const msg = form.querySelector('#auditFormMsg') || document.getElementById('auditFormMsg');
+  const data = Object.fromEntries(new FormData(form).entries());
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://n8n-jtbg.srv1669998.hstgr.cloud/webhook/bhc-website-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ source: 'bhc-main-site-audit', ...data }),
+    });
+    if(!res.ok) throw new Error('bad response');
+    const container = form.closest('.float-panel-body') || form.closest('.panel-wrap') || document.getElementById('panelBody');
+    container.innerHTML =
+      `<h2 style="font-size:17px;margin-bottom:4px;">You're in.</h2><div class="panel-sub">Check your email shortly</div>
+       <p>We got your info — your free audit is on its way. If you don't see it soon, text (863) 440-4145 and we'll make sure it lands.</p>`;
+  } catch(e){
+    btn.disabled = false;
+    btn.textContent = 'Request a Consultation';
+    msg.textContent = "Something didn't go through — text (863) 440-4145 or email bluehippo.cyber@gmail.com directly.";
+    msg.style.color = '#ff8080';
+  }
+}
+
+/* ===================================================================
+   JARVIS floating panel system (desktop/tablet) — this is the
+   Iron-Man-console interaction: clicking a dock item spawns an
+   independent glass window that can be dragged anywhere on the stage.
+   Opening a new one gives every other open window a small physical
+   "make room" nudge so the desk never feels static. Multiple windows
+   can be open at once, each stays exactly where you drop it, and the
+   logo background underneath is never touched by any of this.
+   =================================================================== */
+const floatPanels = {};      // key -> element
+let topZ = 50;
+let openCount = 0;
+
+function isMobileViewport(){ return window.innerWidth <= 780; }
+
+function nudgeOpenPanels(){
+  const keys = Object.keys(floatPanels);
+  keys.forEach(k => {
+    const el = floatPanels[k];
+    if(!el) return;
+    const dx = (Math.random() * 46 - 23);
+    const dy = (Math.random() * 30 - 15);
+    const cur = el.dataset.baseTransform || '';
+    el.classList.add('pushed');
+    el.style.transform = `${cur} translate(${dx}px, ${dy}px)`;
+    setTimeout(() => { el.style.transform = cur; }, 380);
+  });
+}
+
+function spawnFloatingPanel(key){
+  if(isMobileViewport()){ openPanel(key); return; }
+  const p = PANELS[key];
+  if(!p) return;
+
+  // already open → bring to front with a little "attention" pulse
+  if(floatPanels[key]){
+    const el = floatPanels[key];
+    topZ += 1;
+    el.style.zIndex = topZ;
+    el.style.boxShadow = '0 0 90px rgba(0,194,255,0.4), 0 30px 60px rgba(0,0,0,0.55)';
+    setTimeout(() => { el.style.boxShadow = ''; }, 400);
+    return;
+  }
+
+  nudgeOpenPanels();
+
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const cascade = openCount % 5;
+  const baseX = Math.min(vw - 440, Math.max(40, vw * 0.3 + cascade * 46));
+  const baseY = Math.min(vh - 320, Math.max(90, vh * 0.22 + cascade * 34));
+  openCount++;
+  topZ += 1;
+
+  const el = document.createElement('div');
+  el.className = 'float-panel in';
+  el.style.left = baseX + 'px';
+  el.style.top = baseY + 'px';
+  el.style.zIndex = topZ;
+  el.dataset.baseTransform = '';
+  el.innerHTML = `
+    <div class="float-panel-head" data-drag-handle>
+      <div class="ftitle"><span class="pulse-dot"></span>${p.title}</div>
+      <div class="fclose" aria-label="Close">✕</div>
+    </div>
+    <div class="float-panel-body">
+      <div class="panel-sub">${p.sub}</div>
+      ${p.body}
+    </div>`;
+  document.getElementById('stage').appendChild(el);
+  floatPanels[key] = el;
+
+  el.querySelector('.fclose').addEventListener('click', () => closeFloatingPanel(key));
+  wireDrag(el);
+}
+
+function closeFloatingPanel(key){
+  const el = floatPanels[key];
+  if(!el) return;
+  el.classList.remove('in');
+  el.classList.add('out');
+  setTimeout(() => { el.remove(); }, 220);
+  delete floatPanels[key];
+}
+
+function wireDrag(el){
+  const handle = el.querySelector('[data-drag-handle]');
+  let startX, startY, origLeft, origTop, dragging = false;
+
+  function onPointerDown(e){
+    dragging = true;
+    el.classList.add('dragging');
+    topZ += 1;
+    el.style.zIndex = topZ;
+    const point = e.touches ? e.touches[0] : e;
+    startX = point.clientX; startY = point.clientY;
+    const rect = el.getBoundingClientRect();
+    origLeft = rect.left; origTop = rect.top;
+    document.addEventListener('mousemove', onPointerMove);
+    document.addEventListener('mouseup', onPointerUp);
+    document.addEventListener('touchmove', onPointerMove, { passive: false });
+    document.addEventListener('touchend', onPointerUp);
+  }
+  function onPointerMove(e){
+    if(!dragging) return;
+    if(e.touches) e.preventDefault();
+    const point = e.touches ? e.touches[0] : e;
+    const dx = point.clientX - startX, dy = point.clientY - startY;
+    let newLeft = origLeft + dx, newTop = origTop + dy;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    newLeft = Math.max(-200, Math.min(vw - 160, newLeft));
+    newTop = Math.max(0, Math.min(vh - 60, newTop));
+    el.style.left = newLeft + 'px';
+    el.style.top = newTop + 'px';
+  }
+  function onPointerUp(){
+    dragging = false;
+    el.classList.remove('dragging');
+    document.removeEventListener('mousemove', onPointerMove);
+    document.removeEventListener('mouseup', onPointerUp);
+    document.removeEventListener('touchmove', onPointerMove);
+    document.removeEventListener('touchend', onPointerUp);
+  }
+  handle.addEventListener('mousedown', onPointerDown);
+  handle.addEventListener('touchstart', onPointerDown, { passive: true });
+}
+
+document.querySelectorAll('.module-row').forEach(t => {
+  t.addEventListener('click', () => spawnFloatingPanel(t.dataset.panel));
+});
+
+/* ===== theme toggle — swaps hero logo image and dark/light CSS vars.
+   Chat orb stays the neon obsidian-brain image regardless of theme. ===== */
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('heroLogo').src = theme === 'light' ? 'assets/bhc-logo-white.png' : 'assets/bhc-logo-black.png';
+  localStorage.setItem('bhc-theme', theme);
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  applyTheme(current === 'light' ? 'dark' : 'light');
+});
+applyTheme(localStorage.getItem('bhc-theme') === 'light' ? 'light' : 'dark');
+
+/* ===== FAQ accordion — right panel, matches helpdesk.bluehippocyber.com ===== */
+const FAQS = [
+  { q: "What exactly do you help with?", a: "IT support, cybersecurity, website security, Microsoft 365 & identity, and AI agents & automation — one team instead of five vendors, with no jargon." },
+  { q: "What's included in Small Business IT Support?", a: "Helpdesk troubleshooting, device and network setup, vendor coordination, proactive maintenance, and new-hire/offboarding setup." },
+  { q: "What's included in a security engagement?", a: "A bounded assessment, agreed implementation assistance, tailored documentation, control verification and an evidence package based on the environment we actually reviewed." },
+  { q: "What is outside the fixed scope?", a: "Hardware, licenses, major migrations, unlimited remediation, penetration testing (referred to our partner Kairo Sec), incident forensics and 24/7 monitoring are separate unless a signed change order says otherwise." },
+  { q: "Do you replace our MSP or IT provider?", a: "No. We can coordinate with the provider that already owns day-to-day IT. The statement of work makes responsibility and handoff boundaries explicit." },
+  { q: "Do you guarantee compliance or prevent every breach?", a: "No. Security risk cannot be eliminated, and legal or regulatory determinations are outside scope. We document what was reviewed, implemented, verified, not tested and accepted as residual risk." },
+  { q: "What access will you need?", a: "Access depends on the signed scope. We prefer screen-sharing, redacted exports and least-privilege temporary access. Live changes require authorization and a safe rollback path." },
+  { q: "How is client data handled?", a: "We minimize collection and prefer redacted evidence. Handling and retention rules are confirmed during intake." },
+  { q: "How long does an engagement take?", a: "Security projects target 10 business days after kickoff and receipt of required evidence; IT support typically starts sooner. Vendor, access or client delays can move the schedule." },
+  { q: "What if major issues are discovered mid-engagement?", a: "We document and prioritize it. Work outside the fixed scope is quoted through a written change order; it is never silently bundled into an unlimited promise." },
+  { q: "Is ongoing monitoring or support included?", a: "Project work is one-time by default. Ongoing IT support or monitoring can be set up as a separate recurring plan once responsibilities and tooling are clear." },
+  { q: "What does it cost?", a: "Pricing follows a short fit conversation because users, devices, licensing and needs vary. We confirm the scope and fee in writing before work begins; third-party costs and out-of-scope work are separate." },
+  { q: "Why does LedgerGuard use fictional data?", a: "It is a transparent reference implementation designed to show our security process without exposing a real client's confidential information. It is not presented as client work or a testimonial." },
+  { q: "What happens after the consultation?", a: "If it's a fit, we confirm scope, send the agreement, collect the initial payment, complete intake and schedule kickoff." },
+];
+document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
+  `<div class="faq-item" data-i="${i}"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`
+).join('');
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+});
+
+/* ===== BHC chat — calls /api/chat, auto-greets, navigates via [NAV:key] ===== */
+const chatHistory = [];
+let chatOpen = false;
+
+function renderChatShell(){
+  document.getElementById('panelBody').innerHTML = `
+    <div class="close" onclick="closePanel()">✕</div>
+    <h2>BlueHippoCyber</h2>
+    <div class="panel-sub">Ask about IT support, cybersecurity, website security, Microsoft 365 or AI automation</div>
+    <div class="chat-window">
+      <div class="chat-log" id="chatLog"></div>
+      <div class="chat-input-row">
+        <input id="chatInput" type="text" placeholder="Type a message…" />
+        <button onclick="sendChat()">Send</button>
+      </div>
+    </div>`;
+  document.getElementById('chatInput').addEventListener('keydown', e => { if(e.key === 'Enter') sendChat(); });
+  chatHistory.forEach(m => appendChatBubble(m.role, m.content));
+}
+
+function appendChatBubble(role, text){
+  const log = document.getElementById('chatLog');
+  if(!log) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  div.textContent = text;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+  return div;
+}
+
+function openChatWidget(){
+  document.getElementById('chatBubble').classList.remove('show');
+  document.getElementById('panelBackdrop').classList.add('open');
+  chatOpen = true;
+  renderChatShell();
+  if(chatHistory.length === 0) greetVisitor();
+}
+
+async function greetVisitor(){
+  const bubble = appendChatBubble('assistant', "Hey — thanks for visiting BlueHippoCyber! How can I help you today? What kind of business do you have?");
+  chatHistory.push({ role: 'assistant', content: bubble.textContent });
+}
+
+async function sendChat(){
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  appendChatBubble('user', text);
+  chatHistory.push({ role: 'user', content: text });
+
+  const typing = appendChatBubble('assistant typing', 'Typing…');
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory })
+    });
+    const data = await res.json();
+    typing.remove();
+    if(!res.ok || data.error){
+      appendChatBubble('assistant', "Sorry — I'm offline right now. Call (863) 440-4145 or book a call directly.");
+      return;
+    }
+    let reply = data.reply || '';
+    const navMatch = reply.match(/\[NAV:(\w+)\]/);
+    reply = reply.replace(/\[NAV:\w+\]/, '').trim();
+    appendChatBubble('assistant', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+    if(navMatch && PANELS[navMatch[1]]){
+      setTimeout(() => spawnFloatingPanel(navMatch[1]), 900);
+    }
+  } catch(e){
+    typing.remove();
+    appendChatBubble('assistant', "Sorry — I'm offline right now. Call (863) 440-4145 or book a call directly.");
+  }
+}
+
+document.getElementById('chatFab').addEventListener('click', openChatWidget);
+
+/* auto-greet bubble a few seconds after page load — invites the click, doesn't block */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if(chatOpen) return;
+    const b = document.getElementById('chatBubble');
+    b.textContent = "Hi! Click here and I'll help you find what you need.";
+    b.classList.add('show');
+    setTimeout(() => b.classList.remove('show'), 8000);
+  }, 2500);
+});
+</script>
+</body>
+</html>
