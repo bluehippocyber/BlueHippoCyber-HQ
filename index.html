@@ -499,7 +499,7 @@ function renderContactOverlay(serviceKey){
       <div class="overlay-close" onclick="navigate(null)">✕</div>
     </div>
     <div class="overlay-body">
-      <div class="panel-sub">${svc ? 'Re: ' + svc : 'Tell us what\\'s going on — we\\'ll take it from there.'}</div>
+      <div class="panel-sub">${svc ? 'Re: ' + svc : "Tell us what's going on — we'll take it from there."}</div>
       <form id="leadForm" onsubmit="submitLead(event)" style="display:flex;flex-direction:column;gap:10px;">
         <input type="hidden" name="service" value="${serviceKey || ''}" />
         <input class="audit-input" name="name" placeholder="Name" required />
