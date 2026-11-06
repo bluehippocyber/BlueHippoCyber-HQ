@@ -21,20 +21,20 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"BlueHippoCyber",
 "description":"Small business IT support, cybersecurity, website security, Microsoft 365 and AI automation.",
 "url":"https://bluehippocyber.com/","telephone":"+18634404145","email":"bluehippo.cyber@gmail.com","priceRange":"$75 - $5,000+",
 "areaServed":{"@type":"Country","name":"United States"},
 "address":{"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"},
-"sameAs":["https://www.instagram.com/keenan.mcgriff/","https://www.linkedin.com/in/keenanmcgriff","https://github.com/keenan371","https://www.upwork.com/freelancers/keenanm"]}
+"sameAs":["https://www.instagram.com/keenan.mcgriff/","https://www.linkedin.com/in/keenanmcgriff","https://github.com/keenan371"]}
 </script>
 <style>
-:root{--bg:#03050b;--ink:#ffffff;--soft:#c9d8f2;--mute:#8ea3c6;--cyan:#00d4ff;--blue:#0072ff;--green:#5effa6;
-  --glass:rgba(8,16,34,0.66);--glass-hi:rgba(12,24,50,0.86);--edge:rgba(0,212,255,0.35);}
+:root{--bg:#0A0A0A;--ink:#f5f7fa;--soft:#d2d7df;--mute:#9aa3ae;--cyan:#00A3FF;--blue:#0077ee;--green:#4ade80;
+  --glass:rgba(255,255,255,0.045);--glass-hi:rgba(18,18,20,0.82);--edge:rgba(255,255,255,0.14);}
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow:hidden;}
+html,body{height:100%;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;overflow:hidden;}
 a{color:inherit;}
 button{font-family:inherit;}
 
@@ -45,27 +45,30 @@ button{font-family:inherit;}
 .bg img{animation:breathe 6s ease-in-out infinite;}
 .bg video{opacity:0;transition:opacity 1.2s;}
 .bg video.ready{opacity:1;}
-@keyframes breathe{0%,100%{opacity:.75;filter:drop-shadow(0 0 30px rgba(0,212,255,.3)) brightness(.95);transform:translate(-50%,-50%) scale(1);}
-  50%{opacity:1;filter:drop-shadow(0 0 90px rgba(0,212,255,.75)) brightness(1.25);transform:translate(-50%,-50%) scale(1.03);}}
+@keyframes breathe{0%,100%{opacity:.75;filter:drop-shadow(0 0 30px rgba(0,163,255,.3)) brightness(.95);transform:translate(-50%,-50%) scale(1);}
+  50%{opacity:1;filter:drop-shadow(0 0 90px rgba(0,163,255,.75)) brightness(1.25);transform:translate(-50%,-50%) scale(1.03);}}
 #net{position:fixed;inset:0;z-index:1;pointer-events:none;}
-.shade{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(3,5,11,.35) 0%,rgba(3,5,11,.72) 75%);}
+.shade{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(10,10,10,.30) 0%,rgba(10,10,10,.78) 78%);}
 .scan{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden;}
-.scan::after{content:"";position:absolute;left:0;right:0;height:3px;top:-10px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.9),transparent);
-  box-shadow:0 0 30px 8px rgba(0,212,255,.35);animation:sweep 5s linear infinite;}
+.scan::after{content:"";position:absolute;left:0;right:0;height:3px;top:-10px;background:linear-gradient(90deg,transparent,rgba(0,163,255,.9),transparent);
+  box-shadow:0 0 24px 4px rgba(0,163,255,.25);animation:sweep 9s linear infinite;opacity:.6;}
 @keyframes sweep{to{top:100%;}}
 
 /* ===== top bar ===== */
 .top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:14px 26px;background:linear-gradient(180deg,rgba(3,5,11,.92),rgba(3,5,11,0));}
-.brand{display:flex;align-items:center;gap:10px;font-family:"Share Tech Mono",monospace;font-size:20px;text-shadow:0 0 18px rgba(0,212,255,.8);cursor:pointer;white-space:nowrap;}
+.brand{display:flex;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:18px;cursor:pointer;white-space:nowrap;}
 .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:pulse 1.6s infinite;}
 @keyframes pulse{50%{transform:scale(1.5);opacity:.6;}}
 .chapters{display:flex;gap:2px;flex-wrap:nowrap;}
 .chapters button{background:none;border:none;color:var(--soft);font-weight:600;font-size:13px;padding:8px 11px;border-radius:999px;cursor:pointer;transition:.2s;white-space:nowrap;}
 .chapters button:hover{color:#fff;}
-.chapters button.on{color:#04101f;background:var(--cyan);box-shadow:0 0 20px rgba(0,212,255,.6);}
-.cta-pill{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#04101f;font-weight:800;font-size:14px;white-space:nowrap;
-  padding:11px 20px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 0 24px rgba(0,212,255,.45);}
+.chapters button.on{color:#04101f;background:var(--cyan);box-shadow:0 0 20px rgba(0,163,255,.6);}
+.topcta{display:flex;gap:8px;align-items:center;}
+.txt-pill{color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;border:1px solid var(--edge);background:rgba(255,255,255,.06);white-space:nowrap;}
+.txt-pill:hover{border-color:rgba(255,255,255,.4);}
+.cta-pill{background:var(--cyan);color:#fff;font-weight:700;font-size:14px;white-space:nowrap;
+  padding:11px 20px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 0 24px rgba(0,163,255,.45);}
 
 /* ===== horizontal story track ===== */
 .track{position:fixed;inset:0;z-index:10;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;}
@@ -73,59 +76,59 @@ button{font-family:inherit;}
 .ch{flex:0 0 100vw;height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:84px max(6vw,92px) 74px;position:relative;}
 .ch .inner{width:100%;max-width:1200px;opacity:0;transform:translateX(80px) scale(.97);transition:all .9s cubic-bezier(.2,.8,.2,1);}
 .ch.in .inner{opacity:1;transform:none;}
-.kicker{font-family:"Share Tech Mono",monospace;color:var(--cyan);letter-spacing:.18em;text-transform:uppercase;font-size:14px;text-shadow:0 0 12px rgba(0,212,255,.7);margin-bottom:12px;}
+.kicker{font-family:"IBM Plex Mono",monospace;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;font-size:14px;margin-bottom:12px;}
 .kicker::before{content:"> ";opacity:.7;}
-h1,h2{font-weight:800;line-height:1.08;text-shadow:0 2px 24px rgba(0,0,0,.9),0 0 30px rgba(0,212,255,.25);}
+h1,h2{font-weight:600;line-height:1.1;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.85);}
 h1{font-size:clamp(34px,4.8vw,64px);}
 h2{font-size:clamp(28px,3.4vw,46px);margin-bottom:10px;}
 .lead{font-size:clamp(16px,1.3vw,19px);color:var(--soft);line-height:1.6;max-width:680px;text-shadow:0 2px 12px rgba(0,0,0,.9);}
 
 /* ===== liquid glass + terminal chrome ===== */
-.glass{position:relative;background:linear-gradient(160deg,rgba(20,40,80,.55),var(--glass) 40%,rgba(4,10,24,.75));border:1px solid var(--edge);border-radius:20px;
-  backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);overflow:hidden;
-  box-shadow:0 0 50px rgba(0,212,255,.15),0 30px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,212,255,.15);}
+.glass{position:relative;background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 45%,rgba(255,255,255,.05));border:1px solid var(--edge);border-radius:18px;
+  backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.04);}
 .glass::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.10) 45%,rgba(0,212,255,.08) 50%,transparent 62%);
-  background-size:250% 100%;animation:sheen 7s ease-in-out infinite;}
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.07) 48%,transparent 60%);
+  background-size:250% 100%;animation:sheen 11s ease-in-out infinite;}
 @keyframes sheen{0%,100%{background-position:120% 0;}50%{background-position:-20% 0;}}
-.term{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid rgba(0,212,255,.2);background:rgba(0,0,0,.28);
-  font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mute);}
+.term{display:flex;align-items:center;gap:7px;padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.35);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--mute);}
 .term i{width:11px;height:11px;border-radius:50%;display:inline-block;}
 .term i:nth-child(1){background:#ff5f57;} .term i:nth-child(2){background:#febc2e;} .term i:nth-child(3){background:#28c840;}
 .term span{margin-left:8px;}
 .term span b{color:var(--cyan);font-weight:500;}
 .cursor::after{content:"_";color:var(--cyan);animation:blink 1s steps(1) infinite;}
 @keyframes blink{50%{opacity:0;}}
-.float{animation:bob 6s ease-in-out infinite;}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-14px) rotate(.35deg);}}
+.float{animation:bob 7s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;}
 .plate .pad{padding:26px 32px 28px;}
 .plate p.lead{margin:16px 0 18px;}
 .prices{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
-.chip{font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;border:1px solid var(--edge);background:rgba(0,212,255,.08);cursor:pointer;transition:.2s;}
+.chip{font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;border:1px solid var(--edge);background:rgba(0,163,255,.08);cursor:pointer;transition:.2s;}
 .chip b{color:var(--cyan);}
-.chip:hover{background:rgba(0,212,255,.2);}
+.chip:hover{background:rgba(0,163,255,.2);}
 .btns{display:flex;gap:12px;flex-wrap:wrap;}
 .btn{padding:14px 24px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s,box-shadow .2s;display:inline-block;}
 .btn:hover{transform:translateY(-2px);}
-.btn-p{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#04101f;box-shadow:0 0 30px rgba(0,212,255,.45);}
+.btn-p{background:var(--cyan);color:#fff;box-shadow:0 6px 24px rgba(0,163,255,.3);}
 .btn-g{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--edge);}
 .btn-s{padding:10px 16px;font-size:14px;}
 .socials{display:flex;gap:10px;margin-top:20px;}
-.socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--edge);background:rgba(0,212,255,.07);transition:.2s;}
-.socials a:hover{background:var(--cyan);box-shadow:0 0 24px rgba(0,212,255,.7);}
+.socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--edge);background:rgba(0,163,255,.07);transition:.2s;}
+.socials a:hover{background:var(--cyan);box-shadow:0 0 24px rgba(0,163,255,.7);}
 .socials a:hover svg{fill:#04101f;}
 .socials svg{width:19px;height:19px;fill:#fff;}
 
 /* form */
 .form .pad{padding:22px 26px 24px;}
-.form h3{font-size:22px;font-weight:800;margin-bottom:4px;}
+.form h3{font-size:22px;font-weight:700;margin-bottom:4px;}
 .form .sub{color:var(--soft);font-size:14px;margin-bottom:10px;}
 .form label{display:block;font-size:12px;font-weight:600;color:var(--soft);margin:10px 0 5px;}
-.in{width:100%;background:rgba(0,0,0,.4);border:1px solid var(--edge);border-radius:12px;padding:12px 14px;color:#fff;font-size:15px;font-family:Inter,sans-serif;}
-.in:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,255,.2);}
+.in{width:100%;background:rgba(0,0,0,.4);border:1px solid var(--edge);border-radius:12px;padding:12px 14px;color:#fff;font-size:15px;font-family:"IBM Plex Sans",sans-serif;}
+.in:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,163,255,.2);}
 .in::placeholder{color:var(--mute);}
 textarea.in{min-height:84px;resize:vertical;}
 select.in option{background:#0a1428;}
@@ -133,7 +136,7 @@ select.in option{background:#0a1428;}
 .msg{font-size:13px;margin-top:10px;min-height:18px;}
 .ok{color:var(--green);} .err{color:#ff8a8a;}
 .fine{font-size:12px;color:var(--mute);margin-top:6px;}
-.picked{display:none;font-size:13px;padding:9px 12px;border-radius:10px;background:rgba(0,212,255,.12);border:1px solid var(--edge);margin-top:6px;}
+.picked{display:none;font-size:13px;padding:9px 12px;border-radius:10px;background:rgba(0,163,255,.12);border:1px solid var(--edge);margin-top:6px;}
 .picked.on{display:flex;justify-content:space-between;gap:8px;}
 .picked button{background:none;border:none;color:var(--mute);cursor:pointer;}
 
@@ -141,76 +144,76 @@ select.in option{background:#0a1428;}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px;}
 .card{cursor:pointer;transition:border-color .2s,box-shadow .2s;}
 .card .pad{padding:20px 22px 22px;}
-.card:hover{border-color:var(--cyan);box-shadow:0 0 60px rgba(0,212,255,.4),0 30px 60px rgba(0,0,0,.5);}
-.card h3{font-size:19px;font-weight:800;margin:0 0 8px;line-height:1.25;}
+.card:hover{border-color:rgba(255,255,255,.35);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(0,163,255,.35);}
+.card h3{font-size:19px;font-weight:700;margin:0 0 8px;line-height:1.25;}
 .card p{color:var(--soft);font-size:14.5px;line-height:1.5;}
 .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:14px;}
-.card .from{font-weight:800;font-size:15px;color:var(--cyan);}
+.card .from{font-weight:700;font-size:15px;color:var(--cyan);}
 .card .go{font-weight:700;font-size:14px;color:#fff;opacity:.8;}
-.card.feat{border-color:var(--cyan);box-shadow:0 0 50px rgba(0,212,255,.35);}
+.card.feat{border-color:rgba(0,163,255,.55);}
 
 /* pricing */
 .ptabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px;}
 .ptabs button{border:1px solid var(--edge);background:rgba(0,0,0,.35);color:var(--soft);font-weight:700;font-size:14px;padding:10px 15px;border-radius:12px;cursor:pointer;transition:.2s;}
-.ptabs button.on{color:#04101f;background:var(--cyan);box-shadow:0 0 22px rgba(0,212,255,.55);}
+.ptabs button.on{color:#04101f;background:var(--cyan);box-shadow:0 0 22px rgba(0,163,255,.55);}
 .ppanel .body{padding:16px;max-height:calc(100vh - 430px);min-height:220px;overflow:auto;}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
 .pc{border:1px solid var(--edge);border-radius:16px;padding:18px;background:rgba(0,0,0,.3);display:flex;flex-direction:column;
   opacity:0;transform:translateY(16px) scale(.97);animation:pop .5s cubic-bezier(.2,.9,.25,1.1) forwards;}
 @keyframes pop{to{opacity:1;transform:none;}}
-.pc h4{font-size:16.5px;font-weight:800;line-height:1.3;}
-.pc .amt{font-size:26px;font-weight:800;color:var(--cyan);margin:8px 0 0;text-shadow:0 0 18px rgba(0,212,255,.45);}
-.pc .unit{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mute);margin-bottom:10px;}
+.pc h4{font-size:16.5px;font-weight:700;line-height:1.3;}
+.pc .amt{font-size:26px;font-weight:700;color:var(--cyan);margin:8px 0 0;text-shadow:0 0 18px rgba(0,163,255,.45);}
+.pc .unit{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--mute);margin-bottom:10px;}
 .pc ul{list-style:none;font-size:13.5px;color:var(--soft);line-height:1.5;margin-bottom:8px;}
 .pc ul li{padding-left:18px;position:relative;margin-bottom:3px;}
 .pc ul.inc li::before{content:"✓";position:absolute;left:0;color:var(--green);}
 .pc ul.exc li::before{content:"✕";position:absolute;left:0;color:#ff8a8a;font-size:11px;top:2px;}
 .pc .lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:6px 0 4px;}
 .pc .btn{margin-top:auto;text-align:center;}
-.pnote{font-size:13px;color:var(--mute);line-height:1.55;padding:12px 18px;border-top:1px solid rgba(0,212,255,.2);}
+.pnote{font-size:13px;color:var(--mute);line-height:1.55;padding:12px 18px;border-top:1px solid rgba(0,163,255,.2);}
 .pnote b{color:var(--soft);}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px;}
 .step .pad{padding:24px;}
-.step .n{font-weight:800;font-size:44px;color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 30px rgba(0,212,255,.5);}
-.step h3{font-size:20px;font-weight:800;margin:6px 0 8px;}
+.step .n{font-weight:700;font-size:44px;color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 30px rgba(0,163,255,.5);}
+.step h3{font-size:20px;font-weight:700;margin:6px 0 8px;}
 .step p{color:var(--soft);line-height:1.55;font-size:15px;}
 
 /* demos / learn */
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;}
 .mini .pad{padding:16px 18px 18px;}
-.mini .cat{font-family:"Share Tech Mono",monospace;font-size:12px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;}
+.mini .cat{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;}
 .mini h4{font-size:15.5px;font-weight:700;margin:8px 0 10px;line-height:1.35;}
-.soon{display:inline-block;font-family:"Share Tech Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--cyan);border:1px solid var(--edge);border-radius:999px;padding:4px 10px;}
-.play{width:100%;aspect-ratio:16/9;border-radius:12px;margin-bottom:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(0,114,255,.08));border:1px dashed var(--edge);}
+.soon{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--cyan);border:1px solid var(--edge);border-radius:999px;padding:4px 10px;}
+.play{width:100%;aspect-ratio:16/9;border-radius:12px;margin-bottom:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,163,255,.15),rgba(0,114,255,.08));border:1px dashed var(--edge);}
 .play span{width:44px;height:44px;border-radius:50%;border:2px solid var(--cyan);display:grid;place-items:center;color:var(--cyan);font-size:16px;}
 .learn{display:grid;grid-template-columns:1.45fr 1fr;gap:20px;margin-top:20px;}
 .cats{display:flex;flex-wrap:wrap;gap:6px;padding:12px 16px 0;}
 .cats button{border:1px solid var(--edge);background:none;color:var(--soft);font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;cursor:pointer;}
 .cats button.on{background:var(--cyan);color:#04101f;}
 .posts{padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px;max-height:min(46vh,470px);overflow:auto;}
-.post{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 13px;border:1px solid rgba(0,212,255,.22);border-radius:12px;background:rgba(0,0,0,.25);}
+.post{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 13px;border:1px solid rgba(0,163,255,.22);border-radius:12px;background:rgba(0,0,0,.25);}
 .post h4{font-size:14.5px;font-weight:700;line-height:1.35;}
 .post small{display:block;color:var(--mute);font-size:12px;margin-top:3px;}
 .post small a{color:var(--cyan);cursor:pointer;text-decoration:underline;}
-.tool{padding:14px 16px;border-bottom:1px solid rgba(0,212,255,.18);}
+.tool{padding:14px 16px;border-bottom:1px solid rgba(0,163,255,.18);}
 .tool:last-child{border-bottom:none;}
-.tool h4{font-size:16px;font-weight:800;margin-bottom:4px;}
+.tool h4{font-size:16px;font-weight:700;margin-bottom:4px;}
 .tool p{font-size:13.5px;color:var(--soft);line-height:1.5;margin-bottom:10px;}
-.live{display:inline-block;font-family:"Share Tech Mono",monospace;font-size:11px;color:#04101f;background:var(--green);border-radius:999px;padding:3px 9px;margin-left:6px;vertical-align:middle;}
+.live{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#04101f;background:var(--green);border-radius:999px;padding:3px 9px;margin-left:6px;vertical-align:middle;}
 
 /* estimator */
 .est{padding:4px 0;}
 .est input[type=range]{width:100%;accent-color:var(--cyan);margin:10px 0;}
-.est .big{font-size:40px;font-weight:800;color:var(--cyan);text-shadow:0 0 22px rgba(0,212,255,.5);}
-.est .math{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--mute);margin:4px 0 12px;}
+.est .big{font-size:40px;font-weight:700;color:var(--cyan);text-shadow:0 0 22px rgba(0,163,255,.5);}
+.est .math{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--mute);margin:4px 0 12px;}
 
 /* faq */
 .faqwrap{display:grid;grid-template-columns:250px 1fr;gap:20px;margin-top:22px;}
 .tabs{display:flex;flex-direction:column;gap:6px;padding:14px;}
 .tabs button{text-align:left;background:none;border:1px solid transparent;color:var(--soft);font-weight:600;font-size:15px;padding:11px 13px;border-radius:12px;cursor:pointer;}
-.tabs button.on{color:#fff;border-color:var(--cyan);background:rgba(0,212,255,.12);}
+.tabs button.on{color:#fff;border-color:var(--cyan);background:rgba(0,163,255,.12);}
 .qa{padding:16px;display:flex;flex-direction:column;gap:9px;max-height:min(56vh,580px);overflow:auto;}
 .q{border:1px solid var(--edge);border-radius:14px;padding:14px 17px;cursor:pointer;background:rgba(0,0,0,.25);}
 .q b{display:flex;justify-content:space-between;gap:10px;font-size:15.5px;}
@@ -219,6 +222,14 @@ select.in option{background:#0a1428;}
 .q p{max-height:0;overflow:hidden;color:var(--soft);line-height:1.6;font-size:15px;transition:max-height .3s,margin .3s;}
 .q.open p{max-height:320px;margin-top:10px;}
 
+/* story */
+.story{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center;}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:22px 24px;}
+.facts div b{display:block;font-size:26px;font-weight:600;color:#fff;}
+.facts div span{font-size:13.5px;color:var(--mute);}
+.facts p{grid-column:1/-1;}
+.who{font-size:13.5px;color:var(--soft);margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);}
+.who b{color:#fff;} .who a{color:var(--cyan);cursor:pointer;text-decoration:underline;}
 /* contact */
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center;}
 .reach{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
@@ -229,7 +240,7 @@ select.in option{background:#0a1428;}
 /* nav arrows + progress */
 .arrow{position:fixed;top:50%;z-index:30;width:52px;height:52px;border-radius:50%;border:1px solid var(--edge);background:var(--glass-hi);backdrop-filter:blur(14px);
   color:#fff;font-size:22px;cursor:pointer;transform:translateY(-50%);transition:.2s;}
-.arrow:hover{background:var(--cyan);color:#04101f;box-shadow:0 0 30px rgba(0,212,255,.7);}
+.arrow:hover{background:var(--cyan);color:#04101f;box-shadow:0 0 30px rgba(0,163,255,.7);}
 .arrow.l{left:20px;} .arrow.r{right:20px;}
 .arrow[disabled]{opacity:.15;pointer-events:none;}
 .progress{position:fixed;left:0;bottom:0;height:3px;z-index:40;background:linear-gradient(90deg,var(--cyan),var(--blue));box-shadow:0 0 16px var(--cyan);width:0;transition:width .3s;}
@@ -240,22 +251,22 @@ select.in option{background:#0a1428;}
 .ov .box{width:min(900px,96vw);max-height:88vh;display:flex;flex-direction:column;transform:scale(.9) translateY(30px);transition:transform .45s cubic-bezier(.2,.9,.25,1.15);}
 .ov.on .box{transform:none;}
 .ov .head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;border-bottom:1px solid var(--edge);}
-.ov .head h3{font-size:22px;font-weight:800;}
+.ov .head h3{font-size:22px;font-weight:700;}
 .ov .x{cursor:pointer;font-size:14px;color:var(--soft);border:1px solid var(--edge);border-radius:10px;padding:8px 12px;background:none;font-weight:600;white-space:nowrap;}
 .ov .x:hover{color:#04101f;background:var(--cyan);}
 .ov .body{padding:20px 26px 28px;font-size:16px;line-height:1.65;color:#e6eeff;overflow:auto;}
-.ov h5{font-family:"Share Tech Mono",monospace;color:var(--cyan);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:22px 0 8px;font-weight:400;}
+.ov h5{font-family:"IBM Plex Mono",monospace;color:var(--cyan);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:22px 0 8px;font-weight:400;}
 .ov h5:first-child{margin-top:0;}
 .ov .body ul{margin:6px 0 10px 20px;}
 .ov .note{font-size:13.5px;color:#9fb3d6;}
 
 /* ===== the orb: guide that lives on the page ===== */
 .orb-wrap{position:fixed;z-index:50;left:0;top:0;transition:transform 1.4s cubic-bezier(.45,.05,.25,1);will-change:transform;}
-.orb{width:74px;height:74px;border-radius:50%;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 0 30px rgba(0,212,255,.9),0 0 80px rgba(0,212,255,.35);animation:bob 4s ease-in-out infinite;}
+.orb{width:74px;height:74px;border-radius:50%;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 0 30px rgba(0,163,255,.9),0 0 80px rgba(0,163,255,.35);animation:bob 4s ease-in-out infinite;}
 .orb img{position:absolute;top:50%;left:50%;width:190%;height:190%;transform:translate(-50%,-50%);object-fit:cover;animation:spin 18s linear infinite;}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
 .orb::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 18px rgba(255,255,255,.4);}
-.orb-ring{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(0,212,255,.5);animation:ring 2.4s ease-out infinite;pointer-events:none;}
+.orb-ring{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(0,163,255,.5);animation:ring 2.4s ease-out infinite;pointer-events:none;}
 @keyframes ring{from{transform:scale(1);opacity:.8;}to{transform:scale(1.6);opacity:0;}}
 .tip{position:absolute;bottom:4px;right:90px;width:260px;padding:12px 14px;font-size:14px;line-height:1.45;cursor:pointer;
   opacity:0;transform:translateY(8px);transition:.35s;pointer-events:none;}
@@ -267,29 +278,42 @@ select.in option{background:#0a1428;}
 .dock{white-space:nowrap;position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:45;display:flex;align-items:center;gap:10px;
   padding:8px 12px 8px 18px;border-radius:999px;cursor:pointer;width:min(360px,60vw);}
 .dock span{flex:1;font-size:14px;color:var(--soft);}
-.dock .k{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--mute);border:1px solid var(--edge);border-radius:6px;padding:2px 6px;}
+.dock .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);border:1px solid var(--edge);border-radius:6px;padding:2px 6px;}
 .chatbox{position:fixed;left:50%;bottom:76px;z-index:70;width:min(460px,94vw);height:min(66vh,560px);display:flex;flex-direction:column;
   transform:translateX(-50%) translateY(20px) scale(.97);opacity:0;pointer-events:none;transition:.35s cubic-bezier(.2,.9,.25,1.1);}
 .chatbox.on{transform:translateX(-50%);opacity:1;pointer-events:auto;}
 .chatbox .term{justify-content:space-between;}
 .chatbox .term button{background:none;border:none;color:var(--mute);cursor:pointer;font-size:14px;}
+.human{display:block;padding:9px 14px;font-size:13px;color:var(--soft);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,163,255,.08);}
+.human b{color:#fff;}
 .log{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:14px;}
 .m{max-width:86%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.5;}
-.m.user{align-self:flex-end;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#04101f;}
+.m.user{align-self:flex-end;background:var(--cyan);color:#fff;}
 .m.assistant{align-self:flex-start;background:rgba(255,255,255,.08);}
 .quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px;}
-.quick button{border:1px solid var(--edge);background:rgba(0,212,255,.08);color:#fff;font-size:12.5px;padding:6px 10px;border-radius:999px;cursor:pointer;}
+.quick button{border:1px solid var(--edge);background:rgba(0,163,255,.08);color:#fff;font-size:12.5px;padding:6px 10px;border-radius:999px;cursor:pointer;}
 .chat-in{display:flex;gap:8px;padding:10px 14px 14px;}
-.chat-in button{background:var(--cyan);border:none;border-radius:12px;padding:0 16px;font-weight:800;cursor:pointer;}
+.chat-in button{background:var(--cyan);border:none;border-radius:12px;padding:0 16px;font-weight:700;cursor:pointer;}
 
 /* mobile */
-@media(min-width:961px) and (max-height:860px){h1{font-size:clamp(30px,3.9vw,50px);}h2{font-size:clamp(26px,3vw,38px);}.lead{font-size:15.5px;}.plate p.lead{margin:12px 0 14px;}.plate .pad{padding:18px 26px 20px;}.form .pad{padding:16px 22px 18px;}textarea.in{min-height:64px;}.in{padding:10px 12px;}.form label{margin:7px 0 4px;}.prices{margin-bottom:14px;}.socials{margin-top:14px;}.cards{gap:14px;margin-top:16px;}.card .pad{padding:14px 18px 16px;}.card p{font-size:13.5px;}.steps{margin-top:18px;}.step .pad{padding:18px;}.ptabs{margin:10px 0 10px;}.ppanel .body{max-height:calc(100vh - 380px);}}
-@media(max-width:1100px){.chapters button{padding:7px 8px;font-size:12px;}}
-@media(max-width:960px){
+@media(min-width:761px) and (max-height:860px){h1{font-size:clamp(30px,3.9vw,50px);}h2{font-size:clamp(26px,3vw,38px);}.lead{font-size:15.5px;}.plate p.lead{margin:12px 0 14px;}.plate .pad{padding:18px 26px 20px;}.form .pad{padding:16px 22px 18px;}textarea.in{min-height:64px;}.in{padding:10px 12px;}.form label{margin:7px 0 4px;}.prices{margin-bottom:14px;}.socials{margin-top:14px;}.cards{gap:14px;margin-top:16px;}.card .pad{padding:14px 18px 16px;}.card p{font-size:13.5px;}.steps{margin-top:18px;}.step .pad{padding:18px;}.ptabs{margin:10px 0 10px;}.ppanel .body{max-height:calc(100vh - 380px);}}
+@media(max-width:1100px){.chapters button{padding:7px 8px;font-size:12px;}.cards{grid-template-columns:repeat(2,1fr);}.hero{gap:24px;}}
+@media(max-width:1000px){.chapters{display:none;}}
+@media(max-width:900px){.grid4{grid-template-columns:1fr 1fr;}}
+@media(max-width:1180px){.arrow{top:auto;bottom:14px;transform:none;width:44px;height:44px;font-size:18px;}.arrow.l{left:14px;}.arrow.r{right:auto;left:66px;}}
+.hero>*,.story>*,.contact>*,.learn>*,.faqwrap>*{min-width:0;}
+@media(max-width:760px){
+  html,body{height:auto;overflow-x:hidden;overflow-y:visible;} .dock{display:none!important;}
+  h1{font-size:34px;} h2{font-size:28px;} .lead{font-size:16px;}
+  .top{padding:12px 14px;background:rgba(10,10,10,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);} .brand{font-size:15px;} .cta-pill,.txt-pill{padding:8px 12px;font-size:12.5px;}
+  .plate .pad,.form .pad{padding:18px;} .prices .chip{font-size:12.5px;}
+  .facts{grid-template-columns:1fr 1fr;} .ov{padding:8px;} .ov .box{max-height:94vh;} .ov .body{padding:16px;}
+  .ptabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;} .ptabs button{white-space:nowrap;}
+  .pgrid{grid-template-columns:1fr;} .tip{display:none;} .orb{width:58px;height:58px;}
   html,body{overflow:auto;}
   .track{position:relative;flex-direction:column;overflow:visible;scroll-snap-type:none;}
   .ch{flex:none;width:100%;height:auto;min-height:100vh;padding:96px 16px 70px;}
-  .hero,.contact,.faqwrap,.learn{grid-template-columns:1fr;}
+  .hero,.contact,.faqwrap,.learn,.story{grid-template-columns:1fr;}
   .cards,.steps{grid-template-columns:1fr;}
   .grid4{grid-template-columns:1fr 1fr;}
   .chapters,.arrow{display:none;}
@@ -311,7 +335,7 @@ select.in option{background:#0a1428;}
 <header class="top">
   <div class="brand" onclick="go(0)"><span class="dot"></span>BlueHippoCyber</div>
   <nav class="chapters" id="chapterNav"></nav>
-  <button class="cta-pill" onclick="go('contact')">Get Help Now</button>
+  <div class="topcta"><a class="txt-pill" href="sms:+18634404145">Text Keenan</a><button class="cta-pill" onclick="go('contact')">Get Help Now</button></div>
 </header>
 
 <main class="track" id="track">
@@ -322,9 +346,9 @@ select.in option{background:#0a1428;}
       <div class="glass plate float" style="animation-duration:8s">
         <div class="term"><i></i><i></i><i></i><span>keenan@bhc: <b>~</b>$ ./start<span class="cursor"></span></span></div>
         <div class="pad">
-          <div class="kicker">Small Business IT · Security · AI</div>
+          <div class="kicker">Ex-welder. Ran my own shop. Now I fix your IT.</div>
           <h1>IT Problems? Security Concerns? We've Got You Covered.</h1>
-          <p class="lead">Basically, we're the IT team you don't have to hire. We fix the everyday stuff, lock down your accounts and website, and automate the busywork. Real prices, no long contracts for one-time help.</p>
+          <p class="lead">Basically, I'm the IT guy you don't have to hire. We fix the everyday stuff, lock down your accounts and website, and automate the busywork. Real prices, no long contracts for one-time help.</p>
           <div class="prices">
             <span class="chip" onclick="openPricing('itsupport')">IT Support from <b>$75</b></span>
             <span class="chip" onclick="openPricing('websecurity')">Website Security Reviews from <b>$299</b></span>
@@ -335,6 +359,7 @@ select.in option{background:#0a1428;}
             <button class="btn btn-p" onclick="go('services')">See What We Fix →</button>
             <a class="btn btn-g" href="https://calendar.app.google/ikEVkrWRQRKCw77V7" target="_blank" rel="noopener">Book a Free Call</a>
           </div>
+          <div class="who"><b>Keenan McGriff</b> · 8 years welding, 3 running my own shop. Now I handle the tech so you don't have to. <a onclick="go('about')">My story →</a></div>
           <div class="socials" data-socials></div>
         </div>
       </div>
@@ -358,6 +383,29 @@ select.in option{background:#0a1428;}
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section class="ch" data-id="about" data-label="Who I Am">
+    <div class="inner story">
+      <div>
+        <div class="kicker">Who's behind this</div>
+        <h2>I'm Keenan. I used to weld. Now I fix the tech that runs small businesses.</h2>
+        <p class="lead">8 years welding. 3 years running my own shop. I know what it's like when the printer dies right before a quote has to go out, or nobody can get into the email. I moved into IT and cybersecurity because I liked solving that stuff more than I liked burning rod.</p>
+        <p class="lead" style="margin-top:12px">So BlueHippoCyber is basically what I wished I had back then. One person who picks up, speaks plain English, tells you the price up front, and actually fixes it.</p>
+        <div class="btns" style="margin-top:22px"><button class="btn btn-p" onclick="go('services')">What I can fix →</button><a class="btn btn-g" href="sms:+18634404145">Text me directly</a></div>
+      </div>
+      <div class="glass float">
+        <div class="term"><i></i><i></i><i></i><span>keenan@bhc: <b>~</b>$ cat about.txt</span></div>
+        <div class="pad facts">
+          <div><b>8 yrs</b><span>welding in the trades</span></div>
+          <div><b>3 yrs</b><span>running my own business</span></div>
+          <div><b>Remote</b><span>help anywhere in the US</span></div>
+          <div><b>Upfront</b><span>published prices, no surprise bills</span></div>
+          <p class="fine" style="margin-top:6px">Currently working through Security+ with hands-on labs. Pentesting beyond our own scoped reviews goes to a qualified partner, and I'll always tell you when that's the case.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section class="ch" data-id="services" data-label="Services">
     <div class="inner">
@@ -365,6 +413,20 @@ select.in option{background:#0a1428;}
       <h2>Six ways we keep your business running.</h2>
       <p class="lead">Click any one to see the problem it solves, what's included, and what it costs.</p>
       <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="ch" data-id="how" data-label="How It Works">
+    <div class="inner">
+      <div class="kicker">How it works</div>
+      <h2>From "something's wrong" to back to work.</h2>
+      <div class="steps">
+        <div class="glass step float"><div class="term"><i></i><i></i><i></i><span>step_01</span></div><div class="pad"><div class="n">01</div><h3>Tell us what's going on</h3><p>Fill out the form, text us, or book a call. Plain English is perfect. You don't need to know the tech words.</p></div></div>
+        <div class="glass step float" style="animation-delay:-2s"><div class="term"><i></i><i></i><i></i><span>step_02</span></div><div class="pad"><div class="n">02</div><h3>We find the real problem</h3><p>We figure out what's actually going on, explain it straight, and agree on scope and price before any work starts.</p></div></div>
+        <div class="glass step float" style="animation-delay:-4s"><div class="term"><i></i><i></i><i></i><span>step_03</span></div><div class="pad"><div class="n">03</div><h3>Fixed. Secured. Automated.</h3><p>We fix it, tighten up security where it matters, and automate the repeat work so it stops eating your day.</p></div></div>
+      </div>
+      <div class="btns" style="margin-top:26px"><button class="btn btn-p" onclick="go('contact')">Start Step 1 →</button><button class="btn btn-g" onclick="go('pricing')">See Prices</button></div>
     </div>
   </section>
 
@@ -383,47 +445,21 @@ select.in option{background:#0a1428;}
     </div>
   </section>
 
-  <!-- HOW -->
-  <section class="ch" data-id="how" data-label="How It Works">
-    <div class="inner">
-      <div class="kicker">How it works</div>
-      <h2>From "something's wrong" to back to work.</h2>
-      <div class="steps">
-        <div class="glass step float"><div class="term"><i></i><i></i><i></i><span>step_01</span></div><div class="pad"><div class="n">01</div><h3>Tell us what's going on</h3><p>Fill out the form, text us, or book a call. Plain English is perfect. You don't need to know the tech words.</p></div></div>
-        <div class="glass step float" style="animation-delay:-2s"><div class="term"><i></i><i></i><i></i><span>step_02</span></div><div class="pad"><div class="n">02</div><h3>We find the real problem</h3><p>We figure out what's actually going on, explain it straight, and agree on scope and price before any work starts.</p></div></div>
-        <div class="glass step float" style="animation-delay:-4s"><div class="term"><i></i><i></i><i></i><span>step_03</span></div><div class="pad"><div class="n">03</div><h3>Fixed. Secured. Automated.</h3><p>We fix it, tighten up security where it matters, and automate the repeat work so it stops eating your day.</p></div></div>
-      </div>
-      <div class="btns" style="margin-top:26px"><button class="btn btn-p" onclick="go('contact')">Start Step 1 →</button><button class="btn btn-g" onclick="go('pricing')">See Prices</button></div>
-    </div>
-  </section>
-
-  <!-- DEMOS -->
-  <section class="ch" data-id="demos" data-label="Demos">
-    <div class="inner">
-      <div class="kicker">Watch it work</div>
-      <h2>Real walkthroughs. Coming soon.</h2>
-      <p class="lead">Screen recordings of the actual work, narrated. We're recording these now and they'll show up right here.</p>
-      <div class="grid4" id="demos"></div>
-    </div>
-  </section>
-
   <!-- LEARN -->
-  <section class="ch" data-id="blog" data-label="Blog & Tools">
+  <section class="ch" data-id="blog" data-label="Free Tools">
     <div class="inner">
-      <div class="kicker">Blog & free tools</div>
-      <h2>Learn something. Use something. Free.</h2>
-      <p class="lead">Plain-English guides for business owners, plus free tools we're building and open-sourcing.</p>
+      <div class="kicker">Free tools & guides</div>
+      <h2>Use it free. No sign-up.</h2>
+      <p class="lead">Tools I build for business owners to check things themselves. Plain-English guides land here too.</p>
       <div class="learn">
         <div class="glass">
-          <div class="term"><i></i><i></i><i></i><span>~/insights</span></div>
-          <div class="cats" id="bcats"></div>
-          <div class="posts" id="posts"></div>
+          <div class="term"><i></i><i></i><i></i><span>~/free-tools/<b>it-price-estimator</b></span></div>
+          <div class="tool"><h4>IT Support Price Estimator <span class="live">LIVE</span></h4><p>Slide to how long you think the problem will take and see the real price, using the same rate I bill with.</p><button class="btn btn-p btn-s" onclick="openEstimator()">Open Estimator</button></div>
         </div>
         <div class="glass">
-          <div class="term"><i></i><i></i><i></i><span>~/free-tools</span></div>
-          <div class="tool"><h4>IT Support Price Estimator <span class="live">LIVE</span></h4><p>Slide to how long you think it'll take and see the real price. No sign-up.</p><button class="btn btn-p btn-s" onclick="openEstimator()">Open Estimator</button></div>
-          <div class="tool"><h4>Open-source security tools</h4><p>Free tools Keenan is building for small businesses to check their own setup. Coming soon on GitHub.</p><a class="btn btn-g btn-s" href="https://github.com/keenan371" target="_blank" rel="noopener">Follow on GitHub</a></div>
-          <div class="tool"><h4>Free checklists</h4><p>Printable security and IT checklists you can run yourself. Coming soon.</p><span class="soon">COMING SOON</span></div>
+          <div class="term"><i></i><i></i><i></i><span>~/open-source</span></div>
+          <div class="tool"><h4>Open-source security tools</h4><p>Free tools for small businesses to check their own setup. They'll be published on GitHub.</p><a class="btn btn-g btn-s" href="https://github.com/keenan371" target="_blank" rel="noopener">Follow on GitHub</a></div>
+          <div class="tool"><h4>Guides</h4><p>New guides and walkthroughs get posted on Instagram first.</p><a class="btn btn-g btn-s" href="https://www.instagram.com/keenan.mcgriff/" target="_blank" rel="noopener">Follow on Instagram</a></div>
         </div>
       </div>
     </div>
@@ -490,12 +526,13 @@ select.in option{background:#0a1428;}
 <!-- the orb guide -->
 <div class="orb-wrap" id="orbWrap">
   <div class="glass tip" id="tip"><span class="x2" onclick="event.stopPropagation();hideTip(true)">✕</span><span id="tipTxt"></span></div>
-  <div class="orb" id="orb" title="Ask BlueHippoCyber"><div class="orb-ring"></div><img src="/assets/obsidian-brain-blue.jpg" alt="BlueHippoCyber guide" /></div>
+  <div class="orb" id="orb" title="Ask BlueHippoCyber"><div class="orb-ring"></div><img src="/assets/obsidian-brain-blue.jpg" alt="BlueHippoCyber assistant" /></div>
 </div>
 
 <div class="glass dock" id="dock"><span>Ask BlueHippoCyber anything...</span><span class="k">/</span></div>
 <div class="glass chatbox" id="chatbox">
-  <div class="term"><span><i style="background:#28c840"></i> bhc-guide <b>online</b></span><button onclick="toggleChat(false)" aria-label="Close chat">✕</button></div>
+  <div class="term"><span><i style="background:#28c840"></i> bhc-assistant <b>online</b></span><button onclick="toggleChat(false)" aria-label="Close chat">✕</button></div>
+  <a class="human" href="sms:+18634404145">Rather talk to a person? <b>Text Keenan directly →</b></a>
   <div class="log" id="log"></div>
   <div class="quick" id="quick"></div>
   <div class="chat-in"><input class="in" id="chatInput" placeholder="Describe your problem..." /><button onclick="sendChat()">Send</button></div>
@@ -509,7 +546,6 @@ const SOCIALS = [
   {name:"Instagram",url:"https://www.instagram.com/keenan.mcgriff/",svg:'<path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/>'},
   {name:"LinkedIn",url:"https://www.linkedin.com/in/keenanmcgriff",svg:'<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/>'},
   {name:"GitHub",url:"https://github.com/keenan371",svg:'<path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/>'},
-  {name:"Upwork",url:"https://www.upwork.com/freelancers/keenanm",svg:'<path d="M18.6 13.3c-1 0-2-.4-2.8-1.1l.2-1.1v-.1c.2-1.2.9-3.2 2.6-3.2a2.7 2.7 0 0 1 0 5.5zm0-8.3c-2.6 0-4.6 1.7-5.4 4.4-1.2-1.8-2.2-4-2.7-5.9H7.8v7.1a2.5 2.5 0 0 1-5 0V3.5H.1v7.1a5.2 5.2 0 0 0 10.4 0V9.4c.5 1 1.1 2.1 1.9 3.1L10.7 20h2.8l1.2-5.8c1.1.7 2.4 1.1 3.9 1.1a5.2 5.2 0 0 0 0-10.3z"/>'},
 ];
 
 /* ============ SERVICES: problem / solution / pricing / demos / faqs ============ */
@@ -675,7 +711,7 @@ $('cards').innerHTML = SERVICES.map((s,i)=>`
   </div>`).join('');
 $('svcSelect').innerHTML += SERVICES.map(s=>`<option value="${s.key}">${s.title}</option>`).join('');
 const allDemos = SERVICES.flatMap(s=>s.demos.map(d=>({d,s})));
-$('demos').innerHTML = [allDemos[0],allDemos[1],allDemos[6],allDemos[12]].map(({d,s},i)=>`
+if($('demos'))$('demos').innerHTML = [allDemos[0],allDemos[1],allDemos[6],allDemos[12]].map(({d,s},i)=>`
   <div class="glass mini float" style="animation-delay:${-i*.8}s"><div class="term"><i></i><i></i><i></i><span>demo.mp4</span></div>
   <div class="pad"><div class="play"><span>▶</span></div><div class="cat">${s.title.replace('Small Business ','')}</div><h4>${d}</h4><span class="soon">DEMO COMING SOON</span></div></div>`).join('');
 
@@ -686,7 +722,7 @@ function renderPosts(){
   $('posts').innerHTML = list.length ? list.map(p=>`<div class="post"><div><h4>${p.t}</h4><small>${p.c} · Related: <a onclick="openService('${p.s}')">${BY[p.s].title}</a></small></div><span class="soon">SOON</span></div>`).join('')
     : `<div class="post"><div><h4>Nothing here yet.</h4><small>Guides for this topic are in the works.</small></div></div>`;
 }
-renderPosts();
+if($('posts'))renderPosts();
 
 let faqCat="General";
 function renderFaq(){
@@ -719,7 +755,7 @@ function openPricing(key){ showPricing(key); go('pricing'); }
 /* ============ horizontal story navigation ============ */
 const track=$('track'), chs=[...document.querySelectorAll('.ch')], IDS=chs.map(c=>c.dataset.id), nav=$('chapterNav');
 nav.innerHTML = chs.map((c,i)=>`<button onclick="go(${i})">${c.dataset.label}</button>`).join('');
-const isMobile = () => window.innerWidth <= 960;
+const isMobile = () => window.innerWidth <= 760;
 let cur=0;
 function go(target,push=true){
   const i = typeof target==='number'?target:IDS.indexOf(target);
@@ -774,8 +810,7 @@ function openService(key,push=true){
       <h5>What we do</h5><p>${s.solution}</p>
       <h5>What's included & pricing</h5><div class="pgrid">${priceCards(key)}</div>
       <p class="note" style="margin-top:10px">${PRICING[key].note}</p>
-      <h5>Watch it work</h5>
-      <div class="grid4" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:4px">${s.demos.map(d=>`<div class="mini" style="border:1px solid var(--edge);border-radius:14px"><div class="pad"><div class="play"><span>▶</span></div><h4>${d}</h4><span class="soon">DEMO COMING SOON</span></div></div>`).join('')}</div>
+      <h5>Watch it work</h5><p class="note">Screen-recorded walkthroughs of this work are being recorded. Want to see how it'd go for your setup? Ask and I'll walk you through it on a call.</p>
       <h5>Common questions</h5>${s.faqs.map(([q,a])=>`<div class="q" onclick="this.classList.toggle('open')" style="margin-bottom:8px"><b>${q}</b><p>${a}</p></div>`).join('')}
       <div class="btns" style="margin-top:20px"><button class="btn btn-p" onclick="requestHelp('${key}')">Get Help With This →</button><a class="btn btn-g" href="${BOOK}" target="_blank" rel="noopener">Book a Call</a></div>
     </div>`, s.title);
@@ -857,17 +892,17 @@ async function submitLead(e){
 
 /* ============ the orb: guide that follows them through the story ============ */
 const TIPS = {
-  home:"Hey, I'm the BlueHippoCyber brain. Tell me what's broken and I'll point you the right way.",
+  home:"Thanks for visiting. Tell me what's broken and I'll point you to the fix and the price.",
   services:"Not sure which one fits? Click me and just describe the problem.",
   pricing:"Real prices, right here. Hit Request on any card and I'll fill out the form for you.",
   how:"Step one takes about 30 seconds. Want me to take you to the form?",
-  demos:"Demos are being recorded now. Ask me what they'll cover.",
-  blog:"Try the free price estimator. It's the same math we bill with.",
+  about:"That's Keenan. Want to text him directly? Hit the button, it goes straight to his phone.",
+  blog:"Try the estimator. Same rate Keenan bills with, no surprises.",
   faq:"Don't see your question? Ask me.",
   contact:"Last step. Name, contact, what's going on. We'll take it from there."
 };
 const SPOTS = { // where the orb floats to in each chapter (fractions of the viewport)
-  home:[.945,.86], services:[.90,.22], pricing:[.92,.80], how:[.08,.80], demos:[.90,.22], blog:[.92,.80], faq:[.08,.80], contact:[.40,.84]
+  home:[.945,.86], about:[.06,.84], services:[.90,.22], pricing:[.92,.80], how:[.08,.80], blog:[.92,.80], faq:[.08,.80], contact:[.40,.84]
 };
 let guided=false, tipMuted=false, tipTimer, mx=0, my=0;
 function placeOrb(id){
@@ -903,7 +938,7 @@ function bubble(role,t){const l=$('log'),d=document.createElement('div');d.class
 function say(t){ bubble('assistant',t); hist.push({role:'assistant',content:t}); }
 function toggleChat(on){
   $('chatbox').classList.toggle('on',on); hideTip();
-  if(on){ if(!hist.length){ say("Hey, I'm the BlueHippoCyber guide. What's going on with your business tech today?");
+  if(on){ if(!hist.length){ say("Thanks for stopping by BlueHippoCyber. I'm Keenan's assistant. What's going on? Computer acting up, email down, worried about security? Tell me and I'll point you to the fix and the price.");
       $('quick').innerHTML=QUICK.map(([t],i)=>`<button onclick="quickAsk(${i})">${t}</button>`).join(''); }
     setTimeout(()=>$('chatInput').focus(),300); track_('chat_opened'); }
 }
@@ -933,10 +968,10 @@ async function sendChat(){
   (function tick(){ x.clearRect(0,0,W,H);
     for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
       const dm=Math.hypot(p.x-mouse.x,p.y-mouse.y); if(dm<140){p.x+=(p.x-mouse.x)/dm*1.2;p.y+=(p.y-mouse.y)/dm*1.2;}
-      x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle='rgba(0,212,255,.9)';x.shadowBlur=10;x.shadowColor='#00d4ff';x.fill();}
+      x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle='rgba(0,163,255,.7)';x.shadowBlur=6;x.shadowColor='#00d4ff';x.fill();}
     x.shadowBlur=0;
     for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);
-      if(d<130){x.strokeStyle=`rgba(0,212,255,${(1-d/130)*.35})`;x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();}}
+      if(d<130){x.strokeStyle=`rgba(0,163,255,${(1-d/130)*.22})`;x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();}}
     requestAnimationFrame(tick); })();
 })();
 
