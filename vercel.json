@@ -41,6 +41,10 @@
     {
       "source": "/pricing/:slug",
       "destination": "/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/index.html"
     }
   ],
   "headers": [
