@@ -8,43 +8,43 @@
   "rewrites": [
     {
       "source": "/services/:slug",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/services",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/how",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/demos",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/blog",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/faq",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/pricing",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/pricing/:slug",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/about",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ],
   "headers": [
